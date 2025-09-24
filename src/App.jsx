@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -33,3 +34,38 @@ function App() {
 }
 
 export default App
+=======
+import { use, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import {AuthProvider} from "./frontend/AuthContext";
+import RootLayout from "./frontend/rootLayout/RootLayout"
+import Login from "./frontend/login/Login"
+import Signup from "./frontend/signup/Signup";
+import ProduitList from './data/produitCard/ProduitCard';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout/>,
+    children:[
+      {path: "login", element: <Login/>},
+      {path: "signup", element: <Signup/>},
+      
+    ],
+  },
+]);
+
+function App() {
+  return (
+    <AuthProvider>
+      <RouterProvider router={router}/>
+      <div>
+        <ProduitList />
+      </div>
+    </AuthProvider>
+  );
+};
+
+export default App;
+>>>>>>> e9c951f (Création de la classe ProduitCard)
