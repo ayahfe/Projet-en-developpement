@@ -93,7 +93,7 @@ const PRODUIT = [
         id: "p12",
         name: "Tylenol",
         description: "Tylenol est un médicament à base d'acétaminophène qui osulage la douleur et fait baisser la fievre",
-        price: 14.97,
-        image: HydraSense,
+        price: 18.99,
+        image: Tylenol,
     },
 ]
