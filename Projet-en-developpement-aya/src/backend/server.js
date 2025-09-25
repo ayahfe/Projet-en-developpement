@@ -8,7 +8,7 @@ const PORT = 4000;
 const JWT_SECRET = "devsecret"; // change en prod
 
 app.use(cors({
-  origin: "http://localhost:5174",
+  origin: ["http://localhost:5173", "http://localhost:5174"], // ← ajoute 5173
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
