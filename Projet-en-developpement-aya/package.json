@@ -1,13 +1,5 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
   "name": "aya-projet",
-=======
-  "name": "nouveau-projet",
->>>>>>> aya
-=======
-  "name": "nouveau-projet",
->>>>>>> aya
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,14 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "react": "^19.1.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> aya
-=======
->>>>>>> aya
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.2"
   },
