@@ -11,7 +11,11 @@ import Smecta from '../assets/smecta.png';
 import Tylenol from '../assets/tylenol.png';
 import Vicks from '../assets/vicks.png';
 
+<<<<<<< HEAD
 export const PRODUIT = [
+=======
+const PRODUIT = [
+>>>>>>> aya
     {
         id: "p1",
         name: "Advil",

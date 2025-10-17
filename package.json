@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "aya-projet",
+=======
+  "name": "nouveau-projet",
+>>>>>>> aya
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +15,10 @@
   },
   "dependencies": {
     "react": "^19.1.1",
+<<<<<<< HEAD
 
+=======
+>>>>>>> aya
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.2"
   },
