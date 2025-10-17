@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -38,6 +39,8 @@ export default App
 =======
 =======
 >>>>>>> aya
+=======
+>>>>>>> aya
 import { use, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
@@ -46,7 +49,10 @@ import RootLayout from "./frontend/rootLayout/RootLayout"
 import Login from "./frontend/login/Login"
 import Signup from "./frontend/signup/Signup";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ProduitList from './data/produitCard/ProduitCard';
+=======
+>>>>>>> aya
 =======
 >>>>>>> aya
 
@@ -58,13 +64,17 @@ const router = createBrowserRouter([
       {path: "login", element: <Login/>},
       {path: "signup", element: <Signup/>},
 <<<<<<< HEAD
+<<<<<<< HEAD
       
+=======
+>>>>>>> aya
 =======
 >>>>>>> aya
     ],
   },
 ]);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function App() {
   return (
@@ -74,18 +84,27 @@ function App() {
         <ProduitList />
       </div>
 =======
+=======
+>>>>>>> aya
 const App = () => {
   return(
     <AuthProvider>
       <RouterProvider router={router}/>
+<<<<<<< HEAD
+>>>>>>> aya
+=======
 >>>>>>> aya
     </AuthProvider>
   );
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default App;
 >>>>>>> e9c951f (Création de la classe ProduitCard)
+=======
+export default App;
+>>>>>>> aya
 =======
 export default App;
 >>>>>>> aya

@@ -12,7 +12,11 @@ import Tylenol from '../assets/tylenol.png';
 import Vicks from '../assets/vicks.png';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const PRODUIT = [
+=======
+const PRODUIT = [
+>>>>>>> aya
 =======
 const PRODUIT = [
 >>>>>>> aya
