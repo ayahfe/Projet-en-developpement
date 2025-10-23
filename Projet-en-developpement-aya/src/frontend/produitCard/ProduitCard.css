@@ -42,3 +42,14 @@
     color: #27ae60;
     margin-top: 8px;
 }
+/* Espace pour éviter que les cartes passent sous la navbar */
+.produit-list {
+  margin-top: 100px; /* ajuste selon la hauteur exacte de ta navbar */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+}

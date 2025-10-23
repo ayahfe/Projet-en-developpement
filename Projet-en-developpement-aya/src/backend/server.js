@@ -3,6 +3,7 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
+
 const app = express();
 const PORT = 4000;
 const JWT_SECRET = "devsecret"; // change en prod
