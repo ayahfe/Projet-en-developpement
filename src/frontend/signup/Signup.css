@@ -1,0 +1,22 @@
+/* src/frontend/signup/Signup.css */
+.signup-form {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  background: #111;
+  color: #eee;
+}
+
+.control { margin-bottom: 1rem; }
+.control label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+.control input, .control select {
+  width: 100%; padding: 0.6rem 0.8rem; border-radius: 8px; border: 1px solid #333;
+  background: #181818; color: #eee;
+}
+.control-error { color: #ff6b6b; margin-top: 0.5rem; }
+
+.form-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1rem; }
+.button { padding: 0.6rem 1rem; border-radius: 10px; border: none; cursor: pointer; }
+.button-flat { background: transparent; border: 1px solid #333; }

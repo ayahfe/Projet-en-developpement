@@ -1,0 +1,73 @@
+:root{
+  --bg: #0e1116;
+  --panel: #121722;
+  --muted: #8a94a7;
+  --text: #e8edf7;
+  --brand: #6aa6ff;
+  --brand-2:#7b5cff;
+  --ok:#27ae60;
+  --err:#ff6b6b;
+  --border:#1f2633;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Light mode auto si l’OS est clair */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f7f9fc;
+    --panel:#ffffff;
+    --muted:#5d6b82;
+    --text:#0e1116;
+    --brand:#2a72ff;
+    --brand-2:#7b5cff;
+    --border:#e9eef5;
+    --shadow: 0 10px 30px rgba(20,40,90,.08);
+  }
+}
+
+*{ box-sizing:border-box }
+html,body,#root{ height:100% }
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 600px at -10% -20%, rgba(106,166,255,.18), transparent 55%),
+    radial-gradient(1000px 500px at 110% -10%, rgba(123,92,255,.18), transparent 50%),
+    var(--bg);
+  color:var(--text);
+  font: 16px/1.45 ui-sans-serif, system-ui, -apple-system, "SF Pro Text", Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+/* Helpers */
+.container{ width:min(1100px, 92vw); margin:0 auto; }
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+}
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.7rem 1.1rem; border-radius:12px; border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+  color:var(--text); cursor:pointer; transition:transform .15s ease, border-color .2s ease, background .2s ease;
+}
+.btn:hover{ transform:translateY(-1px); border-color:color-mix(in oklab, var(--brand) 40%, var(--border)); }
+.btn.primary{
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+  color:white; border:none;
+}
+.input, .select, .textarea{
+  width:100%; padding:.8rem 1rem; border-radius:12px; border:1px solid var(--border);
+  background:color-mix(in oklab, var(--panel) 92%, black 8%);
+  color:var(--text); outline:none;
+}
+.input:focus, .select:focus, .textarea:focus{
+  border-color: color-mix(in oklab, var(--brand) 40%, var(--border));
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 12%, transparent);
+}
+.row{ display:flex; gap:1rem; flex-wrap:wrap; }
+.error{ color:var(--err); margin:.4rem 0; }
+.success{ color:var(--ok); }
+
+a{ color:var(--brand); text-decoration:none }
+a:hover{ text-decoration:underline }
