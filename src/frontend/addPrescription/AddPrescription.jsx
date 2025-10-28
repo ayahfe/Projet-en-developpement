@@ -18,7 +18,6 @@ export default function AddPrescription() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    // si non connecté → rien
   }, [user]);
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
