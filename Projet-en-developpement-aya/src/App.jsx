@@ -5,7 +5,7 @@ import RootLayout from "./frontend/rootLayout/RootLayout";
 import Login from "./frontend/login/Login";
 import Signup from "./frontend/signup/Signup";
 import ProduitList from "./frontend/produitCard/ProduitCard.jsx";
-import AddPrescription from "./frontend/addPrescription/addPrescription.jsx";
+import AddPrescription from "./frontend/prescription/addPrescription/addPrescription.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,10 @@ const router = createBrowserRouter([
       { index: true, element: <ProduitList /> },   // <-- page d’accueil
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
-      { path: "/medecins", element: <AddPrescription /> },
+      { path: "/medecins", element: <ShowPrescription /> },
+      { path: "/medecins/add", element: <AddPrescription /> },
+      { path: "/medecins/modify", element: <ModifyPrescription /> },
+      { path: "/medecins/delete", element: <DeletePrescription /> },
     ],
   },
 ]);
