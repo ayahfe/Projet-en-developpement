@@ -1,24 +1,18 @@
 import React from 'react';
-import { PRODUIT } from '../../data/produitList';  
+import { useCart } from '../cartContext/CartContext';
 import './ProduitCard.css';
 
-function ProduitCard({ produit }) {
+export default function ProduitCard({ produit }) {
+    const { addToCart } = useCart();
+
     return (
         <div className="produit-card">
             <img src={produit.image} alt={produit.name} />
             <h3>{produit.name}</h3>
             <p>{produit.description}</p>
             <strong>{produit.price} $</strong>
-        </div>
-    );
-}
-
-export default function ProduitList() {
-    return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {PRODUIT.map(produit => (
-                <ProduitCard key={produit.id} produit={produit} />
-            ))}
+            <br />
+            <button onClick={() => addToCart(produit)}>Ajouter au panier</button>
         </div>
     );
 }
