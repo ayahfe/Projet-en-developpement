@@ -86,3 +86,11 @@
 .rx-button:focus {
   background-color: #007bff;
 }
+
+.prescription-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* space between cards */
+  justify-items: center;
+  margin-top: 2rem;
+}
