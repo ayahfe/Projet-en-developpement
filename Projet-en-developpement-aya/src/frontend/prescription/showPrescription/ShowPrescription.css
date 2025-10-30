@@ -1,0 +1,88 @@
+.form-rx {
+  width: 100%;
+  max-width: 100%;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  animation: fadeIn 0.8s ease;
+}
+
+.card-rx {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 16px;
+    width: 240px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+.card-rx h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.button-rx-modify {
+  padding: 0.5rem 1rem ;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button-rx-modify:hover,
+.button-rx-modify:focus {
+  background-color: #3195ff;
+}
+
+
+.button-rx-delete {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #dc3545;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button-rx-delete:hover,
+.button-rx-delete:focus {
+  background-color: #e25f6c;
+}
+
+.row-rx-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rx-button {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 7rem;
+}
+  
+.rx-button:hover,
+.rx-button:focus {
+  background-color: #007bff;
+}

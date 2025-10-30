@@ -1,4 +1,4 @@
-import "./AddPrescription.css";
+import "../addPrescription/AddPrescription.css";
 
 const ModifyPrescription = () => {
   const modifyPrescriptionSubmitHandler = () => {};
