@@ -11,6 +11,7 @@
 
 /* === EN-TÊTE === */
 .calendar-header {
+    color: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,6 +19,7 @@
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  
 }
 
 .calendar-title {
@@ -257,41 +259,58 @@
 .form-rdv {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
   z-index: 1;
   position: relative;
-}
-
-.form-rdv input {
-  width: 100%;
-  padding: 1rem 1.2rem;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.3);
-  font-size: 0.95rem;
-  color: #1e293b;
-  outline: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.form-rdv input::placeholder {
-  color: rgba(30, 41, 59, 0.5);
-}
-
-.form-rdv input:focus {
-  border-color: #6366f1;
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  align-items: stretch;
 }
 
 .form-rdv-row {
   display: flex;
   gap: 1rem;
+  align-items: center; /* centre vertical des champs et labels */
 }
 
-.form-rdv-row input {
-  flex: 1;
+/* Si vous utilisez des labels : largeur fixe pour aligner les champs */
+.form-rdv label {
+  min-width: 130px;
+  width: 130px;
+  text-align: right;
+  margin-right: 0.75rem;
+  font-weight: 600;
+  color: #334155;
+  display: inline-block;
+}
+
+/* Hauteur et box-sizing uniformes pour tous les champs */
+.form-rdv input,
+.form-rdv select,
+.form-rdv textarea {
+  height: 48px;
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-radius: 12px;
+}
+
+/* Date/heure alignés avec les autres champs */
+input[type="date"],
+input[type="time"] {
+  height: 48px;
+  padding: 0.6rem 1rem;
+}
+
+/* Responsive : empilement sur petits écrans */
+@media (max-width: 640px) {
+  .form-rdv-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-rdv label {
+    width: 100%;
+    text-align: left;
+    margin: 0 0 0.25rem 0;
+  }
 }
 
 /* === BOUTON ENREGISTRER === */
