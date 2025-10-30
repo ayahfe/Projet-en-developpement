@@ -1,0 +1,78 @@
+/* conteneur */
+.signup-form {
+  max-width: 460px;
+  margin: 3rem auto;            /* <<< centre horizontalement */
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(30,41,59,.85), rgba(15,23,42,.85));
+  backdrop-filter: blur(6px);
+  border: 1px solid #1f2a44;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  color: #e5e7eb;
+}
+
+/* titres */
+.signup-form h2 {
+  margin: .25rem 0 .5rem;
+  font-size: 28px;
+  font-weight: 800;
+}
+.signup-form h3 {
+  margin: 0 0 1.25rem;
+  font-size: 14px; 
+  color: #94a3b8;
+}
+
+/* contrôles */
+.control { margin-bottom: 1rem; }
+.control label {
+  display: block;
+  margin-bottom: .45rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+.control input, .control select {
+  width: 100%;
+  padding: .7rem .85rem;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0b1226;
+  color: #e5e7eb;
+  outline: none;
+}
+.control input:focus, .control select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .25);
+}
+
+.control-error { color: #f87171; margin-top: .4rem; }
+
+/* actions */
+.form-actions {
+  display: flex;
+  gap: .75rem;
+  justify-content: flex-end;
+  margin-top: .25rem;
+}
+.button {
+  border: 1px solid #334155;
+  background: #111827;
+  color: #e5e7eb;
+  padding: .7rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button:hover { background: #0f172a; }
+.button-flat { background: transparent; }
+.button.primary {
+  background: linear-gradient(90deg, #2563eb, #0ea5e9);
+  border-color: transparent;
+  color: white;
+}
+
+/* responsive */
+@media (max-width: 640px) {
+  .signup-form { margin: 1.25rem auto; padding: 1rem; }
+  .form-actions { justify-content: stretch; }
+  .form-actions .button { flex: 1; }
+}

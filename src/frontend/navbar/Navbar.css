@@ -1,0 +1,51 @@
+.navbar-modern {
+  position: sticky; top: 0; z-index: 50;
+  background: linear-gradient(180deg, #f4f7ff 0%, #eaf0ff 100%);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.navbar-container {
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 18px;
+}
+
+.navbar-logo { text-decoration: none; font-weight: 900; font-size: 1.4rem; }
+.brand { color: #1b4ed8; }
+.brand-alt { color: #0f172a; }
+
+.navbar-links { display: flex; gap: 22px; flex: 0 1 auto; }
+.navlink { color:#1e293b; text-decoration:none; padding:6px 8px; border-radius:8px; }
+.navlink.active { color:#1b4ed8; font-weight:700; }
+
+/* >>> Zone actions : visible desktop */
+.navbar-actions {
+  margin-left: auto;             /* pousse à droite */
+  display: flex;
+  gap: 10px;
+}
+.auth-link {
+  text-decoration: none;
+  padding: 8px 12px; border-radius: 10px;
+  background: #eef2ff; color: #1b4ed8; font-weight: 600;
+}
+.logout-btn {
+  padding: 8px 12px; border-radius: 10px; border: 0;
+  background: #ffe4e6; color: #b91c1c; font-weight: 700; cursor: pointer;
+}
+.auth-loading { color:#475569; font-weight:600; }
+
+/* Burger + menu mobile */
+.burger { display: none; margin-left: 8px; background:transparent; border:0; font-size:22px; cursor:pointer; }
+.mobile-menu { display: none; }
+.mobile-item { display:block; padding:12px 18px; text-decoration:none; color:#1e293b; }
+.mobile-auth { display:flex; flex-direction:column; gap:10px; padding:12px 18px; }
+
+/* En mobile : liens & actions dans le menu */
+@media (max-width: 900px) {
+  .navbar-links { display: none; }
+  .navbar-actions { display: none; }
+  .burger { display: block; }
+  .mobile-menu.open {
+    display: block;
+    background:#eef2ff; border-top:1px solid rgba(0,0,0,.06);
+  }
+}
