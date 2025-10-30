@@ -1,104 +1,82 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const { createClient } = require("@supabase/supabase-js");
+import express from "express";
+import cors from "cors";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+
 
 const app = express();
-const PORT = process.env.PORT || 4000;
-const JWT_SECRET = process.env.JWT_SECRET || "devsecret";
+const PORT = 4000;
+const JWT_SECRET = "devsecret"; // change en prod
 
 app.use(cors({
-  origin: "http://localhost:5173", // adapte au port du frontend
+  origin: ["http://localhost:5173", "http://localhost:5174"], // ← ajoute 5173
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use(express.json());
 
-// --- Supabase ---
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // service_role côté backend
-const supabase = createClient(supabaseUrl, supabaseKey);
+// "BDD" en mémoire (perd tout au redémarrage)
+const users = []; // { id, email, passwordHash }
 
-// --- Middleware JWT ---
+// Middleware: Authorization: Bearer <token>
 function requireAuth(req, _res, next) {
   const auth = req.headers.authorization || "";
   if (!auth.startsWith("Bearer ")) return next({ status: 401, msg: "Non authentifié" });
   try {
-    req.user = jwt.verify(auth.slice(7), JWT_SECRET);
+    req.user = jwt.verify(auth.slice(7), JWT_SECRET); // { id, email }
     next();
   } catch {
     next({ status: 401, msg: "Jeton invalide ou expiré" });
   }
 }
 
-// --- Signup ---
+// Signup
 app.post("/api/auth/signup", async (req, res) => {
   const { email, password } = req.body || {};
   if (!email || !password) return res.status(400).json({ error: "Email et mot de passe requis" });
+  if (users.some(u => u.email.toLowerCase() === email.toLowerCase()))
+    return res.status(409).json({ error: "Cet email existe déjà" });
 
-  // Vérifie si l’utilisateur existe déjà
-  const { data: existing } = await supabase
-    .from("users")
-    .select("id")
-    .eq("email", email)
-    .maybeSingle();
-  if (existing) return res.status(409).json({ error: "Cet email existe déjà" });
-
-  // Hash du mot de passe
+  const id = String(users.length + 1);
   const passwordHash = await bcrypt.hash(password, 10);
+  users.push({ id, email, passwordHash });
 
-  // Insère dans Supabase
-  const { data, error } = await supabase
-    .from("users")
-    .insert([{ email, password_hash: passwordHash }])
-    .select()
-    .single();
-
-  if (error) return res.status(500).json({ error: error.message });
-
-  // Génère un JWT
-  const token = jwt.sign({ id: data.id, email }, JWT_SECRET, { expiresIn: "7d" });
-  res.status(201).json({ token, user: { id: data.id, email } });
+  const token = jwt.sign({ id, email }, JWT_SECRET, { expiresIn: "7d" });
+  res.status(201).json({ token, user: { id, email } });
 });
 
-// --- Login ---
+// Login
 app.post("/api/auth/login", async (req, res) => {
   const { email, password } = req.body || {};
+  const user = users.find(u => u.email.toLowerCase() === (email || "").toLowerCase());
+  if (!user) return res.status(401).json({ error: "Identifiants invalides" });
 
-  const { data: user, error } = await supabase
-    .from("users")
-    .select("*")
-    .eq("email", email)
-    .single();
-
-  if (error || !user) return res.status(401).json({ error: "Identifiants invalides" });
-
-  const ok = await bcrypt.compare(password, user.password_hash);
+  const ok = await bcrypt.compare(password, user.passwordHash);
   if (!ok) return res.status(401).json({ error: "Identifiants invalides" });
 
   const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "7d" });
   res.json({ token, user: { id: user.id, email: user.email } });
 });
 
-// --- Me ---
-app.get("/api/auth/me", requireAuth, async (req, res) => {
-  const { data: user } = await supabase
-    .from("users")
-    .select("id,email")
-    .eq("id", req.user.id)
-    .single();
+// Logout (stateless)
+app.post("/api/auth/logout", (_req, res) => res.json({ message: "Déconnecté" }));
 
-  if (!user) return res.status(401).json({ error: "Non authentifié" });
-  res.json(user);
+// Me (protégée)
+app.get("/api/auth/me", requireAuth, (req, res) => {
+  const me = users.find(u => u.id === req.user.id);
+  if (!me) return res.status(401).json({ error: "Non authentifié" });
+  res.json({ id: me.id, email: me.email });
 });
 
-// --- Gestion erreurs ---
+// Ex. route protégée
+app.get("/api/private", requireAuth, (req, res) => {
+  res.json({ ok: true, user: req.user });
+});
+
+// Gestion simple des erreurs
 app.use((err, _req, res, _next) => {
   const status = err.status || 500;
   res.status(status).json({ error: err.msg || "Erreur serveur" });
 });
-
 
 app.listen(PORT, () => console.log(`API : http://localhost:${PORT}`));
