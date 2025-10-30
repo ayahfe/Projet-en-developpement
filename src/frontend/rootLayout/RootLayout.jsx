@@ -1,13 +1,22 @@
-import {Outlet} from "react-router-dom"
-import Header from "../header/Header"
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "../navbar/Navbar"; // <-- importe ta navbar
 
-export default function RootLayout(){
-    return(
-        <>
-            <Header/>
-            <main>
-                <Outlet/>
-            </main>
-        </>
-    );
-}
+const RootLayout = () => {
+  const location = useLocation();
+
+  // facultatif : cacher la navbar sur login/signup
+  const hideNavbar =
+    location.pathname === "/login" || location.pathname === "/signup";
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
+};
+
+export default RootLayout;
