@@ -23,12 +23,12 @@ function ShowPrescription({ prescription }) {
       <p>License médecin : {prescription.license}</p>
       </div>
       <p className="row-rx-button">
-        <Link to="/modify/:id">
+        <Link to="/medecins/modify/:id">
           <button type="submit" className="button-rx-modify">
             Modifier
           </button>
         </Link>
-        <Link to="/delete">
+        <Link to="/medecins/delete">
           <button type="submit" className="button-rx-delete">
             Supprimer
           </button>
@@ -41,7 +41,7 @@ export default function ShowPrescriptionList() {
   return (
     <div className="form-rx">
       <h2>Prescriptions</h2>
-      <Link to="/add">
+      <Link to="/medecins/add">
         <button type="submit" className="rx-button">
           Ajouter une prescription
         </button>
