@@ -1,10 +1,7 @@
- import { useState, useEffect } from "react";
-import { supabase } from "../../supabaseClient"; // adapte le chemin selon ton dossier
+import { useState, useEffect } from "react";
+import { supabase } from "../../supabaseClient";
 import {
   Calendar,
-  Clock,
-  User,
-  MapPin,
   Plus,
   X,
   ChevronLeft,
@@ -24,13 +21,21 @@ export default function CalendrierRdv() {
     doctor_name: "",
     date: "",
     time: "",
+    status: "upcoming",
   });
+
+  const medecins = [
+    "Dr. Amal El Idrissi",
+    "Dr. Youssef Bennani",
+    "Dr. Laila Ouarzazi",
+    "Dr. Karim Ait Lahcen",
+    "Dr. Fatima Zahra Bensalem"
+  ];
 
   useEffect(() => {
     fetchAppointments();
   }, []);
 
-  // 🔹 Lecture depuis Supabase
   async function fetchAppointments() {
     const { data, error } = await supabase
       .from("appointments")
@@ -40,17 +45,36 @@ export default function CalendrierRdv() {
     if (error) {
       console.error("Erreur Supabase :", error);
     } else {
-      setAppointments(data);
+      setAppointments(data || []);
     }
   }
 
-  // 🔹 Ajout d’un nouveau RDV
+  function normalizeStatus(raw) {
+    if (!raw) return "upcoming";
+    const s = String(raw).toLowerCase();
+    if (s.includes("annul") || s.includes("cancel")) return "cancelled";
+    if (s.includes("fini") || s.includes("finished") || s.includes("completed")) return "finished";
+    if (s.includes("en cours") || s.includes("in-progress") || s.includes("progress")) return "in-progress";
+    if (s.includes("à venir") || s.includes("pas encore") || s.includes("upcoming") || s.includes("pending")) return "upcoming";
+    return "upcoming";
+  }
+
+  function statusMeta(raw) {
+    const s = normalizeStatus(raw);
+    switch (s) {
+      case "cancelled": return { cls: "cancelled", label: "" };
+      case "finished": return { cls: "finished", label: "" };
+      case "in-progress": return { cls: "in-progress", label: "" };
+      default: return { cls: "upcoming", label: "" };
+    }
+  }
+
   async function handleAddAppointment(e) {
     e.preventDefault();
-
+    const payload = { ...newAppointment, status: "upcoming" }; // statut auto
     const { data, error } = await supabase
       .from("appointments")
-      .insert([newAppointment])
+      .insert([payload])
       .select();
 
     if (error) {
@@ -65,11 +89,11 @@ export default function CalendrierRdv() {
         doctor_name: "",
         date: "",
         time: "",
+        status: "upcoming",
       });
     }
   }
 
-  // 📅 Gestion du calendrier
   const navigateWeek = (dir) => {
     const newDate = new Date(currentDate);
     newDate.setDate(currentDate.getDate() + dir * 7);
@@ -100,12 +124,15 @@ export default function CalendrierRdv() {
           <div className="calendar-icon"><Calendar size={26} /></div>
           Calendrier des Rendez-vous
         </h1>
-        <button onClick={() => setShowForm(true)} className="btn-primary">
-          <Plus size={18} /> Nouveau RDV
-        </button>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button onClick={() => navigateWeek(-1)} className="btn-nav"><ChevronLeft size={16} /></button>
+          <button onClick={() => navigateWeek(1)} className="btn-nav"><ChevronRight size={16} /></button>
+          <button onClick={() => setShowForm(true)} className="btn-primary">
+            <Plus size={18} /> Nouveau RDV
+          </button>
+        </div>
       </div>
 
-      {/* Grille semaine */}
       <div className="calendar-grid">
         <div className="grid-header">
           <div></div>
@@ -120,21 +147,25 @@ export default function CalendrierRdv() {
             <div className="grid-hour">{hour}:00</div>
             {getDaysInWeek().map((day) => {
               const dayApps = getAppointmentsForDay(day).filter(
-                (apt) => parseInt(apt.time.split(":")[0]) === hour
+                (apt) => apt.time && parseInt(apt.time.split(":")[0]) === hour
               );
               return (
                 <div key={day.toISOString()} className="grid-cell">
-                  {dayApps.map((apt) => (
-                    <div
-                      key={apt.id}
-                      className="apt-card"
-                      onClick={() => setSelectedAppointment(apt)}
-                    >
-                      <div className="apt-time">{apt.time}</div>
-                      <div className="apt-name">{apt.patient_name}</div>
-                      <div className="apt-doctor">{apt.doctor_name}</div>
-                    </div>
-                  ))}
+                  {dayApps.map((apt) => {
+                    const meta = statusMeta(apt.status);
+                    return (
+                      <div
+                        key={apt.id}
+                        className={`apt-card ${meta.cls}`}
+                        data-status-label={meta.label}
+                        onClick={() => setSelectedAppointment(apt)}
+                      >
+                        <div className="apt-time">{apt.time}</div>
+                        <div className="apt-name">{apt.patient_name}</div>
+                        <div className="apt-doctor">{apt.doctor_name}</div>
+                      </div>
+                    );
+                  })}
                 </div>
               );
             })}
@@ -152,63 +183,81 @@ export default function CalendrierRdv() {
                 <X size={20} />
               </button>
             </div>
-           <form onSubmit={handleAddAppointment} className="form-rdv">
-  <div className="form-rdv-row">
-    <input
-      type="text"
-      placeholder="Nom complet du patient"
-      value={newAppointment.patient_name}
-      onChange={(e) =>
-        setNewAppointment({ ...newAppointment, patient_name: e.target.value })
-      }
-      required
-    />
-    <input
-      type="email"
-      placeholder="Email du patient"
-      value={newAppointment.email}
-      onChange={(e) =>
-        setNewAppointment({ ...newAppointment, email: e.target.value })
-      }
-      required
-    />
-  </div>
+            <form onSubmit={handleAddAppointment} className="form-rdv">
+              <div className="form-rdv-row">
+                <input
+                  type="text"
+                  placeholder="Nom complet du patient"
+                  value={newAppointment.patient_name}
+                  onChange={(e) =>
+                    setNewAppointment({ ...newAppointment, patient_name: e.target.value })
+                  }
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email du patient"
+                  value={newAppointment.email}
+                  onChange={(e) =>
+                    setNewAppointment({ ...newAppointment, email: e.target.value })
+                  }
+                  required
+                />
+              </div>
 
-  <input
-    type="text"
-    placeholder="Nom du médecin"
-    value={newAppointment.doctor_name}
-    onChange={(e) =>
-      setNewAppointment({ ...newAppointment, doctor_name: e.target.value })
-    }
-    required
-  />
-  <input
-    type="date"
-    value={newAppointment.date}
-    onChange={(e) =>
-      setNewAppointment({ ...newAppointment, date: e.target.value })
-    }
-    required
-  />
-  <input
-    type="time"
-    value={newAppointment.time}
-    onChange={(e) =>
-      setNewAppointment({ ...newAppointment, time: e.target.value })
-    }
-    required
-  />
-  <button type="submit" className="btn-primary">
-    Enregistrer
-  </button>
-</form>
+              {/* Liste déroulante des médecins */}
+              <select
+                value={newAppointment.doctor_name}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, doctor_name: e.target.value })
+                }
+                required
+                style={{
+                  width: "100%",
+                  height: 44,
+                  padding: "0.5rem 0.75rem",
+                  borderRadius: 8,
+                  border: "1px solid #e2e8f0",
+                  background: "white",
+                  fontSize: "0.95rem",
+                  color: "black" // 🖤 texte noir
+                }}
+              >
+                <option value="">Choisir un médecin</option>
+                {medecins.map((doc, i) => (
+                  <option key={i} value={doc}>{doc}</option>
+                ))}
+              </select>
 
+              <div className="form-rdv-row">
+                <input
+                  type="date"
+                  value={newAppointment.date}
+                  onChange={(e) =>
+                    setNewAppointment({ ...newAppointment, date: e.target.value })
+                  }
+                  required
+                />
+                <input
+                  type="time"
+                  value={newAppointment.time}
+                  onChange={(e) =>
+                    setNewAppointment({ ...newAppointment, time: e.target.value })
+                  }
+                  required
+                />
+              </div>
+
+              {/* 🔸 Le champ statut est retiré du formulaire (auto à upcoming) */}
+
+              <button type="submit" className="btn-primary">
+                Enregistrer
+              </button>
+            </form>
           </div>
         </div>
       )}
 
-      {/* Modal de détail */}
       {selectedAppointment && (
         <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -224,6 +273,7 @@ export default function CalendrierRdv() {
               <p><strong>Médecin :</strong> {selectedAppointment.doctor_name}</p>
               <p><strong>Date :</strong> {selectedAppointment.date}</p>
               <p><strong>Heure :</strong> {selectedAppointment.time}</p>
+              <p><strong>Statut :</strong> {statusMeta(selectedAppointment.status).label}</p>
             </div>
           </div>
         </div>
@@ -231,4 +281,3 @@ export default function CalendrierRdv() {
     </div>
   );
 }
- 
