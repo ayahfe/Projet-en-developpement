@@ -23,7 +23,7 @@ function ShowPrescription({ prescription }) {
         <p>License médecin : {prescription.license}</p>
       </div>
       <p className="row-rx-button">
-        <Link to="/medecins/modify/:id">
+        <Link to={`/medecins/modify/${prescription.id}`}>
           <button type="submit" className="button-rx-modify">
             Modifier
           </button>

@@ -1,16 +1,12 @@
 import "../addPrescription/AddPrescription.css";
 
+import { prescription } from "react-router-dom";
+
 const ModifyPrescription = () => {
-  const modifyPrescriptionSubmitHandler = (event) => {
-    event.preventDefault();
-    const fd = new FormData(event.target);
-    const data = Object.fromEntries(fd.entries());
-    console.log("login", data);
-    event.target.reset();
-  };
+  const modifyPrescriptionSubmitHandler = () => {};
   return (
     <form className="form-rx" onSubmit={modifyPrescriptionSubmitHandler}>
-      <h2>Modifier une Prescription</h2>
+      <h2>Modifier la Prescription #{prescription.id}</h2>
       <div className="control champs">
         <div className="row-rx">
           <div className="column-rx ">
