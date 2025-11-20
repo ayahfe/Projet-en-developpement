@@ -1,24 +1,34 @@
 // src/frontend/login/Login.jsx
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { supabase } from "../../lib/supabaseClient";
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 import "./Login.css";
 
 export default function Login() {
   const [values, setValues] = useState({ email: "", password: "" });
   const [pending, setPending] = useState(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const { login } = useContext(AuthContext);
 =======
   const { login } = useAuth();
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+  const { login } = useAuth();
+>>>>>>> origin/temp-visualiser-fix
   const navigate = useNavigate();
 
   const onChange = (k, v) => setValues(p => ({ ...p, [k]: v }));
@@ -30,10 +40,13 @@ export default function Login() {
       setPending(true);
       await login(values.email, values.password);
 <<<<<<< HEAD
+<<<<<<< HEAD
       navigate("/"); // redirection après succès
     } catch (err) {
       alert("Connexion échouée");
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
 
       // récupère le rôle et redirige
       const { data: { user } } = await supabase.auth.getUser();
@@ -47,13 +60,17 @@ export default function Login() {
       navigate(`/${role}`);
     } catch (err) {
       alert(err.message || "Connexion échouée");
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
     } finally {
       setPending(false);
     }
   };
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <form onSubmit={onSubmit}>
       <h2>Bienvenue</h2>
@@ -80,6 +97,8 @@ export default function Login() {
       </p>
     </form>
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
     <div className="auth-screen">
       <form onSubmit={onSubmit} className="auth-card appear">
         <h2>Connexion</h2>
@@ -115,6 +134,9 @@ export default function Login() {
         </p>
       </form>
     </div>
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
   );
 }

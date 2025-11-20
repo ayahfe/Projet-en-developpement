@@ -11,10 +11,14 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@supabase/supabase-js": "^2.77.0",
 =======
     "@supabase/supabase-js": "^2.78.0",
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+    "@supabase/supabase-js": "^2.78.0",
+>>>>>>> origin/temp-visualiser-fix
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",

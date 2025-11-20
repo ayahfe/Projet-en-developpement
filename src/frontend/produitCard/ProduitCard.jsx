@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useCart } from '../cartContext/CartContext';
 import './ProduitCard.css';
@@ -17,6 +18,8 @@ export default function ProduitCard({ produit }) {
         </div>
     );
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
 import { useEffect, useState } from "react";
 import { PRODUIT } from "../../data/produitList";
 import { useCart } from "../cart/CartContext";
@@ -45,5 +48,8 @@ export default function ProduitList() {
       ))}
     </div>
   );
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 }

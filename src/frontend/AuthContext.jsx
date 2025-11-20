@@ -1,13 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { createContext, useCallback, useEffect, useState, useContext } from "react";
 =======
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
+>>>>>>> origin/temp-visualiser-fix
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const API = "http://localhost:4000/api";
 
@@ -77,6 +83,8 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
@@ -119,5 +127,8 @@ export function AuthProvider({ children }) {
   }), [user, initializing]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 }

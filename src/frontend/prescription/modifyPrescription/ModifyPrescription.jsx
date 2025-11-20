@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 
 const ModifyPrescription = () => {
   const modifyPrescriptionSubmitHandler = () => {};
+=======
+import "../addPrescription/AddPrescription.css";
+
+const ModifyPrescription = () => {
+  const modifyPrescriptionSubmitHandler = (event) => {
+    event.preventDefault();
+    const fd = new FormData(event.target);
+    const data = Object.fromEntries(fd.entries());
+    console.log("login", data);
+    event.target.reset();
+  };
+>>>>>>> origin/temp-visualiser-fix
   return (
     <form className="form-rx" onSubmit={modifyPrescriptionSubmitHandler}>
       <h2>Modifier une Prescription</h2>
@@ -36,6 +49,7 @@ const ModifyPrescription = () => {
           </div>
         </div>
         <div className="column-rx-signature">
+<<<<<<< HEAD
 <h3>Signature</h3>
         <div className="row-rx">
           <div className="row-rx-signature">
@@ -52,6 +66,20 @@ const ModifyPrescription = () => {
         </div>
         
 
+=======
+          <h3>Signature</h3>
+          <div className="row-rx">
+            <div className="row-rx-signature">
+              <label htmlFor="title">Nom du médecin</label>
+              <input id="title" type="title" name="title" required />
+            </div>
+            <div className="row-rx-signature">
+              <label htmlFor="title">License</label>
+              <input id="title" type="title" name="title" required />
+            </div>
+          </div>
+        </div>
+>>>>>>> origin/temp-visualiser-fix
       </div>
       <div className="row">
         <p className="form">
@@ -63,4 +91,8 @@ const ModifyPrescription = () => {
     </form>
   );
 };
+<<<<<<< HEAD
 export default ModifyPrescription;
+=======
+export default ModifyPrescription;
+>>>>>>> origin/temp-visualiser-fix

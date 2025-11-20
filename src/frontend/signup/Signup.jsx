@@ -1,5 +1,6 @@
 import { useState } from "react";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {Link, useNavigate} from "react-router-dom";
 
 export default function Signup(){
@@ -78,6 +79,9 @@ export default function Signup(){
 =======
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabaseClient";
+=======
+import { Link, useNavigate } from "react-router-dom";
+>>>>>>> origin/temp-visualiser-fix
 import "./Signup.css";
 
 export default function Signup() {
@@ -99,6 +103,7 @@ export default function Signup() {
     setPending(true);
 
     try {
+<<<<<<< HEAD
       // 1) Création du compte
       const { data: signUpData, error: signUpErr } = await supabase.auth.signUp({
         email: data.email,
@@ -118,6 +123,30 @@ export default function Signup() {
       navigate("/login");
     } catch (err) {
       alert(err.message || "Erreur lors de la création du compte");
+=======
+      // 🔥 APPEL AU BACKEND NODE (PAS SUPABASE)
+      const res = await fetch("http://localhost:4000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          role: role,
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Erreur lors de la création du compte");
+      }
+
+      // Réponse OK
+      alert("Compte créé avec succès !");
+      navigate("/login");
+
+    } catch (err) {
+      alert(err.message);
+>>>>>>> origin/temp-visualiser-fix
     } finally {
       setPending(false);
     }
@@ -147,7 +176,10 @@ export default function Signup() {
           )}
         </div>
 
+<<<<<<< HEAD
         {/* Choix du rôle (segmented control) */}
+=======
+>>>>>>> origin/temp-visualiser-fix
         <div className="control">
           <label>Je suis :</label>
           <div className="segmented" role="tablist" aria-label="Choix du rôle">
@@ -204,4 +236,7 @@ export default function Signup() {
     </div>
   );
 }
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .produit-card {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -55,6 +56,9 @@
   min-height: 100vh;
 =======
 A/* === PAGE ENTIÈRE === */
+=======
+/* === PAGE GLOBALE === */
+>>>>>>> origin/temp-visualiser-fix
 body, html {
   margin: 0;
   padding: 0;
@@ -64,6 +68,7 @@ body, html {
   font-family: "Inter", sans-serif;
 }
 
+<<<<<<< HEAD
 /* === SECTION PRODUITS === */
 .produit-list {
   margin-top: 80px;
@@ -75,6 +80,19 @@ body, html {
   background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
 }
 
+=======
+.produit-list {
+  margin-top: 1200px; /* ✅ espace sous la navbar augmenté */
+  min-height: calc(100vh - 200px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  padding: 60px 100px 100px;
+  background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
+}
+
+
+>>>>>>> origin/temp-visualiser-fix
 /* === CARTE PRODUIT === */
 .produit-card {
   background: rgba(255, 255, 255, 0.12);
@@ -138,7 +156,11 @@ body, html {
   background: linear-gradient(90deg, #00aaff, #007bff);
   border: none;
   color: white;
+<<<<<<< HEAD
   padding: 10px 20px;
+=======
+  padding: 10px 22px;
+>>>>>>> origin/temp-visualiser-fix
   border-radius: 30px;
   font-weight: 600;
   font-size: 0.95rem;
@@ -172,5 +194,8 @@ body, html {
 .not-logged p {
   color: #d6e3ff;
   font-size: 1rem;
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 }

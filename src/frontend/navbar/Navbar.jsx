@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
@@ -7,6 +8,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
@@ -33,12 +36,16 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 
   const links = [
     { name: "Accueil", path: "/" },
     { name: "Médecins", path: "/medecins" },
     { name: "Rendez-Vous", path: "/rendezvous" },
+<<<<<<< HEAD
     { name: "Ordonnances", path: "/ordonnances" },
     { name: "Pharmacie", path: "/pharmacie" },
     { name: "Mes Commandes", path: "/commandes" },
@@ -51,6 +58,11 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Logo à gauche */}
 =======
+=======
+    
+  ];
+
+>>>>>>> origin/temp-visualiser-fix
   async function handleLogout() {
     try {
       await logout();
@@ -64,12 +76,16 @@ export default function Navbar() {
     <header className="navbar-modern">
       <div className="navbar-container">
         {/* Logo */}
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
         <Link to="/" className="navbar-logo">
           <span className="brand">Med</span>
           <span className="brand-alt">Pharma</span>
         </Link>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         {/* Liens au centre */}
         <nav className="navbar-links">
@@ -83,6 +99,8 @@ export default function Navbar() {
             >
               {link.name}
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
         {/* Liens centraux */}
         <nav className="navbar-links">
           {links.map((l) => (
@@ -94,11 +112,15 @@ export default function Navbar() {
               }`}
             >
               {l.name}
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
             </Link>
           ))}
         </nav>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         {/* Bouton à droite */}
         <button className="logout-btn">Déconnexion</button>
@@ -135,6 +157,8 @@ export default function Navbar() {
 
 export default Navbar;
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
         {/* Actions à droite */}
         <div className="navbar-actions">
           {/* 🛒 Bouton Panier */}
@@ -164,4 +188,7 @@ export default Navbar;
     </header>
   );
 }
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix

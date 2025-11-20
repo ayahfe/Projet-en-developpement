@@ -1,12 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
 // src/frontend/rdv/CalendrierRdv.jsx
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
 import { useAuth } from "../AuthContext";
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 import {
   Calendar,
   Plus,
@@ -18,10 +24,15 @@ import "./rdv.css";
 
 export default function CalendrierRdv() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   const { user } = useAuth(); // ✅ récupère l’utilisateur connecté
 
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+  const { user } = useAuth(); // récupère l’utilisateur connecté
+
+>>>>>>> origin/temp-visualiser-fix
   const [appointments, setAppointments] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedAppointment, setSelectedAppointment] = useState(null);
@@ -68,9 +79,12 @@ export default function CalendrierRdv() {
     if (s.includes("fini") || s.includes("finished") || s.includes("completed")) return "finished";
     if (s.includes("en cours") || s.includes("in-progress") || s.includes("progress")) return "in-progress";
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (s.includes("à venir") || s.includes("pas encore") || s.includes("upcoming") || s.includes("pending")) return "upcoming";
 =======
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
     return "upcoming";
   }
 
@@ -78,26 +92,37 @@ export default function CalendrierRdv() {
     const s = normalizeStatus(raw);
     switch (s) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       case "cancelled": return { cls: "cancelled", label: "" };
       case "finished": return { cls: "finished", label: "" };
       case "in-progress": return { cls: "in-progress", label: "" };
       default: return { cls: "upcoming", label: "" };
 =======
+=======
+>>>>>>> origin/temp-visualiser-fix
       case "cancelled": return { cls: "cancelled", label: "Annulé" };
       case "finished": return { cls: "finished", label: "Terminé" };
       case "in-progress": return { cls: "in-progress", label: "En cours" };
       default: return { cls: "upcoming", label: "À venir" };
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
     }
   }
 
   async function handleAddAppointment(e) {
     e.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
     const payload = { ...newAppointment, status: "upcoming" }; // statut auto
 =======
     const payload = { ...newAppointment, status: "upcoming" };
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+    const payload = { ...newAppointment, status: "upcoming" };
+
+>>>>>>> origin/temp-visualiser-fix
     const { data, error } = await supabase
       .from("appointments")
       .insert([payload])
@@ -144,6 +169,7 @@ export default function CalendrierRdv() {
   const hours = Array.from({ length: 13 }, (_, i) => i + 8);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // ✅ Si pas connecté → bloque l’accès au calendrier complet
   if (!user) {
@@ -158,11 +184,29 @@ export default function CalendrierRdv() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
   return (
     <div className="calendar-container">
+=======
+  // 🔵 On affiche quand même tout le calendrier
+  const showLoginBanner = !user;
+
+  return (
+    <div className="calendar-container">
+
+      {/* 🔵 MESSAGE INFO SI PAS CONNECTÉ */}
+      {showLoginBanner && (
+        <div className="login-warning">
+          Vous n'êtes pas connecté — vous pouvez consulter le calendrier, 
+          mais vous devez vous connecter pour prendre un rendez-vous.
+        </div>
+      )}
+
+      {/* HEADER */}
+>>>>>>> origin/temp-visualiser-fix
       <div className="calendar-header">
         <h1 className="calendar-title">
           <div className="calendar-icon"><Calendar size={26} /></div>
           Calendrier des Rendez-vous
         </h1>
+<<<<<<< HEAD
         <div style={{ display: "flex", gap: 8 }}>
           <button onClick={() => navigateWeek(-1)} className="btn-nav"><ChevronLeft size={16} /></button>
           <button onClick={() => navigateWeek(1)} className="btn-nav"><ChevronRight size={16} /></button>
@@ -173,6 +217,14 @@ export default function CalendrierRdv() {
 =======
 
           {/* ✅ Bouton grisé si pas connecté */}
+=======
+
+        <div style={{ display: "flex", gap: 8 }}>
+          <button onClick={() => navigateWeek(-1)} className="btn-nav"><ChevronLeft size={16} /></button>
+          <button onClick={() => navigateWeek(1)} className="btn-nav"><ChevronRight size={16} /></button>
+
+          {/* BOUTON AJOUT RDV */}
+>>>>>>> origin/temp-visualiser-fix
           {user ? (
             <button onClick={() => setShowForm(true)} className="btn-primary">
               <Plus size={18} /> Nouveau RDV
@@ -180,16 +232,27 @@ export default function CalendrierRdv() {
           ) : (
             <button
               className="btn-primary"
+<<<<<<< HEAD
               style={{ opacity: 0.6, cursor: "not-allowed" }}
+=======
+              style={{ opacity: 0.5, cursor: "not-allowed" }}
+>>>>>>> origin/temp-visualiser-fix
               onClick={() => alert("Veuillez vous connecter pour prendre un rendez-vous.")}
             >
               <Plus size={18} /> Nouveau RDV
             </button>
           )}
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
         </div>
       </div>
 
+=======
+        </div>
+      </div>
+
+      {/* GRID DU CALENDRIER */}
+>>>>>>> origin/temp-visualiser-fix
       <div className="calendar-grid">
         <div className="grid-header">
           <div></div>
@@ -199,13 +262,25 @@ export default function CalendrierRdv() {
             </div>
           ))}
         </div>
+<<<<<<< HEAD
         {hours.map((hour) => (
           <div key={hour} className="grid-row">
             <div className="grid-hour">{hour}:00</div>
+=======
+
+        {hours.map((hour) => (
+          <div key={hour} className="grid-row">
+            <div className="grid-hour">{hour}:00</div>
+
+>>>>>>> origin/temp-visualiser-fix
             {getDaysInWeek().map((day) => {
               const dayApps = getAppointmentsForDay(day).filter(
                 (apt) => apt.time && parseInt(apt.time.split(":")[0]) === hour
               );
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
               return (
                 <div key={day.toISOString()} className="grid-cell">
                   {dayApps.map((apt) => {
@@ -231,11 +306,16 @@ export default function CalendrierRdv() {
       </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       {/* Formulaire d’ajout */}
 =======
       {/* Modal ajout RDV */}
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
       {showForm && (
+=======
+      {/* MODAL AJOUT RDV */}
+      {showForm && user && (
+>>>>>>> origin/temp-visualiser-fix
         <div className="modal-overlay" onClick={() => setShowForm(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
@@ -244,6 +324,10 @@ export default function CalendrierRdv() {
                 <X size={20} />
               </button>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
             <form onSubmit={handleAddAppointment} className="form-rdv">
               <div className="form-rdv-row">
                 <input
@@ -267,15 +351,19 @@ export default function CalendrierRdv() {
               </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
               {/* Liste déroulante des médecins */}
 =======
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
               <select
                 value={newAppointment.doctor_name}
                 onChange={(e) =>
                   setNewAppointment({ ...newAppointment, doctor_name: e.target.value })
                 }
                 required
+<<<<<<< HEAD
 <<<<<<< HEAD
                 style={{
                   width: "100%",
@@ -289,6 +377,8 @@ export default function CalendrierRdv() {
                 }}
 =======
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
               >
                 <option value="">Choisir un médecin</option>
                 {medecins.map((doc, i) => (
@@ -316,10 +406,13 @@ export default function CalendrierRdv() {
               </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
               {/* 🔸 Le champ statut est retiré du formulaire (auto à upcoming) */}
 
 =======
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
               <button type="submit" className="btn-primary">
                 Enregistrer
               </button>
@@ -329,9 +422,13 @@ export default function CalendrierRdv() {
       )}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       {/* Modal détails RDV */}
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+      {/* MODAL DÉTAILS RDV */}
+>>>>>>> origin/temp-visualiser-fix
       {selectedAppointment && (
         <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -341,6 +438,7 @@ export default function CalendrierRdv() {
                 <X size={20} />
               </button>
             </div>
+<<<<<<< HEAD
             <div className="modal-content">
 <<<<<<< HEAD
               <p><strong>Patient :</strong> {selectedAppointment.patient_name}</p>
@@ -350,37 +448,68 @@ export default function CalendrierRdv() {
               <p><strong>Heure :</strong> {selectedAppointment.time}</p>
               <p><strong>Statut :</strong> {statusMeta(selectedAppointment.status).label}</p>
 =======
+=======
+
+            <div className="modal-content">
+>>>>>>> origin/temp-visualiser-fix
               <div className="detail-item">
                 <span className="detail-label">👤 Patient :</span>
                 <span className="detail-value">{selectedAppointment.patient_name}</span>
               </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
               <div className="detail-item">
                 <span className="detail-label">✉️ Email :</span>
                 <span className="detail-value">{selectedAppointment.email}</span>
               </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
               <div className="detail-item">
                 <span className="detail-label">🩺 Médecin :</span>
                 <span className="detail-value">{selectedAppointment.doctor_name}</span>
               </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
               <div className="detail-item">
                 <span className="detail-label">📅 Date :</span>
                 <span className="detail-value">{selectedAppointment.date}</span>
               </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
               <div className="detail-item">
                 <span className="detail-label">⏰ Heure :</span>
                 <span className="detail-value">{selectedAppointment.time}</span>
               </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
               <div className="detail-item">
                 <span className="detail-label">📌 Statut :</span>
                 <span className={`status-badge ${statusMeta(selectedAppointment.status).cls}`}>
                   {statusMeta(selectedAppointment.status).label}
                 </span>
               </div>
+<<<<<<< HEAD
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
             </div>
           </div>
         </div>
       )}
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/temp-visualiser-fix
     </div>
   );
 }
