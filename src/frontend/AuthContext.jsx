@@ -1,8 +1,20 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { createContext, useCallback, useEffect, useState, useContext } from "react";
+=======
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
+>>>>>>> origin/temp-visualiser-fix
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 const API = "http://localhost:4000/api";
 
 const getToken = () => localStorage.getItem("token");
@@ -70,4 +82,53 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
+=======
+=======
+>>>>>>> origin/temp-visualiser-fix
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [initializing, setInitializing] = useState(true);
+
+  useEffect(() => {
+    let ignore = false;
+    (async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!ignore) {
+        setUser(data?.session?.user ?? null);
+        setInitializing(false);
+      }
+    })();
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => {
+      ignore = true;
+      sub?.subscription?.unsubscribe();
+    };
+  }, []);
+
+  async function login(email, password) {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+  }
+
+  async function signup(email, password) {
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) throw error;
+  }
+
+  async function logout() {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+  }
+
+  const value = useMemo(() => ({
+    user, initializing, login, signup, logout
+  }), [user, initializing]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+<<<<<<< HEAD
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
+=======
+>>>>>>> origin/temp-visualiser-fix
 }
