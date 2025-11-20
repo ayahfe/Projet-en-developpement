@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { supabase } from "../../lib/supabaseClient";
 import "./Signup.css";
 
 export default function Signup() {
@@ -22,25 +21,28 @@ export default function Signup() {
     setPending(true);
 
     try {
-      // 1) Création du compte
-      const { data: signUpData, error: signUpErr } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
+      // 🔥 APPEL AU BACKEND NODE (PAS SUPABASE)
+      const res = await fetch("http://localhost:4000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          role: role,
+        }),
       });
-      if (signUpErr) throw signUpErr;
 
-      // 2) Sauvegarde du rôle
-      const userId = signUpData.user?.id;
-      if (userId) {
-        await supabase
-          .from("profiles")
-          .upsert({ id: userId, email: data.email, role }, { onConflict: "id" });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Erreur lors de la création du compte");
       }
 
+      // Réponse OK
       alert("Compte créé avec succès !");
       navigate("/login");
+
     } catch (err) {
-      alert(err.message || "Erreur lors de la création du compte");
+      alert(err.message);
     } finally {
       setPending(false);
     }
@@ -70,7 +72,6 @@ export default function Signup() {
           )}
         </div>
 
-        {/* Choix du rôle (segmented control) */}
         <div className="control">
           <label>Je suis :</label>
           <div className="segmented" role="tablist" aria-label="Choix du rôle">

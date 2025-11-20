@@ -1,6 +1,13 @@
+import "../addPrescription/AddPrescription.css";
 
 const ModifyPrescription = () => {
-  const modifyPrescriptionSubmitHandler = () => {};
+  const modifyPrescriptionSubmitHandler = (event) => {
+    event.preventDefault();
+    const fd = new FormData(event.target);
+    const data = Object.fromEntries(fd.entries());
+    console.log("login", data);
+    event.target.reset();
+  };
   return (
     <form className="form-rx" onSubmit={modifyPrescriptionSubmitHandler}>
       <h2>Modifier une Prescription</h2>
@@ -36,22 +43,18 @@ const ModifyPrescription = () => {
           </div>
         </div>
         <div className="column-rx-signature">
-<h3>Signature</h3>
-        <div className="row-rx">
-          <div className="row-rx-signature">
-<label htmlFor="title">Nom du médecin</label>
-        <input id="title" type="title" name="title" required />
-        
-          </div>
-          <div className="row-rx-signature">
-<label htmlFor="title">License</label>
-        <input id="title" type="title" name="title" required />
-
+          <h3>Signature</h3>
+          <div className="row-rx">
+            <div className="row-rx-signature">
+              <label htmlFor="title">Nom du médecin</label>
+              <input id="title" type="title" name="title" required />
+            </div>
+            <div className="row-rx-signature">
+              <label htmlFor="title">License</label>
+              <input id="title" type="title" name="title" required />
+            </div>
           </div>
         </div>
-        </div>
-        
-
       </div>
       <div className="row">
         <p className="form">

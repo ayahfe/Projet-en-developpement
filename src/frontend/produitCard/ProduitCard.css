@@ -1,4 +1,4 @@
-A/* === PAGE ENTIÈRE === */
+/* === PAGE GLOBALE === */
 body, html {
   margin: 0;
   padding: 0;
@@ -8,16 +8,16 @@ body, html {
   font-family: "Inter", sans-serif;
 }
 
-/* === SECTION PRODUITS === */
 .produit-list {
-  margin-top: 80px;
-  min-height: calc(100vh - 80px);
+  margin-top: 1200px; /* ✅ espace sous la navbar augmenté */
+  min-height: calc(100vh - 200px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  padding: 60px 100px;
+  gap: 40px;
+  padding: 60px 100px 100px;
   background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
 }
+
 
 /* === CARTE PRODUIT === */
 .produit-card {
@@ -82,7 +82,7 @@ body, html {
   background: linear-gradient(90deg, #00aaff, #007bff);
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 30px;
   font-weight: 600;
   font-size: 0.95rem;

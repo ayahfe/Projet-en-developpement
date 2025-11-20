@@ -29,10 +29,7 @@ export default function Navbar() {
     { name: "Accueil", path: "/" },
     { name: "Médecins", path: "/medecins" },
     { name: "Rendez-Vous", path: "/rendezvous" },
-    { name: "Ordonnances", path: "/ordonnances" },
-    { name: "Pharmacie", path: "/pharmacie" },
-    { name: "Mes Commandes", path: "/commandes" },
-    { name: "Mon Compte", path: "/profil" },
+    
   ];
 
   async function handleLogout() {

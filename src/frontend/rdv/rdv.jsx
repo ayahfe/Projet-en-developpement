@@ -12,7 +12,7 @@ import {
 import "./rdv.css";
 
 export default function CalendrierRdv() {
-  const { user } = useAuth(); // ✅ récupère l’utilisateur connecté
+  const { user } = useAuth(); // récupère l’utilisateur connecté
 
   const [appointments, setAppointments] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -75,6 +75,7 @@ export default function CalendrierRdv() {
   async function handleAddAppointment(e) {
     e.preventDefault();
     const payload = { ...newAppointment, status: "upcoming" };
+
     const { data, error } = await supabase
       .from("appointments")
       .insert([payload])
@@ -120,28 +121,32 @@ export default function CalendrierRdv() {
 
   const hours = Array.from({ length: 13 }, (_, i) => i + 8);
 
-  // ✅ Si pas connecté → bloque l’accès au calendrier complet
-  if (!user) {
-    return (
-      <div className="calendar-container" style={{ textAlign: "center", paddingTop: "140px" }}>
-        <h2>🔒 Vous devez être connecté pour accéder au calendrier des rendez-vous.</h2>
-        <p>Veuillez vous connecter ou créer un compte avant de réserver un créneau.</p>
-      </div>
-    );
-  }
+  // 🔵 On affiche quand même tout le calendrier
+  const showLoginBanner = !user;
 
   return (
     <div className="calendar-container">
+
+      {/* 🔵 MESSAGE INFO SI PAS CONNECTÉ */}
+      {showLoginBanner && (
+        <div className="login-warning">
+          Vous n'êtes pas connecté — vous pouvez consulter le calendrier, 
+          mais vous devez vous connecter pour prendre un rendez-vous.
+        </div>
+      )}
+
+      {/* HEADER */}
       <div className="calendar-header">
         <h1 className="calendar-title">
           <div className="calendar-icon"><Calendar size={26} /></div>
           Calendrier des Rendez-vous
         </h1>
+
         <div style={{ display: "flex", gap: 8 }}>
           <button onClick={() => navigateWeek(-1)} className="btn-nav"><ChevronLeft size={16} /></button>
           <button onClick={() => navigateWeek(1)} className="btn-nav"><ChevronRight size={16} /></button>
 
-          {/* ✅ Bouton grisé si pas connecté */}
+          {/* BOUTON AJOUT RDV */}
           {user ? (
             <button onClick={() => setShowForm(true)} className="btn-primary">
               <Plus size={18} /> Nouveau RDV
@@ -149,7 +154,7 @@ export default function CalendrierRdv() {
           ) : (
             <button
               className="btn-primary"
-              style={{ opacity: 0.6, cursor: "not-allowed" }}
+              style={{ opacity: 0.5, cursor: "not-allowed" }}
               onClick={() => alert("Veuillez vous connecter pour prendre un rendez-vous.")}
             >
               <Plus size={18} /> Nouveau RDV
@@ -158,6 +163,7 @@ export default function CalendrierRdv() {
         </div>
       </div>
 
+      {/* GRID DU CALENDRIER */}
       <div className="calendar-grid">
         <div className="grid-header">
           <div></div>
@@ -167,13 +173,16 @@ export default function CalendrierRdv() {
             </div>
           ))}
         </div>
+
         {hours.map((hour) => (
           <div key={hour} className="grid-row">
             <div className="grid-hour">{hour}:00</div>
+
             {getDaysInWeek().map((day) => {
               const dayApps = getAppointmentsForDay(day).filter(
                 (apt) => apt.time && parseInt(apt.time.split(":")[0]) === hour
               );
+
               return (
                 <div key={day.toISOString()} className="grid-cell">
                   {dayApps.map((apt) => {
@@ -198,8 +207,8 @@ export default function CalendrierRdv() {
         ))}
       </div>
 
-      {/* Modal ajout RDV */}
-      {showForm && (
+      {/* MODAL AJOUT RDV */}
+      {showForm && user && (
         <div className="modal-overlay" onClick={() => setShowForm(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
@@ -208,6 +217,7 @@ export default function CalendrierRdv() {
                 <X size={20} />
               </button>
             </div>
+
             <form onSubmit={handleAddAppointment} className="form-rdv">
               <div className="form-rdv-row">
                 <input
@@ -270,7 +280,7 @@ export default function CalendrierRdv() {
         </div>
       )}
 
-      {/* Modal détails RDV */}
+      {/* MODAL DÉTAILS RDV */}
       {selectedAppointment && (
         <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -280,27 +290,33 @@ export default function CalendrierRdv() {
                 <X size={20} />
               </button>
             </div>
+
             <div className="modal-content">
               <div className="detail-item">
                 <span className="detail-label">👤 Patient :</span>
                 <span className="detail-value">{selectedAppointment.patient_name}</span>
               </div>
+
               <div className="detail-item">
                 <span className="detail-label">✉️ Email :</span>
                 <span className="detail-value">{selectedAppointment.email}</span>
               </div>
+
               <div className="detail-item">
                 <span className="detail-label">🩺 Médecin :</span>
                 <span className="detail-value">{selectedAppointment.doctor_name}</span>
               </div>
+
               <div className="detail-item">
                 <span className="detail-label">📅 Date :</span>
                 <span className="detail-value">{selectedAppointment.date}</span>
               </div>
+
               <div className="detail-item">
                 <span className="detail-label">⏰ Heure :</span>
                 <span className="detail-value">{selectedAppointment.time}</span>
               </div>
+
               <div className="detail-item">
                 <span className="detail-label">📌 Statut :</span>
                 <span className={`status-badge ${statusMeta(selectedAppointment.status).cls}`}>
@@ -311,6 +327,7 @@ export default function CalendrierRdv() {
           </div>
         </div>
       )}
+
     </div>
   );
 }

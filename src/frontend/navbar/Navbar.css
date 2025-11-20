@@ -1,134 +1,201 @@
+/* === STRUCTURE PRINCIPALE === */
 .navbar-modern {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.85) 100%);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 75px;
+  background: linear-gradient(90deg, #0a1a4b 0%, #1b3cae 50%, #0b60d1 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
 }
 
+.navbar-modern.scrolled {
+  background: rgba(10, 26, 75, 0.95);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* === CONTENEUR === */
 .navbar-container {
-  max-width: 1200px;
-  height: 70px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Logo à gauche */
+/* === LOGO === */
 .navbar-logo {
+  text-decoration: none;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.6rem;
   gap: 5px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+  transition: transform 0.3s ease;
 }
 
-.pill-icon {
-  font-size: 1.4rem;
+.navbar-logo:hover {
+  transform: scale(1.05);
 }
 
 .brand {
-  color: #1e3c72;
+  color: #4adeff;
 }
-
 .brand-alt {
-  color: #2a5298;
-}
-main {
-  padding-top: 80px;
+  color: #fff;
 }
 
-
-/* Liens centrés */
+/* === LIENS CENTRAUX === */
 .navbar-links {
   flex: 1;
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .navlink {
-  position: relative;
-  color: #1e3c72;
-  text-decoration: none;
+  color: #d6e3ff;
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.25s ease;
 }
 
 .navlink:hover {
-  color: #2a5298;
+  color: #ffffff;
 }
 
-/* LIGNE animée sous le lien actif */
+.navlink.active {
+  color: #4adeff;
+  font-weight: 600;
+}
+
 .navlink::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -6px;
   left: 50%;
-  width: 0%;
-  height: 2px;
-  background: #1e3c72;
-  border-radius: 2px;
-  transition: all 0.3s ease;
   transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #4adeff;
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
+.navlink.active::after,
 .navlink:hover::after {
   width: 60%;
 }
 
-.navlink.active {
-  color: #1e3c72;
+/* === ACTIONS DROITES === */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* === PANIER === */
+.cart-btn {
+  position: relative;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(120deg, #007bff, #00aaff);
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0, 123, 255, 0.3);
+}
+
+.cart-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(120deg, #00aaff, #007bff);
+  box-shadow: 0 4px 18px rgba(0, 123, 255, 0.5);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff4b5c;
+  color: white;
+  font-size: 0.7rem;
   font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 75, 92, 0.5);
 }
 
-.navlink.active::after {
-  width: 60%;
-  background: #1e3c72;
+/* === BOUTONS DE CONNEXION === */
+.btn-login,
+.btn-primary-nav,
+.logout-btn {
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 8px 18px;
+  transition: all 0.3s ease;
 }
 
-/* Bouton Déconnexion */
+.btn-login {
+  background: transparent;
+  color: #d6e3ff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.btn-login:hover {
+  color: white;
+  border-color: white;
+}
+
+.btn-primary-nav {
+  background: linear-gradient(90deg, #4adeff, #007bff);
+  color: white;
+  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.4);
+}
+.btn-primary-nav:hover {
+  background: linear-gradient(90deg, #007bff, #00aaff);
+  transform: scale(1.05);
+}
+
 .logout-btn {
   background: linear-gradient(90deg, #ff4b5c, #ff6b6b);
   color: white;
   border: none;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 75, 92, 0.3);
+  box-shadow: 0 3px 10px rgba(255, 75, 92, 0.3);
 }
-
 .logout-btn:hover {
-  background: linear-gradient(90deg, #ff3c50, #ff5454);
   transform: scale(1.05);
+  background: linear-gradient(90deg, #ff3c50, #ff5454);
 }
 
-/* Menu burger mobile */
+/* === MENU MOBILE === */
 .burger {
   display: none;
-  font-size: 1.6rem;
-  color: #1e3c72;
+  font-size: 1.8rem;
+  color: white;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .navbar-links,
-  .logout-btn {
+  .navbar-actions .logout-btn,
+  .navbar-actions .btn-login,
+  .navbar-actions .btn-primary-nav {
     display: none;
   }
 
@@ -138,37 +205,36 @@ main {
 
   .mobile-menu {
     position: absolute;
-    top: 70px;
+    top: 75px;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    background: rgba(15, 30, 99, 0.96);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
     animation: slideDown 0.3s ease;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .mobile-item {
-    color: #1e3c72;
+    color: #d6e3ff;
     text-decoration: none;
-    font-size: 1rem;
     padding: 12px 0;
+    font-size: 1.1rem;
     width: 100%;
     text-align: center;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   .mobile-item:hover {
-    background: rgba(30, 60, 114, 0.1);
+    background: rgba(74, 222, 255, 0.1);
+    color: #fff;
   }
 
   .mobile-item.active {
-    background: #1e3c72;
-    color: #fff;
-    font-weight: 600;
+    color: #4adeff;
+    font-weight: 700;
   }
 
   .logout-btn.mobile {
