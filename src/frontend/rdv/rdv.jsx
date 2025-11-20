@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { supabase } from "../../supabaseClient";
+=======
+// src/frontend/rdv/CalendrierRdv.jsx
+import { useState, useEffect } from "react";
+import { supabase } from "../../supabaseClient";
+import { useAuth } from "../AuthContext";
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 import {
   Calendar,
   Plus,
@@ -10,6 +17,11 @@ import {
 import "./rdv.css";
 
 export default function CalendrierRdv() {
+<<<<<<< HEAD
+=======
+  const { user } = useAuth(); // ✅ récupère l’utilisateur connecté
+
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
   const [appointments, setAppointments] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedAppointment, setSelectedAppointment] = useState(null);
@@ -55,23 +67,37 @@ export default function CalendrierRdv() {
     if (s.includes("annul") || s.includes("cancel")) return "cancelled";
     if (s.includes("fini") || s.includes("finished") || s.includes("completed")) return "finished";
     if (s.includes("en cours") || s.includes("in-progress") || s.includes("progress")) return "in-progress";
+<<<<<<< HEAD
     if (s.includes("à venir") || s.includes("pas encore") || s.includes("upcoming") || s.includes("pending")) return "upcoming";
+=======
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
     return "upcoming";
   }
 
   function statusMeta(raw) {
     const s = normalizeStatus(raw);
     switch (s) {
+<<<<<<< HEAD
       case "cancelled": return { cls: "cancelled", label: "" };
       case "finished": return { cls: "finished", label: "" };
       case "in-progress": return { cls: "in-progress", label: "" };
       default: return { cls: "upcoming", label: "" };
+=======
+      case "cancelled": return { cls: "cancelled", label: "Annulé" };
+      case "finished": return { cls: "finished", label: "Terminé" };
+      case "in-progress": return { cls: "in-progress", label: "En cours" };
+      default: return { cls: "upcoming", label: "À venir" };
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
     }
   }
 
   async function handleAddAppointment(e) {
     e.preventDefault();
+<<<<<<< HEAD
     const payload = { ...newAppointment, status: "upcoming" }; // statut auto
+=======
+    const payload = { ...newAppointment, status: "upcoming" };
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
     const { data, error } = await supabase
       .from("appointments")
       .insert([payload])
@@ -117,6 +143,19 @@ export default function CalendrierRdv() {
 
   const hours = Array.from({ length: 13 }, (_, i) => i + 8);
 
+<<<<<<< HEAD
+=======
+  // ✅ Si pas connecté → bloque l’accès au calendrier complet
+  if (!user) {
+    return (
+      <div className="calendar-container" style={{ textAlign: "center", paddingTop: "140px" }}>
+        <h2>🔒 Vous devez être connecté pour accéder au calendrier des rendez-vous.</h2>
+        <p>Veuillez vous connecter ou créer un compte avant de réserver un créneau.</p>
+      </div>
+    );
+  }
+
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
   return (
     <div className="calendar-container">
       <div className="calendar-header">
@@ -127,9 +166,27 @@ export default function CalendrierRdv() {
         <div style={{ display: "flex", gap: 8 }}>
           <button onClick={() => navigateWeek(-1)} className="btn-nav"><ChevronLeft size={16} /></button>
           <button onClick={() => navigateWeek(1)} className="btn-nav"><ChevronRight size={16} /></button>
+<<<<<<< HEAD
           <button onClick={() => setShowForm(true)} className="btn-primary">
             <Plus size={18} /> Nouveau RDV
           </button>
+=======
+
+          {/* ✅ Bouton grisé si pas connecté */}
+          {user ? (
+            <button onClick={() => setShowForm(true)} className="btn-primary">
+              <Plus size={18} /> Nouveau RDV
+            </button>
+          ) : (
+            <button
+              className="btn-primary"
+              style={{ opacity: 0.6, cursor: "not-allowed" }}
+              onClick={() => alert("Veuillez vous connecter pour prendre un rendez-vous.")}
+            >
+              <Plus size={18} /> Nouveau RDV
+            </button>
+          )}
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
         </div>
       </div>
 
@@ -173,7 +230,11 @@ export default function CalendrierRdv() {
         ))}
       </div>
 
+<<<<<<< HEAD
       {/* Formulaire d’ajout */}
+=======
+      {/* Modal ajout RDV */}
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
       {showForm && (
         <div className="modal-overlay" onClick={() => setShowForm(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -205,13 +266,17 @@ export default function CalendrierRdv() {
                 />
               </div>
 
+<<<<<<< HEAD
               {/* Liste déroulante des médecins */}
+=======
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
               <select
                 value={newAppointment.doctor_name}
                 onChange={(e) =>
                   setNewAppointment({ ...newAppointment, doctor_name: e.target.value })
                 }
                 required
+<<<<<<< HEAD
                 style={{
                   width: "100%",
                   height: 44,
@@ -222,6 +287,8 @@ export default function CalendrierRdv() {
                   fontSize: "0.95rem",
                   color: "black" // 🖤 texte noir
                 }}
+=======
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
               >
                 <option value="">Choisir un médecin</option>
                 {medecins.map((doc, i) => (
@@ -248,8 +315,11 @@ export default function CalendrierRdv() {
                 />
               </div>
 
+<<<<<<< HEAD
               {/* 🔸 Le champ statut est retiré du formulaire (auto à upcoming) */}
 
+=======
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
               <button type="submit" className="btn-primary">
                 Enregistrer
               </button>
@@ -258,6 +328,10 @@ export default function CalendrierRdv() {
         </div>
       )}
 
+<<<<<<< HEAD
+=======
+      {/* Modal détails RDV */}
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
       {selectedAppointment && (
         <div className="modal-overlay" onClick={() => setSelectedAppointment(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -268,12 +342,41 @@ export default function CalendrierRdv() {
               </button>
             </div>
             <div className="modal-content">
+<<<<<<< HEAD
               <p><strong>Patient :</strong> {selectedAppointment.patient_name}</p>
               <p><strong>Email :</strong> {selectedAppointment.email}</p>
               <p><strong>Médecin :</strong> {selectedAppointment.doctor_name}</p>
               <p><strong>Date :</strong> {selectedAppointment.date}</p>
               <p><strong>Heure :</strong> {selectedAppointment.time}</p>
               <p><strong>Statut :</strong> {statusMeta(selectedAppointment.status).label}</p>
+=======
+              <div className="detail-item">
+                <span className="detail-label">👤 Patient :</span>
+                <span className="detail-value">{selectedAppointment.patient_name}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">✉️ Email :</span>
+                <span className="detail-value">{selectedAppointment.email}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">🩺 Médecin :</span>
+                <span className="detail-value">{selectedAppointment.doctor_name}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">📅 Date :</span>
+                <span className="detail-value">{selectedAppointment.date}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">⏰ Heure :</span>
+                <span className="detail-value">{selectedAppointment.time}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">📌 Statut :</span>
+                <span className={`status-badge ${statusMeta(selectedAppointment.status).cls}`}>
+                  {statusMeta(selectedAppointment.status).label}
+                </span>
+              </div>
+>>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
             </div>
           </div>
         </div>
