@@ -1,4 +1,3 @@
-import { PRESCRIPTIONS } from "../../../data/prescriptions";
 import "./ShowPrescription.css";
 import "../addPrescription/AddPrescription.css";
 import { Link } from "react-router-dom";
