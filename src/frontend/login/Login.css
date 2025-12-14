@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 /* Fond général */
 body {
   margin: 0;
@@ -141,6 +144,7 @@ form h3 {
   color: #ff6b6b;
   font-size: 0.9rem;
   font-weight: 500;
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/temp-visualiser-fix
@@ -314,4 +318,6 @@ option {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 }

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 =======
 // src/App.jsx
@@ -9,12 +10,16 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
 // src/App.jsx
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 >>>>>>> origin/temp-visualiser-fix
+=======
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 import "./App.css";
 import { AuthProvider } from "./frontend/AuthContext";
 import RootLayout from "./frontend/rootLayout/RootLayout";
 import Login from "./frontend/login/Login";
 import Signup from "./frontend/signup/Signup";
 import ProduitList from "./frontend/produitCard/ProduitCard.jsx";
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import RendezVous from "./frontend/rdv/rdv.jsx"; // 
@@ -34,11 +39,18 @@ import Cart from "./frontend/cart/Cart";
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+import AddPrescription from "./frontend/prescription/addPrescription/AddPrescription.jsx";
+import ModifyPrescription from "./frontend/prescription/modifyPrescription/ModifyPrescription.jsx";
+import DeletePrescription from "./frontend/prescription/deletePrescription/DeletePrescription.jsx";
+import ShowPrescriptionList from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     children: [
@@ -82,12 +94,23 @@ const router = createBrowserRouter([
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+    children: [
+      { index: true, element: <ProduitList /> },   // <-- page d’accueil
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
+      { path: "/medecins", element: <ShowPrescriptionList /> },
+      { path: "/medecins/add", element: <AddPrescription /> },
+      { path: "/medecins/modify/:id", element: <ModifyPrescription /> },
+      { path: "/medecins/delete", element: <DeletePrescription /> },
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
     ],
   },
 ]);
 
 export default function App() {
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <AuthProvider>
@@ -105,5 +128,10 @@ export default function App() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
   );
 }

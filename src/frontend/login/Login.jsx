@@ -1,6 +1,7 @@
 // src/frontend/login/Login.jsx
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
@@ -15,11 +16,17 @@ import { supabase } from "../../lib/supabaseClient";
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 import "./Login.css";
 
 export default function Login() {
   const [values, setValues] = useState({ email: "", password: "" });
   const [pending, setPending] = useState(false);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   const { login } = useContext(AuthContext);
@@ -29,6 +36,9 @@ export default function Login() {
 =======
   const { login } = useAuth();
 >>>>>>> origin/temp-visualiser-fix
+=======
+  const { login } = useContext(AuthContext);
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
   const navigate = useNavigate();
 
   const onChange = (k, v) => setValues(p => ({ ...p, [k]: v }));
@@ -39,6 +49,7 @@ export default function Login() {
     try {
       setPending(true);
       await login(values.email, values.password);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       navigate("/"); // redirection après succès
@@ -64,6 +75,11 @@ export default function Login() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+      navigate("/"); // redirection après succès
+    } catch (err) {
+      alert("Connexion échouée");
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
     } finally {
       setPending(false);
     }
@@ -72,6 +88,9 @@ export default function Login() {
   return (
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
     <form onSubmit={onSubmit}>
       <h2>Bienvenue</h2>
       <h3>Connectez-vous pour continuer</h3>
@@ -96,6 +115,7 @@ export default function Login() {
         </button>
       </p>
     </form>
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/temp-visualiser-fix
@@ -138,5 +158,7 @@ export default function Login() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
   );
 }

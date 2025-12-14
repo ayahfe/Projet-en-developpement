@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useCart } from '../cartContext/CartContext';
 import './ProduitCard.css';
@@ -7,12 +8,20 @@ import './ProduitCard.css';
 export default function ProduitCard({ produit }) {
     const { addToCart } = useCart();
 
+=======
+import React from 'react';
+import { PRODUIT } from '../../data/produitList';  
+import './ProduitCard.css';
+
+function ProduitCard({ produit }) {
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
     return (
         <div className="produit-card">
             <img src={produit.image} alt={produit.name} />
             <h3>{produit.name}</h3>
             <p>{produit.description}</p>
             <strong>{produit.price} $</strong>
+<<<<<<< HEAD
             <br />
             <button onClick={() => addToCart(produit)}>Ajouter au panier</button>
         </div>
@@ -53,3 +62,18 @@ export default function ProduitList() {
 =======
 >>>>>>> origin/temp-visualiser-fix
 }
+=======
+        </div>
+    );
+}
+
+export default function ProduitList() {
+    return (
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            {PRODUIT.map(produit => (
+                <ProduitCard key={produit.id} produit={produit} />
+            ))}
+        </div>
+    );
+}
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)

@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
@@ -7,6 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/temp-visualiser-fix
@@ -40,12 +44,17 @@ export default function Navbar() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 
   const links = [
     { name: "Accueil", path: "/" },
     { name: "Médecins", path: "/medecins" },
     { name: "Rendez-Vous", path: "/rendezvous" },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
     { name: "Ordonnances", path: "/ordonnances" },
     { name: "Pharmacie", path: "/pharmacie" },
     { name: "Mes Commandes", path: "/commandes" },
@@ -53,10 +62,14 @@ export default function Navbar() {
   ];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
   return (
     <header className="navbar-modern">
       <div className="navbar-container">
         {/* Logo à gauche */}
+<<<<<<< HEAD
 =======
 =======
     
@@ -80,6 +93,8 @@ export default function Navbar() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
         <Link to="/" className="navbar-logo">
           <span className="brand">Med</span>
           <span className="brand-alt">Pharma</span>
@@ -87,6 +102,9 @@ export default function Navbar() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
         {/* Liens au centre */}
         <nav className="navbar-links">
           {links.map((link) => (
@@ -98,6 +116,7 @@ export default function Navbar() {
               }`}
             >
               {link.name}
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/temp-visualiser-fix
@@ -116,12 +135,17 @@ export default function Navbar() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
             </Link>
           ))}
         </nav>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
         {/* Bouton à droite */}
         <button className="logout-btn">Déconnexion</button>
 
@@ -156,6 +180,7 @@ export default function Navbar() {
 };
 
 export default Navbar;
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/temp-visualiser-fix
@@ -192,3 +217,5 @@ export default Navbar;
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)

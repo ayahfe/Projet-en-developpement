@@ -1,6 +1,9 @@
 import { useState } from "react";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
 import {Link, useNavigate} from "react-router-dom";
 
 export default function Signup(){
@@ -75,6 +78,7 @@ export default function Signup(){
             </p>
         </form>
     )
+<<<<<<< HEAD
 }
 =======
 import { Link, useNavigate } from "react-router-dom";
@@ -240,3 +244,6 @@ export default function Signup() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+}
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
