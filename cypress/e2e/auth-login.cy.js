@@ -6,7 +6,6 @@ describe('Auth Login API Tests', () => {
   });
 
   it('should login successfully with correct credentials', () => {
-    // Signup d'abord
     cy.request({
       method: 'POST',
       url: `${baseUrl}/api/auth/signup`,
