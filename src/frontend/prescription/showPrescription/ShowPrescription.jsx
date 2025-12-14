@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // src/frontend/prescription/showPrescription/ShowPrescription.jsx
 import React from "react";
 
@@ -14,6 +15,8 @@ import { PRESCRIPTIONS } from "../../../data/prescriptions";
 import "./ShowPrescription.css";
 =======
 import { PRESCRIPTIONS } from "../../../data/prescriptions";
+=======
+>>>>>>> 8918954 (tests logout)
 import "./ShowPrescription.css";
 import "../addPrescription/AddPrescription.css";
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
