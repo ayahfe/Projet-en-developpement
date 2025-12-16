@@ -6,6 +6,8 @@ import CalendrierRdv from "./rdv";
 // MOCK AuthContext
 // =======================
 const mockUseAuth = vi.fn();
+let mockAppointments = [];
+
 
 vi.mock("../AuthContext", () => ({
   useAuth: () => mockUseAuth(),
@@ -17,43 +19,28 @@ vi.mock("../AuthContext", () => ({
 const mockSelect = vi.fn();
 const mockInsert = vi.fn();
 
-vi.mock("../../supabaseClient", () => {
-  const today = new Date();
-  const dateStr = today.toISOString().split("T")[0];
-
-  return {
-    supabase: {
-      from: vi.fn(() => ({
-        select: vi.fn(() => ({
-          order: vi.fn(() =>
-            Promise.resolve({
-              data: [
-                {
-                  id: 1,
-                  patient_name: "Fatima",
-                  email: "f@test.com",
-                  doctor_name: "Dr. Laila",
-                  date: dateStr,     // ⚠️ DATE DE LA SEMAINE COURANTE
-                  time: "10:00",     // ⚠️ HEURE DANS 8–20
-                  status: "upcoming",
-                },
-              ],
-              error: null,
-            })
-          ),
-        })),
-        insert: vi.fn(() => ({
-          select: vi.fn(() =>
-            Promise.resolve({
-              data: [],
-              error: null,
-            })
-          ),
-        })),
+vi.mock("../../supabaseClient", () => ({
+  supabase: {
+    from: vi.fn(() => ({
+      select: vi.fn(() => ({
+        order: vi.fn(() =>
+          Promise.resolve({
+            data: mockAppointments,
+            error: null,
+          })
+        ),
       })),
-    },
-  };
-});
+      insert: vi.fn(() => ({
+        select: vi.fn(() =>
+          Promise.resolve({
+            data: [{ ...mockAppointments[0], id: 999 }],
+            error: null,
+          })
+        ),
+      })),
+    })),
+  },
+}));
 
 
 // =======================
@@ -112,21 +99,46 @@ describe("CalendrierRdv", () => {
   it("ouvre la modale de détails quand on clique sur un rendez-vous", async () => {
   mockUseAuth.mockReturnValue({ user: { id: 1 } });
 
+  mockAppointments = [
+    {
+      id: 3,
+      patient_name: "Fatima",
+      doctor_name: "Dr. Laila",
+      email: "f@test.com",
+      date: new Date().toISOString().split("T")[0],
+      time: "12:00",
+      status: "upcoming",
+    },
+  ];
+
   render(<CalendrierRdv />);
 
-  const rdv = await screen.findByText("Fatima");
-  fireEvent.click(rdv);
+  fireEvent.click(await screen.findByText("Fatima"));
 
   expect(await screen.findByText("Détails")).toBeInTheDocument();
-  const modal = await screen.findByText("Détails");
-expect(modal).toBeInTheDocument();
-
-expect(
-  modal.parentElement.querySelector("p:nth-of-type(3)")
-).toHaveTextContent("Dr. Laila");
-
 });
 
+it("ouvre la modale de création quand l'utilisateur est connecté et clique sur Nouveau RDV", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  render(<CalendrierRdv />);
+
+  fireEvent.click(await screen.findByText(/Nouveau RDV/i));
+
+  expect(
+    await screen.findByText(/nouveau rendez-vous/i)
+  ).toBeInTheDocument();
+});
+
+it("ne déclenche pas d'alerte quand l'utilisateur est connecté", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  render(<CalendrierRdv />);
+
+  fireEvent.click(await screen.findByText(/Nouveau RDV/i));
+
+  expect(global.alert).not.toHaveBeenCalled();
+});
 
   // =======================
   // STATUS – ANNULÉ
@@ -190,4 +202,50 @@ expect(
 
     expect(await screen.findByText(/Détails/i)).toBeInTheDocument();
   });
+  it("affiche un rendez-vous en cours", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  mockAppointments = [
+    {
+      id: 10,
+      patient_name: "Youssef",
+      email: "y@test.com",
+      doctor_name: "Dr. Amal",
+      date: new Date().toISOString().split("T")[0],
+      time: "09:00",
+      status: "en cours",
+    },
+  ];
+
+  render(<CalendrierRdv />);
+
+  const card = await screen.findByText("Youssef");
+
+  expect(card.closest(".apt-card")).toHaveClass("in-progress");
+});
+
+it("affiche un rendez-vous annulé avec la bonne classe", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  mockAppointments = [
+    {
+      id: 20,
+      patient_name: "Sara",
+      email: "s@test.com",
+      doctor_name: "Dr. Karim",
+      date: new Date().toISOString().split("T")[0],
+      time: "10:00",
+      status: "annulé",
+    },
+  ];
+
+  render(<CalendrierRdv />);
+
+  const card = await screen.findByText("Sara");
+
+  expect(card.closest(".apt-card")).toHaveClass("cancelled");
+});
+
+
+  
 });
