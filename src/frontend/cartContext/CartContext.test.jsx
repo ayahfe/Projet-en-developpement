@@ -15,8 +15,16 @@ function TestComponent() {
         add
       </button>
 
+      <button onClick={() => addToCart({ id: 2, name: "Test2", price: 20 })}>
+        add2
+      </button>
+
       <button onClick={() => removeFromCart(1)}>
         remove
+      </button>
+
+      <button onClick={() => removeFromCart(999)}>
+        remove-invalid
       </button>
 
       <button onClick={clearCart}>
@@ -63,7 +71,16 @@ describe("CartContext", () => {
     expect(screen.getByText(/Test x 2/i)).toBeInTheDocument();
   });
 
-  it("removeFromCart supprime un produit", async () => {
+  it("addToCart ajoute plusieurs produits différents", async () => {
+    renderWithProvider();
+    await userEvent.click(screen.getByText("add"));
+    await userEvent.click(screen.getByText("add2"));
+
+    expect(screen.getByTestId("cart-length").textContent).toBe("2");
+    expect(screen.getByText(/Test2 x 1/i)).toBeInTheDocument();
+  });
+
+  it("removeFromCart supprime un produit existant", async () => {
     renderWithProvider();
     await userEvent.click(screen.getByText("add"));
     await userEvent.click(screen.getByText("remove"));
@@ -71,20 +88,21 @@ describe("CartContext", () => {
     expect(screen.getByTestId("cart-length").textContent).toBe("0");
   });
 
+  it("removeFromCart ne modifie rien si l'id n'existe pas", async () => {
+    renderWithProvider();
+    await userEvent.click(screen.getByText("add"));
+    await userEvent.click(screen.getByText("remove-invalid"));
+
+    expect(screen.getByTestId("cart-length").textContent).toBe("1");
+  });
+
   it("clearCart vide complètement le panier", async () => {
     renderWithProvider();
     await userEvent.click(screen.getByText("add"));
+    await userEvent.click(screen.getByText("add2"));
     await userEvent.click(screen.getByText("clear"));
 
     expect(screen.getByTestId("cart-length").textContent).toBe("0");
   });
-it("clearCart vide complètement le panier", async () => {
-  renderWithProvider();
-
-  await userEvent.click(screen.getByText("add"));
-  await userEvent.click(screen.getByText("clear"));
-
-  expect(screen.getByTestId("cart-length").textContent).toBe("0");
-});
 
 });
