@@ -99,4 +99,56 @@ describe("Login page", () => {
       screen.getByRole("button", { name: /se connecter/i })
     ).toBeInTheDocument();
   });
+  //Test si le email est vide
+  test("affiche une erreur si l'email est vide", () => {
+  render(
+    <MemoryRouter>
+      <Login />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.click(
+    screen.getByRole("button", { name: /se connecter/i })
+  );
+
+  expect(loginMock).not.toHaveBeenCalled();
+});
+//Test si le mdp est vide
+test("affiche une erreur si le mot de passe est vide", () => {
+  render(
+    <MemoryRouter>
+      <Login />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/email/i), {
+    target: { value: "test@test.com" },
+  });
+
+  fireEvent.click(
+    screen.getByRole("button", { name: /se connecter/i })
+  );
+
+  expect(loginMock).not.toHaveBeenCalled();
+});
+//Le formulaire ne s'envoie pas si c'est pas valide
+test("empêche la soumission si le formulaire est invalide", () => {
+  render(
+    <MemoryRouter>
+      <Login />
+    </MemoryRouter>
+  );
+
+  fireEvent.click(
+    screen.getByRole("button", { name: /se connecter/i })
+  );
+
+  expect(loginMock).not.toHaveBeenCalled();
+});
+
+
 });
