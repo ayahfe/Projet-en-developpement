@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/internal/TextListener.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/internal/TextListener.java (<b>76</b> lines of code) (<a href="TextListener.java">raw</a>):</h3>
+<div id="editor">package org.junit.internal;
+
+import java.io.PrintStream;
+import java.text.NumberFormat;
+import java.util.List;
+
+import org.junit.runner.Description;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+import org.junit.runner.notification.RunListener;
+
+public class TextListener extends RunListener {
+
+    private final PrintStream writer;
+
+    public TextListener(JUnitSystem system) {
+        this(system.out());
+    }
+
+    public TextListener(PrintStream writer) {
+        this.writer = writer;
+    }
+
+    @Override
+    public void testRunFinished(Result result) {
+        printHeader(result.getRunTime());
+        printFailures(result);
+        printFooter(result);
+    }
+
+    @Override
+    public void testStarted(Description description) {
+        writer.append('.');
+    }
+
+    @Override
+    public void testFailure(Failure failure) {
+        writer.append('E');
+    }
+
+    @Override
+    public void testIgnored(Description description) {
+        writer.append('I');
+    }
+
+    /*
+      * Internal methods
+      */
+
+    private PrintStream getWriter() {
+        return writer;
+    }
+
+    protected void printHeader(long runTime) {
+        getWriter().println();
+        getWriter().println(&quot;Time: &quot; + elapsedTimeAsString(runTime));
+    }
+
+    protected void printFailures(Result result) {
+        List&lt;Failure&gt; failures = result.getFailures();
+        if (failures.isEmpty()) {
+            return;
+        }
+        if (failures.size() == 1) {
+            getWriter().println(&quot;There was &quot; + failures.size() + &quot; failure:&quot;);
+        } else {
+            getWriter().println(&quot;There were &quot; + failures.size() + &quot; failures:&quot;);
+        }
+        int i = 1;
+        for (Failure each : failures) {
+            printFailure(each, &quot;&quot; + i++);
+        }
+    }
+
+    protected void printFailure(Failure each, String prefix) {
+        getWriter().println(prefix + &quot;) &quot; + each.getTestHeader());
+        getWriter().print(each.getTrimmedTrace());
+    }
+
+    protected void printFooter(Result result) {
+        if (result.wasSuccessful()) {
+            getWriter().println();
+            getWriter().print(&quot;OK&quot;);
+            getWriter().println(&quot; (&quot; + result.getRunCount() + &quot; test&quot; + (result.getRunCount() == 1 ? &quot;&quot; : &quot;s&quot;) + &quot;)&quot;);
+
+        } else {
+            getWriter().println();
+            getWriter().println(&quot;FAILURES!!!&quot;);
+            getWriter().println(&quot;Tests run: &quot; + result.getRunCount() + &quot;,  Failures: &quot; + result.getFailureCount());
+        }
+        getWriter().println();
+    }
+
+    /**
+     * Returns the formatted string of the elapsed time. Duplicated from
+     * BaseTestRunner. Fix it.
+     */
+    protected String elapsedTimeAsString(long runTime) {
+        return NumberFormat.getInstance().format((double) runTime / 1000);
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

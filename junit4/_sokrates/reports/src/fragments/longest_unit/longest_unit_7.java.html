@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>protected void validateFields()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">protected void validateFields()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/runners/parameterized/BlockJUnit4ClassRunnerWithParameters.java [115:144]</i></p>
+<ul>
+    <li><b>30</b> lines of code</li>
+    <li><b>7</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    protected void validateFields(List&lt;Throwable&gt; errors) {
+        super.validateFields(errors);
+        if (getInjectionType() == InjectionType.FIELD) {
+            List&lt;FrameworkField&gt; annotatedFieldsByParameter = getAnnotatedFieldsByParameter();
+            int[] usedIndices = new int[annotatedFieldsByParameter.size()];
+            for (FrameworkField each : annotatedFieldsByParameter) {
+                int index = each.getField().getAnnotation(Parameter.class)
+                        .value();
+                if (index &lt; 0 || index &gt; annotatedFieldsByParameter.size() - 1) {
+                    errors.add(new Exception(&quot;Invalid @Parameter value: &quot;
+                            + index + &quot;. @Parameter fields counted: &quot;
+                            + annotatedFieldsByParameter.size()
+                            + &quot;. Please use an index between 0 and &quot;
+                            + (annotatedFieldsByParameter.size() - 1) + &quot;.&quot;));
+                } else {
+                    usedIndices[index]++;
+                }
+            }
+            for (int index = 0; index &lt; usedIndices.length; index++) {
+                int numberOfUse = usedIndices[index];
+                if (numberOfUse == 0) {
+                    errors.add(new Exception(&quot;@Parameter(&quot; + index
+                            + &quot;) is never used.&quot;));
+                } else if (numberOfUse &gt; 1) {
+                    errors.add(new Exception(&quot;@Parameter(&quot; + index
+                            + &quot;) is used more than once (&quot; + numberOfUse + &quot;).&quot;));
+                }
+            }
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

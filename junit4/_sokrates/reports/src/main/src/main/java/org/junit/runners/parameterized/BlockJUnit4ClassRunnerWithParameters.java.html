@@ -1,0 +1,245 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/runners/parameterized/BlockJUnit4ClassRunnerWithParameters.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/runners/parameterized/BlockJUnit4ClassRunnerWithParameters.java (<b>191</b> lines of code) (<a href="BlockJUnit4ClassRunnerWithParameters.java">raw</a>):</h3>
+<div id="editor">package org.junit.runners.parameterized;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.util.List;
+
+import org.junit.internal.runners.statements.RunAfters;
+import org.junit.internal.runners.statements.RunBefores;
+import org.junit.runner.RunWith;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.model.FrameworkField;
+import org.junit.runners.model.FrameworkMethod;
+import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.Statement;
+
+/**
+ * A {@link BlockJUnit4ClassRunner} with parameters support. Parameters can be
+ * injected via constructor or into annotated fields.
+ */
+public class BlockJUnit4ClassRunnerWithParameters extends
+        BlockJUnit4ClassRunner {
+    private enum InjectionType {
+        CONSTRUCTOR, FIELD
+    }
+
+    private final Object[] parameters;
+
+    private final String name;
+
+    public BlockJUnit4ClassRunnerWithParameters(TestWithParameters test)
+            throws InitializationError {
+        super(test.getTestClass());
+        parameters = test.getParameters().toArray(
+                new Object[test.getParameters().size()]);
+        name = test.getName();
+    }
+
+    @Override
+    public Object createTest() throws Exception {
+        InjectionType injectionType = getInjectionType();
+        switch (injectionType) {
+            case CONSTRUCTOR:
+                return createTestUsingConstructorInjection();
+            case FIELD:
+                return createTestUsingFieldInjection();
+            default:
+                throw new IllegalStateException(&quot;The injection type &quot;
+                        + injectionType + &quot; is not supported.&quot;);
+        }
+    }
+
+    private Object createTestUsingConstructorInjection() throws Exception {
+        return getTestClass().getOnlyConstructor().newInstance(parameters);
+    }
+
+    private Object createTestUsingFieldInjection() throws Exception {
+        List&lt;FrameworkField&gt; annotatedFieldsByParameter = getAnnotatedFieldsByParameter();
+        if (annotatedFieldsByParameter.size() != parameters.length) {
+            throw new Exception(
+                    &quot;Wrong number of parameters and @Parameter fields.&quot;
+                            + &quot; @Parameter fields counted: &quot;
+                            + annotatedFieldsByParameter.size()
+                            + &quot;, available parameters: &quot; + parameters.length
+                            + &quot;.&quot;);
+        }
+        Object testClassInstance = getTestClass().getJavaClass().newInstance();
+        for (FrameworkField each : annotatedFieldsByParameter) {
+            Field field = each.getField();
+            Parameter annotation = field.getAnnotation(Parameter.class);
+            int index = annotation.value();
+            try {
+                field.set(testClassInstance, parameters[index]);
+            } catch (IllegalAccessException e) {
+                IllegalAccessException wrappedException = new IllegalAccessException(
+                        &quot;Cannot set parameter '&quot; + field.getName()
+                                + &quot;'. Ensure that the field '&quot; + field.getName()
+                                + &quot;' is public.&quot;);
+                wrappedException.initCause(e);
+                throw wrappedException;
+            } catch (IllegalArgumentException iare) {
+                throw new Exception(getTestClass().getName()
+                        + &quot;: Trying to set &quot; + field.getName()
+                        + &quot; with the value &quot; + parameters[index]
+                        + &quot; that is not the right type (&quot;
+                        + parameters[index].getClass().getSimpleName()
+                        + &quot; instead of &quot; + field.getType().getSimpleName()
+                        + &quot;).&quot;, iare);
+            }
+        }
+        return testClassInstance;
+    }
+
+    @Override
+    protected String getName() {
+        return name;
+    }
+
+    @Override
+    protected String testName(FrameworkMethod method) {
+        return method.getName() + getName();
+    }
+
+    @Override
+    protected void validateConstructor(List&lt;Throwable&gt; errors) {
+        validateOnlyOneConstructor(errors);
+        if (getInjectionType() != InjectionType.CONSTRUCTOR) {
+            validateZeroArgConstructor(errors);
+        }
+    }
+
+    @Override
+    protected void validateFields(List&lt;Throwable&gt; errors) {
+        super.validateFields(errors);
+        if (getInjectionType() == InjectionType.FIELD) {
+            List&lt;FrameworkField&gt; annotatedFieldsByParameter = getAnnotatedFieldsByParameter();
+            int[] usedIndices = new int[annotatedFieldsByParameter.size()];
+            for (FrameworkField each : annotatedFieldsByParameter) {
+                int index = each.getField().getAnnotation(Parameter.class)
+                        .value();
+                if (index &lt; 0 || index &gt; annotatedFieldsByParameter.size() - 1) {
+                    errors.add(new Exception(&quot;Invalid @Parameter value: &quot;
+                            + index + &quot;. @Parameter fields counted: &quot;
+                            + annotatedFieldsByParameter.size()
+                            + &quot;. Please use an index between 0 and &quot;
+                            + (annotatedFieldsByParameter.size() - 1) + &quot;.&quot;));
+                } else {
+                    usedIndices[index]++;
+                }
+            }
+            for (int index = 0; index &lt; usedIndices.length; index++) {
+                int numberOfUse = usedIndices[index];
+                if (numberOfUse == 0) {
+                    errors.add(new Exception(&quot;@Parameter(&quot; + index
+                            + &quot;) is never used.&quot;));
+                } else if (numberOfUse &gt; 1) {
+                    errors.add(new Exception(&quot;@Parameter(&quot; + index
+                            + &quot;) is used more than once (&quot; + numberOfUse + &quot;).&quot;));
+                }
+            }
+        }
+    }
+
+    @Override
+    protected Statement classBlock(RunNotifier notifier) {
+        Statement statement = childrenInvoker(notifier);
+        statement = withBeforeParams(statement);
+        statement = withAfterParams(statement);
+        return statement;
+    }
+
+    private Statement withBeforeParams(Statement statement) {
+        List&lt;FrameworkMethod&gt; befores = getTestClass()
+                .getAnnotatedMethods(Parameterized.BeforeParam.class);
+        return befores.isEmpty() ? statement : new RunBeforeParams(statement, befores);
+    }
+
+    private class RunBeforeParams extends RunBefores {
+        RunBeforeParams(Statement next, List&lt;FrameworkMethod&gt; befores) {
+            super(next, befores, null);
+        }
+
+        @Override
+        protected void invokeMethod(FrameworkMethod method) throws Throwable {
+            int paramCount = method.getMethod().getParameterTypes().length;
+            method.invokeExplosively(null, paramCount == 0 ? (Object[]) null : parameters);
+        }
+    }
+
+    private Statement withAfterParams(Statement statement) {
+        List&lt;FrameworkMethod&gt; afters = getTestClass()
+                .getAnnotatedMethods(Parameterized.AfterParam.class);
+        return afters.isEmpty() ? statement : new RunAfterParams(statement, afters);
+    }
+
+    private class RunAfterParams extends RunAfters {
+        RunAfterParams(Statement next, List&lt;FrameworkMethod&gt; afters) {
+            super(next, afters, null);
+        }
+
+        @Override
+        protected void invokeMethod(FrameworkMethod method) throws Throwable {
+            int paramCount = method.getMethod().getParameterTypes().length;
+            method.invokeExplosively(null, paramCount == 0 ? (Object[]) null : parameters);
+        }
+    }
+
+    @Override
+    protected Annotation[] getRunnerAnnotations() {
+        Annotation[] allAnnotations = super.getRunnerAnnotations();
+        Annotation[] annotationsWithoutRunWith = new Annotation[allAnnotations.length - 1];
+        int i = 0;
+        for (Annotation annotation: allAnnotations) {
+            if (!annotation.annotationType().equals(RunWith.class)) {
+                annotationsWithoutRunWith[i] = annotation;
+                ++i;
+            }
+        }
+        return annotationsWithoutRunWith;
+    }
+
+    private List&lt;FrameworkField&gt; getAnnotatedFieldsByParameter() {
+        return getTestClass().getAnnotatedFields(Parameter.class);
+    }
+
+    private InjectionType getInjectionType() {
+        if (fieldsAreAnnotated()) {
+            return InjectionType.FIELD;
+        } else {
+            return InjectionType.CONSTRUCTOR;
+        }
+    }
+
+    private boolean fieldsAreAnnotated() {
+        return !getAnnotatedFieldsByParameter().isEmpty();
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

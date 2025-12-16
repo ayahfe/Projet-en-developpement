@@ -1,0 +1,379 @@
+<head>
+    <style> body {
+        margin: 0;
+    } </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/force-graph"></script>
+</head>
+
+<body>
+<div id="graph"></div>
+
+<script>
+    const gData = {
+  "nodes" : [ {
+    "id" : "[src/main/java/junit/framework/Assert.java]",
+    "size" : 2
+  }, {
+    "id" : "[src/main/java/org/junit/internal/runners/MethodRoadie.java]",
+    "size" : 1
+  }, {
+    "id" : "[src/main/java/org/junit/Assert.java]",
+    "size" : 2
+  }, {
+    "id" : "[src/main/java/org/junit/runners/model/TestClass.java]",
+    "size" : 2
+  }, {
+    "id" : "[doc/ReleaseNotes4.4.html]",
+    "size" : 9
+  }, {
+    "id" : "[doc/ReleaseNotes4.5.html]",
+    "size" : 9
+  }, {
+    "id" : "duplicate4",
+    "size" : 2
+  }, {
+    "id" : "duplicate3",
+    "size" : 2
+  }, {
+    "id" : "duplicate6",
+    "size" : 2
+  }, {
+    "id" : "duplicate5",
+    "size" : 2
+  }, {
+    "id" : "duplicate8",
+    "size" : 2
+  }, {
+    "id" : "duplicate7",
+    "size" : 2
+  }, {
+    "id" : "duplicate9",
+    "size" : 2
+  }, {
+    "id" : "duplicate11",
+    "size" : 2
+  }, {
+    "id" : "duplicate10",
+    "size" : 2
+  }, {
+    "id" : "duplicate13",
+    "size" : 2
+  }, {
+    "id" : "duplicate12",
+    "size" : 2
+  }, {
+    "id" : "duplicate2",
+    "size" : 2
+  }, {
+    "id" : "duplicate15",
+    "size" : 2
+  }, {
+    "id" : "duplicate1",
+    "size" : 2
+  }, {
+    "id" : "[src/main/java/org/junit/internal/runners/ClassRoadie.java]",
+    "size" : 1
+  }, {
+    "id" : "duplicate14",
+    "size" : 2
+  }, {
+    "id" : "duplicate16",
+    "size" : 2
+  }, {
+    "id" : "[src/main/java/org/junit/ComparisonFailure.java]",
+    "size" : 2
+  }, {
+    "id" : "[src/main/java/junit/framework/ComparisonFailure.java]",
+    "size" : 2
+  }, {
+    "id" : "[src/main/java/org/junit/internal/runners/TestClass.java]",
+    "size" : 1
+  }, {
+    "id" : "[src/main/java/org/junit/runners/parameterized/TestWithParameters.java]",
+    "size" : 1
+  } ],
+  "links" : [ {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate1",
+    "count" : 1
+  }, {
+    "source" : "duplicate1",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate1",
+    "count" : 1
+  }, {
+    "source" : "duplicate1",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate2",
+    "count" : 1
+  }, {
+    "source" : "duplicate2",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate2",
+    "count" : 1
+  }, {
+    "source" : "duplicate2",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate3",
+    "count" : 1
+  }, {
+    "source" : "duplicate3",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate3",
+    "count" : 1
+  }, {
+    "source" : "duplicate3",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate4",
+    "count" : 1
+  }, {
+    "source" : "duplicate4",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate4",
+    "count" : 1
+  }, {
+    "source" : "duplicate4",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/junit/framework/Assert.java]",
+    "target" : "duplicate5",
+    "count" : 1
+  }, {
+    "source" : "duplicate5",
+    "target" : "[src/main/java/junit/framework/Assert.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/Assert.java]",
+    "target" : "duplicate5",
+    "count" : 1
+  }, {
+    "source" : "duplicate5",
+    "target" : "[src/main/java/org/junit/Assert.java]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate6",
+    "count" : 1
+  }, {
+    "source" : "duplicate6",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate6",
+    "count" : 1
+  }, {
+    "source" : "duplicate6",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate7",
+    "count" : 1
+  }, {
+    "source" : "duplicate7",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate7",
+    "count" : 1
+  }, {
+    "source" : "duplicate7",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/internal/runners/ClassRoadie.java]",
+    "target" : "duplicate8",
+    "count" : 1
+  }, {
+    "source" : "duplicate8",
+    "target" : "[src/main/java/org/junit/internal/runners/ClassRoadie.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/internal/runners/MethodRoadie.java]",
+    "target" : "duplicate8",
+    "count" : 1
+  }, {
+    "source" : "duplicate8",
+    "target" : "[src/main/java/org/junit/internal/runners/MethodRoadie.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/runners/model/TestClass.java]",
+    "target" : "duplicate9",
+    "count" : 1
+  }, {
+    "source" : "duplicate9",
+    "target" : "[src/main/java/org/junit/runners/model/TestClass.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/runners/parameterized/TestWithParameters.java]",
+    "target" : "duplicate9",
+    "count" : 1
+  }, {
+    "source" : "duplicate9",
+    "target" : "[src/main/java/org/junit/runners/parameterized/TestWithParameters.java]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate10",
+    "count" : 1
+  }, {
+    "source" : "duplicate10",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate10",
+    "count" : 1
+  }, {
+    "source" : "duplicate10",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/junit/framework/ComparisonFailure.java]",
+    "target" : "duplicate11",
+    "count" : 1
+  }, {
+    "source" : "duplicate11",
+    "target" : "[src/main/java/junit/framework/ComparisonFailure.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/ComparisonFailure.java]",
+    "target" : "duplicate11",
+    "count" : 1
+  }, {
+    "source" : "duplicate11",
+    "target" : "[src/main/java/org/junit/ComparisonFailure.java]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate12",
+    "count" : 1
+  }, {
+    "source" : "duplicate12",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate12",
+    "count" : 1
+  }, {
+    "source" : "duplicate12",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/junit/framework/ComparisonFailure.java]",
+    "target" : "duplicate13",
+    "count" : 1
+  }, {
+    "source" : "duplicate13",
+    "target" : "[src/main/java/junit/framework/ComparisonFailure.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/ComparisonFailure.java]",
+    "target" : "duplicate13",
+    "count" : 1
+  }, {
+    "source" : "duplicate13",
+    "target" : "[src/main/java/org/junit/ComparisonFailure.java]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.4.html]",
+    "target" : "duplicate14",
+    "count" : 1
+  }, {
+    "source" : "duplicate14",
+    "target" : "[doc/ReleaseNotes4.4.html]",
+    "count" : 1
+  }, {
+    "source" : "[doc/ReleaseNotes4.5.html]",
+    "target" : "duplicate14",
+    "count" : 1
+  }, {
+    "source" : "duplicate14",
+    "target" : "[doc/ReleaseNotes4.5.html]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/junit/framework/Assert.java]",
+    "target" : "duplicate15",
+    "count" : 1
+  }, {
+    "source" : "duplicate15",
+    "target" : "[src/main/java/junit/framework/Assert.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/Assert.java]",
+    "target" : "duplicate15",
+    "count" : 1
+  }, {
+    "source" : "duplicate15",
+    "target" : "[src/main/java/org/junit/Assert.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/internal/runners/TestClass.java]",
+    "target" : "duplicate16",
+    "count" : 1
+  }, {
+    "source" : "duplicate16",
+    "target" : "[src/main/java/org/junit/internal/runners/TestClass.java]",
+    "count" : 1
+  }, {
+    "source" : "[src/main/java/org/junit/runners/model/TestClass.java]",
+    "target" : "duplicate16",
+    "count" : 1
+  }, {
+    "source" : "duplicate16",
+    "target" : "[src/main/java/org/junit/runners/model/TestClass.java]",
+    "count" : 1
+  } ]
+}
+
+    const maxNodeSize = gData.nodes.map(n => n.size).reduce((a, b) => Math.max(a, b));
+    const maxCount = gData.links.map(l => l.count).reduce((a, b) => Math.max(a, b));
+
+    gData.links = gData.links.map(l => {
+        return {source: l.target, target: l.source, count: l.count}
+    });
+    const colorOf = (node) => {
+        if (!node.id.startsWith("[")) return "rgba(135, 206, 235, 0.6)";
+        return "rgba(100,100,100,0.6)";
+    }
+
+    const elem = document.getElementById('graph');
+    const Graph = ForceGraph()(elem)
+        .graphData(gData)
+        .nodeRelSize(4)
+        .nodeVal(n => Math.max(20 * n.size / maxNodeSize, 0.001))
+        .nodeLabel(n => n.id + " (" + n.size + ")")
+        .nodeColor(n => colorOf(n))
+        .linkDirectionalParticles(1)
+        .linkDirectionalParticleSpeed(d => d.count / maxCount * 0.01)
+        .linkOpacity(0.1)
+        .linkWidth(d => 3 * d.count / maxCount + 0.1);
+
+</script>
+</body>

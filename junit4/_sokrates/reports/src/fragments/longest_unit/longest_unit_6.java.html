@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>public File newFolder()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public File newFolder()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/rules/TemporaryFolder.java [187:226]</i></p>
+<ul>
+    <li><b>33</b> lines of code</li>
+    <li><b>9</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public File newFolder(String... paths) throws IOException {
+        if (paths.length == 0) {
+            throw new IllegalArgumentException(&quot;must pass at least one path&quot;);
+        }
+
+        /*
+         * Before checking if the paths are absolute paths, check if create() was ever called,
+         * and if it wasn't, throw IllegalStateException.
+         */
+        File root = getRoot();
+        for (String path : paths) {
+            if (new File(path).isAbsolute()) {
+                throw new IOException(&quot;folder path \'&quot; + path + &quot;\' is not a relative path&quot;);
+            }
+        }
+
+        File relativePath = null;
+        File file = root;
+        boolean lastMkdirsCallSuccessful = true;
+        for (String path : paths) {
+            relativePath = new File(relativePath, path);
+            file = new File(root, relativePath.getPath());
+
+            lastMkdirsCallSuccessful = file.mkdirs();
+            if (!lastMkdirsCallSuccessful &amp;&amp; !file.isDirectory()) {
+                if (file.exists()) {
+                    throw new IOException(
+                            &quot;a file with the path \'&quot; + relativePath.getPath() + &quot;\' exists&quot;);
+                } else {
+                    throw new IOException(
+                            &quot;could not create a folder with the path \'&quot; + relativePath.getPath() + &quot;\'&quot;);
+                }
+            }
+        }
+        if (!lastMkdirsCallSuccessful) {
+            throw new IOException(
+                    &quot;a folder with the path \'&quot; + relativePath.getPath() + &quot;\' already exists&quot;);
+        }
+        return file;
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
