@@ -1,25 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import React from 'react';
-import { useCart } from '../cartContext/CartContext';
-import './ProduitCard.css';
-
-export default function ProduitCard({ produit }) {
-    const { addToCart } = useCart();
-
-    return (
-        <div className="produit-card">
-            <img src={produit.image} alt={produit.name} />
-            <h3>{produit.name}</h3>
-            <p>{produit.description}</p>
-            <strong>{produit.price} $</strong>
-            <br />
-            <button onClick={() => addToCart(produit)}>Ajouter au panier</button>
-        </div>
-    );
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+// src/frontend/produitCard/ProduitCard.jsx
 import { useEffect, useState } from "react";
 import { PRODUIT } from "../../data/produitList";
 import { useCart } from "../cart/CartContext";
@@ -48,8 +27,4 @@ export default function ProduitList() {
       ))}
     </div>
   );
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
 }

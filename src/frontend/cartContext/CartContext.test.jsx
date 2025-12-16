@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 import { CartProvider, useCart } from "./CartContext";
 import { describe, it, expect } from "vitest";
 
-// Composant test pour accéder au contexte
 function TestComponent() {
   const { cart, addToCart, removeFromCart, clearCart } = useCart();
 

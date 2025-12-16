@@ -1,119 +1,53 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { createContext, useCallback, useEffect, useState, useContext } from "react";
-=======
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
->>>>>>> origin/temp-visualiser-fix
+// src/frontend/AuthContext.jsx
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 
-export const AuthContext = createContext();
-export const useAuth = () => useContext(AuthContext);
+export const AuthContext = createContext(null);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-const API = "http://localhost:4000/api";
-
-const getToken = () => localStorage.getItem("token");
-const authHeader = () => {
-  const t = getToken();
-  return t ? { Authorization: `Bearer ${t}` } : {};
-};
-
-async function getJSON(path) {
-  const r = await fetch(API + path, { headers: { ...authHeader() } });
-  const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(data.error || `Erreur ${r.status}`);
-  return data;
+export function useAuth() {
+  return useContext(AuthContext);
 }
 
-async function postJSON(path, body, { withAuth = true } = {}) {
-  const headers = { "Content-Type": "application/json", ...(withAuth ? authHeader() : {}) };
-  const r = await fetch(API + path, { method: "POST", headers, body: JSON.stringify(body ?? {}) });
-  const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(data.error || `Erreur ${r.status}`);
-  return data;
-}
-
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  // me si token présent
-  useEffect(() => {
-    (async () => {
-      try {
-        if (getToken()) setUser(await getJSON("/auth/me"));
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
-
-  const signup = useCallback(async (email, password) => {
-    const { token, user } = await postJSON("/auth/signup", { email, password }, { withAuth: false });
-    localStorage.setItem("token", token);
-    setUser(user);
-  }, []);
-
-  const login = useCallback(async (email, password) => {
-    const { token, user } = await postJSON("/auth/login", { email, password }, { withAuth: false });
-    localStorage.setItem("token", token);
-    setUser(user);
-  }, []);
-
-  const logout = useCallback(async () => {
-    try { await postJSON("/auth/logout", {}); } catch {}
-    localStorage.removeItem("token");
-    setUser(null);
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{
-      user,
-      isLoggedIn: !!user,
-      email: user?.email ?? null,
-      loading,
-      signup, login, logout
-    }}>
-      {children}
-    </AuthContext.Provider>
-  );
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    let ignore = false;
+    let mounted = true;
+
     (async () => {
       const { data } = await supabase.auth.getSession();
-      if (!ignore) {
+      if (mounted) {
         setUser(data?.session?.user ?? null);
         setInitializing(false);
       }
     })();
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+
+    const { data: subscription } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+
     return () => {
-      ignore = true;
-      sub?.subscription?.unsubscribe();
+      mounted = false;
+      subscription?.subscription?.unsubscribe();
     };
   }, []);
 
   async function login(email, password) {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
     if (error) throw error;
   }
 
   async function signup(email, password) {
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
     if (error) throw error;
   }
 
@@ -122,13 +56,21 @@ export function AuthProvider({ children }) {
     if (error) throw error;
   }
 
-  const value = useMemo(() => ({
-    user, initializing, login, signup, logout
-  }), [user, initializing]);
+  const value = useMemo(
+    () => ({
+      user,
+      initializing,
+      isLoggedIn: !!user,
+      login,
+      signup,
+      logout,
+    }),
+    [user, initializing]
+  );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
 }

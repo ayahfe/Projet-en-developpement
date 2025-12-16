@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-const ModifyPrescription = () => {
-  const modifyPrescriptionSubmitHandler = () => {};
-=======
 import "../addPrescription/AddPrescription.css";
 
 const ModifyPrescription = () => {
@@ -10,77 +5,75 @@ const ModifyPrescription = () => {
     event.preventDefault();
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd.entries());
-    console.log("login", data);
+    console.log("prescription modifiée", data);
     event.target.reset();
   };
->>>>>>> origin/temp-visualiser-fix
+
   return (
     <form className="form-rx" onSubmit={modifyPrescriptionSubmitHandler}>
       <h2>Modifier une Prescription</h2>
+
       <div className="control champs">
         <div className="row-rx">
-          <div className="column-rx ">
+          <div className="column-rx">
             <h3>Informations Patient</h3>
-            <label htmlFor="title">Nom de l'institut</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Date</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Numéro de RAMQ</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Nom</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Prénom</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Téléphone</label>
-            <input id="title" type="title" name="title" required />
+
+            <label>Nom de l'institut</label>
+            <input name="institut" required />
+
+            <label>Date</label>
+            <input type="date" name="date" required />
+
+            <label>Numéro de RAMQ</label>
+            <input name="ramq" required />
+
+            <label>Nom</label>
+            <input name="nom" required />
+
+            <label>Prénom</label>
+            <input name="prenom" required />
+
+            <label>Téléphone</label>
+            <input name="telephone" required />
           </div>
+
           <div className="column-rx">
             <h3>Informations Prescription</h3>
-            <label htmlFor="title">Nom de la molécule</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Force</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Quantité</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Renouvellement</label>
-            <input id="title" type="title" name="title" required />
-            <label htmlFor="title">Posologie</label>
-            <input id="title" type="title" name="title" required />
+
+            <label>Nom de la molécule</label>
+            <input name="molecule" required />
+
+            <label>Force</label>
+            <input name="force" required />
+
+            <label>Quantité</label>
+            <input name="quantite" required />
+
+            <label>Renouvellement</label>
+            <input name="renouvellement" required />
+
+            <label>Posologie</label>
+            <input name="posologie" required />
           </div>
         </div>
+
         <div className="column-rx-signature">
-<<<<<<< HEAD
-<h3>Signature</h3>
-        <div className="row-rx">
-          <div className="row-rx-signature">
-<label htmlFor="title">Nom du médecin</label>
-        <input id="title" type="title" name="title" required />
-        
-          </div>
-          <div className="row-rx-signature">
-<label htmlFor="title">License</label>
-        <input id="title" type="title" name="title" required />
-
-          </div>
-        </div>
-        </div>
-        
-
-=======
           <h3>Signature</h3>
+
           <div className="row-rx">
             <div className="row-rx-signature">
-              <label htmlFor="title">Nom du médecin</label>
-              <input id="title" type="title" name="title" required />
+              <label>Nom du médecin</label>
+              <input name="medecin" required />
             </div>
+
             <div className="row-rx-signature">
-              <label htmlFor="title">License</label>
-              <input id="title" type="title" name="title" required />
+              <label>Licence</label>
+              <input name="licence" required />
             </div>
           </div>
         </div>
->>>>>>> origin/temp-visualiser-fix
       </div>
+
       <div className="row">
         <p className="form">
           <button type="submit" className="button">
@@ -91,8 +84,5 @@ const ModifyPrescription = () => {
     </form>
   );
 };
-<<<<<<< HEAD
+
 export default ModifyPrescription;
-=======
-export default ModifyPrescription;
->>>>>>> origin/temp-visualiser-fix

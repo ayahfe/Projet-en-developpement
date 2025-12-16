@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-// src/frontend/prescription/showPrescription/ShowPrescription.jsx
-import React from "react";
-
-export default function ShowPrescription() {
-  return (
-    <div className="show-prescription">
-      <h2>Liste des prescriptions</h2>
-      {/* Ton contenu ici */}
-=======
 // ShowPrescription.jsx
 import { PRESCRIPTIONS } from "../../../data/prescriptions";
 import "./ShowPrescription.css";
@@ -64,7 +54,6 @@ export default function ShowPrescriptionList() {
           <ShowPrescription key={p.id} prescription={p} />
         ))}
       </div>
->>>>>>> origin/temp-visualiser-fix
     </div>
   );
 }
