@@ -245,7 +245,7 @@ it("affiche un rendez-vous annulé avec la bonne classe", async () => {
 
   expect(card.closest(".apt-card")).toHaveClass("cancelled");
 });
-
+//TEST INTEGRATION 1
 it("permet à un utilisateur connecté d'ouvrir le formulaire de création", async () => {
   mockUseAuth.mockReturnValue({ user: { id: 1 } });
 
@@ -255,6 +255,39 @@ it("permet à un utilisateur connecté d'ouvrir le formulaire de création", asy
 
   expect(
     await screen.findByText(/Nouveau Rendez-vous/i)
+  ).toBeInTheDocument();
+});
+//TEST INTEGRATION 2
+it("empêche un utilisateur non connecté de créer un rendez-vous", async () => {
+  mockUseAuth.mockReturnValue({ user: null });
+
+  render(<CalendrierRdv />);
+
+  fireEvent.click(screen.getByText(/Nouveau RDV/i));
+
+  expect(global.alert).toHaveBeenCalled();
+});
+
+//TROISIEME TEST INTEGRATION 
+it("affiche un rendez-vous existant dans le calendrier", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  mockAppointments = [
+    {
+      id: 1,
+      patient_name: "Integration Test",
+      email: "i@test.com",
+      doctor_name: "Dr. Amal",
+      date: new Date().toISOString().split("T")[0],
+      time: "10:00",
+      status: "upcoming",
+    },
+  ];
+
+  render(<CalendrierRdv />);
+
+  expect(
+    await screen.findByText("Integration Test")
   ).toBeInTheDocument();
 });
 

@@ -4,38 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "dev:api": "node src/backend/server.js",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.78.0",
-    "bcryptjs": "^3.0.2",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "lucide-react": "^0.548.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.2"
-  },
-  "devDependencies": {
-=======
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
-  "dev": "vite",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "dev:api": "node src/backend/server.js",
-  "cy:open": "cypress open",
-  "cy:run": "cypress run"
-},
-
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
@@ -50,26 +28,18 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.7",
-<<<<<<< HEAD
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     "@eslint/js": "^9.35.0",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^5.0.2",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    "cypress": "^15.7.1",
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
-    "cypress": "^15.7.1",
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     "eslint": "^9.35.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.4.0",
-    "vite": "^7.1.6"
+    "jsdom": "^27.3.0",
+    "vite": "^7.1.6",
+    "vitest": "^4.0.16",
+    "cypress": "^15.7.1"
   }
 }
