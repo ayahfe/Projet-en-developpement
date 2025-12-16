@@ -78,5 +78,13 @@ describe("CartContext", () => {
 
     expect(screen.getByTestId("cart-length").textContent).toBe("0");
   });
+it("clearCart vide complètement le panier", async () => {
+  renderWithProvider();
+
+  await userEvent.click(screen.getByText("add"));
+  await userEvent.click(screen.getByText("clear"));
+
+  expect(screen.getByTestId("cart-length").textContent).toBe("0");
+});
 
 });
