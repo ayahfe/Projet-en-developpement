@@ -1,0 +1,102 @@
+doc/ReleaseNotes4.4.html [180:224]:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<pre><code>@RunWith(Theories.class)
+public class UserTest {
+  @DataPoint public static String GOOD_USERNAME = "optimus";
+  @DataPoint public static String USERNAME_WITH_SLASH = "optimus/prime";
+
+  @Theory public void filenameIncludesUsername(String username) {
+    assumeThat(username, not(containsString("/")));
+    assertThat(new User(username).configFileName(), containsString(username));
+  }
+}
+</code></pre>
+
+<p>This makes it clear that the user's filename should be included in the
+config file name, only if it doesn't contain a slash.  Another test
+or theory might define what happens when a username does contain a slash.</p>
+
+<p><code>UserTest</code> will attempt to run <code>filenameIncludesUsername</code> on 
+every compatible <code>DataPoint</code> defined in the class.  If any of the
+assumptions fail, the data point is silently ignored.  If all of the
+assumptions pass, but an assertion fails, the test fails.</p>
+
+<p>The support for Theories has been absorbed from the <a href="http://popper.tigris.org">Popper</a>
+project, and <a href="http://popper.tigris.org/tutorial.html">more complete documentation</a> can be found
+there.</p>
+
+<p>Defining general statements in this way can jog the developer's memory
+about other potential data points and tests, also allows <a href="http://www.junitfactory.org">automated
+tools</a> to <a href="http://shareandenjoy.saff.net/2007/04/popper-and-junitfactory.html">search</a> for new, unexpected data
+points that expose bugs.</p>
+
+<h3>Other changes</h3>
+
+<p>This release contains other bug fixes and new features.  Among them:</p>
+
+<ul>
+<li><p>Annotated descriptions</p>
+
+<p>Runner UIs, Filters, and Sorters operate on Descriptions of test
+methods and test classes.  These Descriptions now include the
+annotations on the original Java source element, allowing for richer
+display of test results, and easier development of annotation-based
+filters.</p></li>
+<li><p>Bug fix (1715326): assertEquals now compares all Numbers using their
+native implementation of <code>equals</code>.  This assertion, which passed in
+4.3, will now fail:</p>
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+doc/ReleaseNotes4.5.html [232:276]:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<pre><code>@RunWith(Theories.class)
+public class UserTest {
+  @DataPoint public static String GOOD_USERNAME = "optimus";
+  @DataPoint public static String USERNAME_WITH_SLASH = "optimus/prime";
+
+  @Theory public void filenameIncludesUsername(String username) {
+    assumeThat(username, not(containsString("/")));
+    assertThat(new User(username).configFileName(), containsString(username));
+  }
+}
+</code></pre>
+
+<p>This makes it clear that the user's filename should be included in the
+config file name, only if it doesn't contain a slash.  Another test
+or theory might define what happens when a username does contain a slash.</p>
+
+<p><code>UserTest</code> will attempt to run <code>filenameIncludesUsername</code> on 
+every compatible <code>DataPoint</code> defined in the class.  If any of the
+assumptions fail, the data point is silently ignored.  If all of the
+assumptions pass, but an assertion fails, the test fails.</p>
+
+<p>The support for Theories has been absorbed from the <a href="http://popper.tigris.org">Popper</a>
+project, and <a href="http://popper.tigris.org/tutorial.html">more complete documentation</a> can be found
+there.</p>
+
+<p>Defining general statements in this way can jog the developer's memory
+about other potential data points and tests, also allows <a href="http://www.junitfactory.org">automated
+tools</a> to <a href="http://shareandenjoy.saff.net/2007/04/popper-and-junitfactory.html">search</a> for new, unexpected data
+points that expose bugs.</p>
+
+<h3>Other changes</h3>
+
+<p>This release contains other bug fixes and new features.  Among them:</p>
+
+<ul>
+<li><p>Annotated descriptions</p>
+
+<p>Runner UIs, Filters, and Sorters operate on Descriptions of test
+methods and test classes.  These Descriptions now include the
+annotations on the original Java source element, allowing for richer
+display of test results, and easier development of annotation-based
+filters.</p></li>
+<li><p>Bug fix (1715326): assertEquals now compares all Numbers using their
+native implementation of <code>equals</code>.  This assertion, which passed in
+4.3, will now fail:</p>
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+

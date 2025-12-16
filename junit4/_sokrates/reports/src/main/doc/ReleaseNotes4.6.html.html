@@ -1,0 +1,132 @@
+<html>
+<head>
+    <title>doc/ReleaseNotes4.6.html</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">doc/ReleaseNotes4.6.html (<b>83</b> lines of code) (<a href="ReleaseNotes4.6.html">raw</a>):</h3>
+<div id="editor">&lt;h2&gt;Summary of Changes in version 4.6&lt;/h2&gt;
+
+&lt;h3&gt;Max&lt;/h3&gt;
+
+&lt;p&gt;JUnit now includes a new experimental Core, &lt;code&gt;MaxCore&lt;/code&gt;.  &lt;code&gt;MaxCore&lt;/code&gt;
+remembers the results of previous test runs in order to run new
+tests out of order.  &lt;code&gt;MaxCore&lt;/code&gt; prefers new tests to old tests, fast
+tests to slow tests, and recently failing tests to tests that last
+failed long ago.  There's currently not a standard UI for running
+&lt;code&gt;MaxCore&lt;/code&gt; included in JUnit, but there is a UI included in the JUnit
+Max Eclipse plug-in at:&lt;/p&gt;
+
+&lt;p&gt;http://www.junitmax.com/junitmax/subscribe.html&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static class TwoUnEqualTests {
+    @Test
+    public void slow() throws InterruptedException {
+        Thread.sleep(100);
+        fail();
+    }
+
+    @Test
+    public void fast() {
+        fail();
+    }
+}
+
+@Test
+public void rememberOldRuns() {
+    File maxFile = new File(&quot;history.max&quot;);
+    MaxCore firstMax = MaxCore.storedLocally(maxFile);
+    firstMax.run(TwoUnEqualTests.class);
+
+    MaxCore useHistory= MaxCore.storedLocally(maxFile);
+    List&amp;lt;Failure&amp;gt; failures= useHistory.run(TwoUnEqualTests.class)
+            .getFailures();
+    assertEquals(&quot;fast&quot;, failures.get(0).getDescription().getMethodName());
+    assertEquals(&quot;slow&quot;, failures.get(1).getDescription().getMethodName());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Test scheduling strategies&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;JUnitCore&lt;/code&gt; now includes an experimental method that allows you to
+specify a model of the &lt;code&gt;Computer&lt;/code&gt; that runs your tests.  Currently,
+the only built-in Computers are the default, serial runner, and two
+runners provided in the &lt;code&gt;ParallelRunner&lt;/code&gt; class:
+&lt;code&gt;ParallelRunner.classes()&lt;/code&gt;, which runs classes in parallel, and
+&lt;code&gt;ParallelRunner.methods()&lt;/code&gt;, which runs classes and methods in parallel.&lt;/p&gt;
+
+&lt;p&gt;This feature is currently less stable than MaxCore, and may be
+merged with MaxCore in some way in the future.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static class Example {
+    @Test public void one() throws InterruptedException {
+        Thread.sleep(1000);
+    }
+    @Test public void two() throws InterruptedException {
+        Thread.sleep(1000);
+    }
+}
+
+@Test public void testsRunInParallel() {
+    long start= System.currentTimeMillis();
+    Result result= JUnitCore.runClasses(ParallelComputer.methods(),
+            Example.class);
+    assertTrue(result.wasSuccessful());
+    long end= System.currentTimeMillis();
+    assertThat(end - start, betweenInclusive(1000, 1500));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Comparing double arrays&lt;/h3&gt;
+
+&lt;p&gt;Arrays of doubles can be compared, using a delta allowance for equality:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void doubleArraysAreEqual() {
+    assertArrayEquals(new double[] {1.0, 2.0}, new double[] {1.0, 2.0}, 0.01);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;&lt;code&gt;Filter.matchDescription&lt;/code&gt; API&lt;/h3&gt;
+
+&lt;p&gt;Since 4.0, it has been possible to run a single method using the &lt;code&gt;Request.method&lt;/code&gt; 
+API.  In 4.6, the filter that implements this is exposed as &lt;code&gt;Filter.matchDescription&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Documentation&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A couple classes and packages that once had empty javadoc have been
+doc'ed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added how to run JUnit from the command line to the cookbook.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;junit-4.x.zip now contains build.xml&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Bug fixes&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fixed overly permissive @DataPoint processing (2191102)&lt;/li&gt;
+&lt;li&gt;Fixed bug in test counting after an ignored method (2106324)&lt;/li&gt;
+&lt;/ul&gt;
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/html");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

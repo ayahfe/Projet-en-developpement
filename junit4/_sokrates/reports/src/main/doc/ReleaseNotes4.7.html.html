@@ -1,0 +1,255 @@
+<html>
+<head>
+    <title>doc/ReleaseNotes4.7.html</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">doc/ReleaseNotes4.7.html (<b>170</b> lines of code) (<a href="ReleaseNotes4.7.html">raw</a>):</h3>
+<div id="editor">&lt;h2&gt;Summary of Changes in version 4.7&lt;/h2&gt;
+
+&lt;h3&gt;Rules&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Rules allow very flexible addition or redefinition of the behavior
+of each test method in a test class.  Testers can reuse or extend one of the 
+provided Rules below, or write their own.&lt;/p&gt;
+
+&lt;p&gt;For more on this feature, see http://www.threeriversinstitute.org/blog/?p=155&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The TemporaryFolder Rule allows creation of files and folders
+that are guaranteed to be deleted when the test method finishes
+(whether it passes or fails):&lt;/p&gt;
+
+&lt;p&gt;public static class HasTempFolder {
+    @Rule
+    public TemporaryFolder folder= new TemporaryFolder();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void testUsingTempFolder() throws IOException {
+    File createdFile= folder.newFile(&quot;myfile.txt&quot;);
+    File createdFolder= folder.newFolder(&quot;subfolder&quot;);
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ExternalResource is a base class for Rules (like TemporaryFolder)
+that set up an external resource before a test (a file, socket, server,
+database connection, etc.), and guarantee to tear it down afterward:&lt;/p&gt;
+
+&lt;p&gt;public static class UsesExternalResource {
+    Server myServer = new Server();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Rule public ExternalResource resource = new ExternalResource() {
+    @Override
+    protected void before() throws Throwable {
+        myServer.connect();
+    };
+
+
+&lt;pre&gt;&lt;code&gt;@Override
+protected void after() {
+    myServer.disconnect();
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+};
+
+
+@Test public void testFoo() {
+    new Client().run(myServer);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The ErrorCollector Rule allows execution of a test to continue
+after the first problem is found (for example, to collect &lt;em&gt;all&lt;/em&gt; the 
+incorrect rows in a table, and report them all at once):&lt;/p&gt;
+
+&lt;p&gt;public static class UsesErrorCollectorTwice {
+    @Rule
+    public ErrorCollector collector= new ErrorCollector();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test public void example() {
+    collector.addError(new Throwable(&quot;first thing went wrong&quot;));
+    collector.addError(new Throwable(&quot;second thing went wrong&quot;));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Verifier is a base class for Rules like ErrorCollector, which
+can turn otherwise passing test methods into failing tests if a verification
+check is failed&lt;/p&gt;
+
+&lt;p&gt;public static class ErrorLogVerifier() {
+   private ErrorLog errorLog = new ErrorLog();&lt;/p&gt;
+
+&lt;p&gt;@Rule
+   public MethodRule verifier = new Verifier() {
+      @Override public void verify() {
+         assertTrue(errorLog.isEmpty());
+      }
+   }&lt;/p&gt;
+
+&lt;p&gt;@Test public void testThatMightWriteErrorLog() {
+      // ...
+   }
+}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TestWatchman is a base class for Rules that take note
+of the testing action, without modifying it.
+For example, this class will keep a log of each passing and failing 
+test:&lt;/p&gt;
+
+&lt;p&gt;public static class WatchmanTest {
+    private static String watchedLog;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Rule
+public MethodRule watchman= new TestWatchman() {
+    @Override
+    public void failed(Throwable e, FrameworkMethod method) {
+        watchedLog+= method.getName() + &quot; &quot;
+                + e.getClass().getSimpleName() + &quot;\n&quot;;
+    }
+
+
+&lt;pre&gt;&lt;code&gt;@Override
+public void succeeded(FrameworkMethod method) {
+    watchedLog+= method.getName() + &quot; &quot; + &quot;success!\n&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+};
+
+
+@Test
+public void fails() {
+    fail();
+}
+
+
+@Test
+public void succeeds() {
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The TestName Rule makes the current test name available inside test methods:&lt;/p&gt;
+
+&lt;p&gt;public class NameRuleTest {
+    @Rule public TestName name = new TestName();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test public void testA() {
+    assertEquals(&quot;testA&quot;, name.getMethodName());
+}
+
+
+@Test public void testB() {
+    assertEquals(&quot;testB&quot;, name.getMethodName());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The Timeout Rule applies the same timeout to all test methods in a class:&lt;/p&gt;
+
+&lt;p&gt;public static class HasGlobalTimeout {
+    public static String log;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Rule public MethodRule globalTimeout = new Timeout(20);
+
+
+@Test public void testInfiniteLoop1() {
+    log+= &quot;ran1&quot;;
+    for(;;) {}
+}
+
+
+@Test public void testInfiniteLoop2() {
+    log+= &quot;ran2&quot;;
+    for(;;) {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The ExpectedException Rule allows in-test specification
+of expected exception types and messages:&lt;/p&gt;
+
+&lt;p&gt;public static class HasExpectedException {
+    @Rule
+    public ExpectedException thrown= ExpectedException.none();&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Test
+public void throwsNothing() {
+
+
+}
+
+
+@Test
+public void throwsNullPointerException() {
+    thrown.expect(NullPointerException.class);
+    throw new NullPointerException();
+}
+
+
+@Test
+public void throwsNullPointerExceptionWithMessage() {
+    thrown.expect(NullPointerException.class);
+    thrown.expectMessage(&quot;happened?&quot;);
+    thrown.expectMessage(startsWith(&quot;What&quot;));
+    throw new NullPointerException(&quot;What happened?&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Timeouts&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tests that time out now show the stack trace of the test thread.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Matchers&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Due to typing incompatibilities, JUnit is still including the 1.1 release
+of hamcrest.  This is not a change from 4.6, but is a change from
+pre-beta releases of 4.7.  Due to this incompatibility, tests using
+Hamcrest 1.2 must still use the MatcherAssert.assertThat method from 
+Hamcrest, not Assert.assertThat from JUnit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Docs&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Javadocs now link to online JDK javadocs (bug 2090230)&lt;/li&gt;
+&lt;li&gt;Parameterized runner javadocs improved (bug 2186792)&lt;/li&gt;
+&lt;li&gt;Fixed Javadoc code sample for AfterClass (2126279)&lt;/li&gt;
+&lt;li&gt;Fixed Javadoc for assertArraysEqual(float[], float[])&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Bug fixes&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fixed: BaseTestRunner.getTest() requires class to extend TestCase (1812200)&lt;/li&gt;
+&lt;li&gt;Fixed: Suite does not allow for inheritance in annotations (2783118)&lt;/li&gt;
+&lt;li&gt;Fixed: ParallelComputer skipped tests that took longer than 2 seconds&lt;/li&gt;
+&lt;/ul&gt;
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/html");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

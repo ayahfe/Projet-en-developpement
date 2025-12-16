@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>public TestResult start()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public TestResult start()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/junit/textui/TestRunner.java [152:187]</i></p>
+<ul>
+    <li><b>33</b> lines of code</li>
+    <li><b>9</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public TestResult start(String[] args) throws Exception {
+        String testCase = &quot;&quot;;
+        String method = &quot;&quot;;
+        boolean wait = false;
+
+        for (int i = 0; i &lt; args.length; i++) {
+            if (args[i].equals(&quot;-wait&quot;)) {
+                wait = true;
+            } else if (args[i].equals(&quot;-c&quot;)) {
+                testCase = extractClassName(args[++i]);
+            } else if (args[i].equals(&quot;-m&quot;)) {
+                String arg = args[++i];
+                int lastIndex = arg.lastIndexOf('.');
+                testCase = arg.substring(0, lastIndex);
+                method = arg.substring(lastIndex + 1);
+            } else if (args[i].equals(&quot;-v&quot;)) {
+                System.err.println(&quot;JUnit &quot; + Version.id() + &quot; by Kent Beck and Erich Gamma&quot;);
+            } else {
+                testCase = args[i];
+            }
+        }
+
+        if (testCase.equals(&quot;&quot;)) {
+            throw new Exception(&quot;Usage: TestRunner [-wait] testCaseName, where name is the name of the TestCase class&quot;);
+        }
+
+        try {
+            if (!method.equals(&quot;&quot;)) {
+                return runSingleMethod(testCase, method, wait);
+            }
+            Test suite = getTest(testCase);
+            return doRun(suite, wait);
+        } catch (Exception e) {
+            throw new Exception(&quot;Could not create and run test suite: &quot; + e);
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
