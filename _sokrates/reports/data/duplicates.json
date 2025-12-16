@@ -1,0 +1,470 @@
+{
+  "title" : "Duplication",
+  "timestamp" : "2025-11-19 21:03:57",
+  "duplicates" : [ {
+    "blockSize" : 35,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 180,
+      "endLine" : 224,
+      "cleanedStartLine" : 126,
+      "cleanedEndLine" : 160
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 232,
+      "endLine" : 276,
+      "cleanedStartLine" : 174,
+      "cleanedEndLine" : 208
+    } ]
+  }, {
+    "blockSize" : 23,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 237,
+      "endLine" : 263,
+      "cleanedStartLine" : 168,
+      "cleanedEndLine" : 190
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 287,
+      "endLine" : 313,
+      "cleanedStartLine" : 216,
+      "cleanedEndLine" : 238
+    } ]
+  }, {
+    "blockSize" : 16,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 133,
+      "endLine" : 152,
+      "cleanedStartLine" : 91,
+      "cleanedEndLine" : 106
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 186,
+      "endLine" : 205,
+      "cleanedStartLine" : 139,
+      "cleanedEndLine" : 154
+    } ]
+  }, {
+    "blockSize" : 14,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 70,
+      "endLine" : 87,
+      "cleanedStartLine" : 45,
+      "cleanedEndLine" : 58
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 119,
+      "endLine" : 136,
+      "cleanedStartLine" : 88,
+      "cleanedEndLine" : 101
+    } ]
+  }, {
+    "blockSize" : 13,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/junit/framework/Assert.java",
+        "extension" : "java",
+        "linesOfCode" : 161,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 106,
+      "startLine" : 9,
+      "endLine" : 54,
+      "cleanedStartLine" : 2,
+      "cleanedEndLine" : 14
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/Assert.java",
+        "extension" : "java",
+        "linesOfCode" : 359,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 252,
+      "startLine" : 25,
+      "endLine" : 86,
+      "cleanedStartLine" : 1,
+      "cleanedEndLine" : 13
+    } ]
+  }, {
+    "blockSize" : 12,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 49,
+      "endLine" : 68,
+      "cleanedStartLine" : 32,
+      "cleanedEndLine" : 43
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 98,
+      "endLine" : 117,
+      "cleanedStartLine" : 75,
+      "cleanedEndLine" : 86
+    } ]
+  }, {
+    "blockSize" : 8,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 111,
+      "endLine" : 118,
+      "cleanedStartLine" : 73,
+      "cleanedEndLine" : 80
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 162,
+      "endLine" : 169,
+      "cleanedStartLine" : 118,
+      "cleanedEndLine" : 125
+    } ]
+  }, {
+    "blockSize" : 8,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/internal/runners/ClassRoadie.java",
+        "extension" : "java",
+        "linesOfCode" : 67,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 45,
+      "startLine" : 58,
+      "endLine" : 69,
+      "cleanedStartLine" : 30,
+      "cleanedEndLine" : 37
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/internal/runners/MethodRoadie.java",
+        "extension" : "java",
+        "linesOfCode" : 144,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 101,
+      "startLine" : 135,
+      "endLine" : 146,
+      "cleanedStartLine" : 84,
+      "cleanedEndLine" : 91
+    } ]
+  }, {
+    "blockSize" : 8,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/runners/model/TestClass.java",
+        "extension" : "java",
+        "linesOfCode" : 239,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 162,
+      "startLine" : 315,
+      "endLine" : 324,
+      "cleanedStartLine" : 146,
+      "cleanedEndLine" : 153
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/runners/parameterized/TestWithParameters.java",
+        "extension" : "java",
+        "linesOfCode" : 57,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 40,
+      "startLine" : 55,
+      "endLine" : 64,
+      "cleanedStartLine" : 25,
+      "cleanedEndLine" : 32
+    } ]
+  }, {
+    "blockSize" : 7,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 119,
+      "endLine" : 125,
+      "cleanedStartLine" : 81,
+      "cleanedEndLine" : 87
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 173,
+      "endLine" : 179,
+      "cleanedStartLine" : 129,
+      "cleanedEndLine" : 135
+    } ]
+  }, {
+    "blockSize" : 7,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/junit/framework/ComparisonFailure.java",
+        "extension" : "java",
+        "linesOfCode" : 22,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 16,
+      "startLine" : 34,
+      "endLine" : 54,
+      "cleanedStartLine" : 10,
+      "cleanedEndLine" : 16
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/ComparisonFailure.java",
+        "extension" : "java",
+        "linesOfCode" : 98,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 73,
+      "startLine" : 47,
+      "endLine" : 67,
+      "cleanedStartLine" : 10,
+      "cleanedEndLine" : 16
+    } ]
+  }, {
+    "blockSize" : 6,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 39,
+      "endLine" : 45,
+      "cleanedStartLine" : 25,
+      "cleanedEndLine" : 30
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 90,
+      "endLine" : 96,
+      "cleanedStartLine" : 69,
+      "cleanedEndLine" : 74
+    } ]
+  }, {
+    "blockSize" : 6,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/junit/framework/ComparisonFailure.java",
+        "extension" : "java",
+        "linesOfCode" : 22,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 16,
+      "startLine" : 9,
+      "endLine" : 23,
+      "cleanedStartLine" : 2,
+      "cleanedEndLine" : 7
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/ComparisonFailure.java",
+        "extension" : "java",
+        "linesOfCode" : 98,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 73,
+      "startLine" : 18,
+      "endLine" : 37,
+      "cleanedStartLine" : 2,
+      "cleanedEndLine" : 7
+    } ]
+  }, {
+    "blockSize" : 6,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.4.html",
+        "extension" : "html",
+        "linesOfCode" : 212,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 195,
+      "startLine" : 156,
+      "endLine" : 162,
+      "cleanedStartLine" : 108,
+      "cleanedEndLine" : 113
+    }, {
+      "file" : {
+        "relativePath" : "doc/ReleaseNotes4.5.html",
+        "extension" : "html",
+        "linesOfCode" : 261,
+        "components" : [ "primary::doc" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 243,
+      "startLine" : 209,
+      "endLine" : 215,
+      "cleanedStartLine" : 156,
+      "cleanedEndLine" : 161
+    } ]
+  }, {
+    "blockSize" : 6,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/junit/framework/Assert.java",
+        "extension" : "java",
+        "linesOfCode" : 161,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 106,
+      "startLine" : 284,
+      "endLine" : 296,
+      "cleanedStartLine" : 83,
+      "cleanedEndLine" : 88
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/Assert.java",
+        "extension" : "java",
+        "linesOfCode" : 359,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 252,
+      "startLine" : 768,
+      "endLine" : 783,
+      "cleanedStartLine" : 164,
+      "cleanedEndLine" : 169
+    } ]
+  }, {
+    "blockSize" : 6,
+    "duplicatedFileBlocks" : [ {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/internal/runners/TestClass.java",
+        "extension" : "java",
+        "linesOfCode" : 88,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 51,
+      "startLine" : 88,
+      "endLine" : 94,
+      "cleanedStartLine" : 40,
+      "cleanedEndLine" : 45
+    }, {
+      "file" : {
+        "relativePath" : "src/main/java/org/junit/runners/model/TestClass.java",
+        "extension" : "java",
+        "linesOfCode" : 239,
+        "components" : [ "primary::src" ],
+        "concerns" : [ "::Unclassified" ]
+      },
+      "sourceFileCleanedLinesOfCode" : 162,
+      "startLine" : 172,
+      "endLine" : 178,
+      "cleanedStartLine" : 75,
+      "cleanedEndLine" : 80
+    } ]
+  } ],
+  "overallDuplication" : null
+}

@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>public void describeTo()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public void describeTo()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/internal/AssumptionViolatedException.java [94:113]</i></p>
+<ul>
+    <li><b>16</b> lines of code</li>
+    <li><b>5</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public void describeTo(Description description) {
+        if (fAssumption != null) {
+            description.appendText(fAssumption);
+        }
+
+        if (fValueMatcher) {
+            // a value was passed in when this instance was constructed; print it
+            if (fAssumption != null) {
+                description.appendText(&quot;: &quot;);
+            }
+
+            description.appendText(&quot;got: &quot;);
+            description.appendValue(fValue);
+
+            if (fMatcher != null) {
+                description.appendText(&quot;, expected: &quot;);
+                description.appendDescriptionOf(fMatcher);
+            }
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

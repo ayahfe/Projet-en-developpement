@@ -1,0 +1,1667 @@
+[ {
+  "relativePath" : "doc/testinfected/testing.htm",
+  "extension" : "htm",
+  "linesOfCode" : 582,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/AllTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/extensions/ActiveTestTest.java",
+  "extension" : "java",
+  "linesOfCode" : 52,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/extensions/AllTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/extensions/ExtensionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 80,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/extensions/package-info.java",
+  "extension" : "java",
+  "linesOfCode" : 1,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/extensions/RepeatedTestTest.java",
+  "extension" : "java",
+  "linesOfCode" : 50,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/AllTests.java",
+  "extension" : "java",
+  "linesOfCode" : 23,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/AssertionFailedErrorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 18,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/AssertTest.java",
+  "extension" : "java",
+  "linesOfCode" : 156,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/ComparisonCompactorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 81,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/ComparisonFailureTest.java",
+  "extension" : "java",
+  "linesOfCode" : 39,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/DoublePrecisionAssertTest.java",
+  "extension" : "java",
+  "linesOfCode" : 46,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/Failure.java",
+  "extension" : "java",
+  "linesOfCode" : 8,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/FloatAssertTest.java",
+  "extension" : "java",
+  "linesOfCode" : 49,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/InheritedTestCase.java",
+  "extension" : "java",
+  "linesOfCode" : 5,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/NoArgTestCaseTest.java",
+  "extension" : "java",
+  "linesOfCode" : 6,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/NoTestCaseClass.java",
+  "extension" : "java",
+  "linesOfCode" : 5,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/NoTestCases.java",
+  "extension" : "java",
+  "linesOfCode" : 6,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/NotPublicTestCase.java",
+  "extension" : "java",
+  "linesOfCode" : 8,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/NotVoidTestCase.java",
+  "extension" : "java",
+  "linesOfCode" : 9,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/OneTestCase.java",
+  "extension" : "java",
+  "linesOfCode" : 10,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/OverrideTestCase.java",
+  "extension" : "java",
+  "linesOfCode" : 6,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/package-info.java",
+  "extension" : "java",
+  "linesOfCode" : 1,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/Success.java",
+  "extension" : "java",
+  "linesOfCode" : 9,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/SuiteTest.java",
+  "extension" : "java",
+  "linesOfCode" : 94,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/TestCaseTest.java",
+  "extension" : "java",
+  "linesOfCode" : 170,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/TestImplementorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 43,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/TestListenerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 66,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/framework/ThreeTestCases.java",
+  "extension" : "java",
+  "linesOfCode" : 10,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/package-info.java",
+  "extension" : "java",
+  "linesOfCode" : 1,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/AllTests.java",
+  "extension" : "java",
+  "linesOfCode" : 22,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/BaseTestRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 42,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/package-info.java",
+  "extension" : "java",
+  "linesOfCode" : 1,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/ResultTest.java",
+  "extension" : "java",
+  "linesOfCode" : 151,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/StackFilterTest.java",
+  "extension" : "java",
+  "linesOfCode" : 40,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/TextFeedbackTest.java",
+  "extension" : "java",
+  "linesOfCode" : 109,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/TextRunnerSingleMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 27,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/runner/TextRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 51,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/SampleJUnit3Tests.java",
+  "extension" : "java",
+  "linesOfCode" : 36,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/junit/tests/WasRun.java",
+  "extension" : "java",
+  "linesOfCode" : 9,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/AssumptionViolatedExceptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 167,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/AllCategoriesTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/CategoriesAndParameterizedTest.java",
+  "extension" : "java",
+  "linesOfCode" : 105,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/CategoryFilterFactoryTest.java",
+  "extension" : "java",
+  "linesOfCode" : 52,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/CategoryTest.java",
+  "extension" : "java",
+  "linesOfCode" : 470,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/CategoryValidatorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 68,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/JavadocTest.java",
+  "extension" : "java",
+  "linesOfCode" : 58,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/experimental/categories/MultiCategoryTest.java",
+  "extension" : "java",
+  "linesOfCode" : 135,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/AllInternalTests.java",
+  "extension" : "java",
+  "linesOfCode" : 25,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/ArrayComparisonFailureTest.java",
+  "extension" : "java",
+  "linesOfCode" : 41,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/builders/AnnotatedBuilderTest.java",
+  "extension" : "java",
+  "linesOfCode" : 86,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/ChecksTest.java",
+  "extension" : "java",
+  "linesOfCode" : 48,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/matchers/StacktracePrintingMatcherTest.java",
+  "extension" : "java",
+  "linesOfCode" : 31,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/matchers/ThrowableCauseMatcherTest.java",
+  "extension" : "java",
+  "linesOfCode" : 13,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/MethodSorterTest.java",
+  "extension" : "java",
+  "linesOfCode" : 141,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/runners/ErrorReportingRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 73,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/runners/statements/ExpectExceptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 67,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/runners/statements/FailOnTimeoutTest.java",
+  "extension" : "java",
+  "linesOfCode" : 221,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/internal/StackTracesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 270,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/AllRulesTests.java",
+  "extension" : "java",
+  "linesOfCode" : 29,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/BlockJUnit4ClassRunnerOverrideTest.java",
+  "extension" : "java",
+  "linesOfCode" : 129,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/ClassRulesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 295,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/DisableOnDebugTest.java",
+  "extension" : "java",
+  "linesOfCode" : 125,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/ErrorCollectorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 283,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/EventCollector.java",
+  "extension" : "java",
+  "linesOfCode" : 157,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/ExpectedExceptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 320,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/ExternalResourceRuleTest.java",
+  "extension" : "java",
+  "linesOfCode" : 149,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/LoggingMethodRule.java",
+  "extension" : "java",
+  "linesOfCode" : 14,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/LoggingStatement.java",
+  "extension" : "java",
+  "linesOfCode" : 20,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/LoggingTestRule.java",
+  "extension" : "java",
+  "linesOfCode" : 14,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/LoggingTestWatcher.java",
+  "extension" : "java",
+  "linesOfCode" : 33,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/MethodRulesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 318,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/NameRulesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 40,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/RuleChainTest.java",
+  "extension" : "java",
+  "linesOfCode" : 78,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/RuleMemberValidatorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 277,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/StopwatchTest.java",
+  "extension" : "java",
+  "linesOfCode" : 173,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TempFolderRuleTest.java",
+  "extension" : "java",
+  "linesOfCode" : 232,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TemporaryFolderRuleAssuredDeletionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 35,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TemporaryFolderUsageTest.java",
+  "extension" : "java",
+  "linesOfCode" : 243,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TestRuleTest.java",
+  "extension" : "java",
+  "linesOfCode" : 487,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TestWatcherTest.java",
+  "extension" : "java",
+  "linesOfCode" : 329,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TestWatchmanTest.java",
+  "extension" : "java",
+  "linesOfCode" : 73,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/TimeoutRuleTest.java",
+  "extension" : "java",
+  "linesOfCode" : 134,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/rules/VerifierRuleTest.java",
+  "extension" : "java",
+  "linesOfCode" : 29,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/AllRunnerTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/FilterFactoriesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 107,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/FilterOptionIntegrationTest.java",
+  "extension" : "java",
+  "linesOfCode" : 160,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/JUnitCommandLineParseResultTest.java",
+  "extension" : "java",
+  "linesOfCode" : 110,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/JUnitCoreTest.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/MainRunner.java",
+  "extension" : "java",
+  "linesOfCode" : 18,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/notification/AllNotificationTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/notification/ConcurrentRunNotifierTest.java",
+  "extension" : "java",
+  "linesOfCode" : 134,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/notification/RunNotifierTest.java",
+  "extension" : "java",
+  "linesOfCode" : 111,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/notification/SynchronizedRunListenerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 123,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/OrderWithValidatorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 40,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/RequestTest.java",
+  "extension" : "java",
+  "linesOfCode" : 36,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runner/RunnerSpy.java",
+  "extension" : "java",
+  "linesOfCode" : 28,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/AllRunnersTests.java",
+  "extension" : "java",
+  "linesOfCode" : 14,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/CustomBlockJUnit4ClassRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 56,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/model/AllModelTests.java",
+  "extension" : "java",
+  "linesOfCode" : 13,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/model/FrameworkFieldTest.java",
+  "extension" : "java",
+  "linesOfCode" : 48,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/model/FrameworkMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 50,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/model/InvalidTestClassErrorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 17,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/model/RunnerBuilderStub.java",
+  "extension" : "java",
+  "linesOfCode" : 9,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/model/TestClassTest.java",
+  "extension" : "java",
+  "linesOfCode" : 215,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/parameterized/AllParameterizedTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/parameterized/BlockJUnit4ClassRunnerWithParametersTest.java",
+  "extension" : "java",
+  "linesOfCode" : 67,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/parameterized/ParameterizedNamesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 39,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/parameterized/TestWithParametersTest.java",
+  "extension" : "java",
+  "linesOfCode" : 116,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/runners/RuleContainerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 57,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/AllTests.java",
+  "extension" : "java",
+  "linesOfCode" : 47,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/assertion/AllAssertionTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/assertion/AssertionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 864,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/assertion/ComparisonFailureTest.java",
+  "extension" : "java",
+  "linesOfCode" : 45,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/assertion/MultipleFailureExceptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 98,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/deprecated/AllDeprecatedTests.java",
+  "extension" : "java",
+  "linesOfCode" : 11,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/deprecated/JUnit4ClassRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 49,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/description/AllDescriptionTests.java",
+  "extension" : "java",
+  "linesOfCode" : 13,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/description/AnnotatedDescriptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 78,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/description/SuiteDescriptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 31,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/description/TestDescriptionMethodNameTest.java",
+  "extension" : "java",
+  "linesOfCode" : 38,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/description/TestDescriptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 19,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/AllExperimentalTests.java",
+  "extension" : "java",
+  "linesOfCode" : 23,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/AssumptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 256,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/MatcherTest.java",
+  "extension" : "java",
+  "linesOfCode" : 36,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/max/AllMaxTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/max/DescriptionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 99,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/max/JUnit38SortingTest.java",
+  "extension" : "java",
+  "linesOfCode" : 50,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java",
+  "extension" : "java",
+  "linesOfCode" : 247,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/parallel/AllParallelTests.java",
+  "extension" : "java",
+  "linesOfCode" : 11,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/parallel/ParallelClassTest.java",
+  "extension" : "java",
+  "linesOfCode" : 69,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/parallel/ParallelMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 51,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/results/AllResultsTests.java",
+  "extension" : "java",
+  "linesOfCode" : 11,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/results/PrintableResultTest.java",
+  "extension" : "java",
+  "linesOfCode" : 42,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/results/ResultMatchersTest.java",
+  "extension" : "java",
+  "linesOfCode" : 36,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/AllTheoriesTests.java",
+  "extension" : "java",
+  "linesOfCode" : 17,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/AssumingInTheoriesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 31,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/Correspondent.java",
+  "extension" : "java",
+  "linesOfCode" : 4,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/Guesser.java",
+  "extension" : "java",
+  "linesOfCode" : 103,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/GuesserQueue.java",
+  "extension" : "java",
+  "linesOfCode" : 47,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/MethodCall.java",
+  "extension" : "java",
+  "linesOfCode" : 45,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/ReguessableValue.java",
+  "extension" : "java",
+  "linesOfCode" : 11,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/StringableObject.java",
+  "extension" : "java",
+  "linesOfCode" : 23,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/Stub.java",
+  "extension" : "java",
+  "linesOfCode" : 6,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/StubbedTheories.java",
+  "extension" : "java",
+  "linesOfCode" : 52,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/StubbedTheoriesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 13,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/internal/AllMembersSupplierTest.java",
+  "extension" : "java",
+  "linesOfCode" : 167,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/internal/AllTheoriesInternalTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/internal/ParameterizedAssertionErrorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 79,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/internal/SpecificDataPointsSupplierTest.java",
+  "extension" : "java",
+  "linesOfCode" : 115,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/ParameterSignatureTest.java",
+  "extension" : "java",
+  "linesOfCode" : 74,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/PotentialAssignmentTest.java",
+  "extension" : "java",
+  "linesOfCode" : 44,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/AllTheoriesRunnerTests.java",
+  "extension" : "java",
+  "linesOfCode" : 22,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/FailingDataPointMethods.java",
+  "extension" : "java",
+  "linesOfCode" : 109,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/SuccessfulWithDataPointFields.java",
+  "extension" : "java",
+  "linesOfCode" : 165,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/TheoriesPerformanceTest.java",
+  "extension" : "java",
+  "linesOfCode" : 26,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/TypeMatchingBetweenMultiDataPointsMethod.java",
+  "extension" : "java",
+  "linesOfCode" : 46,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/UnsuccessfulWithDataPointFields.java",
+  "extension" : "java",
+  "linesOfCode" : 196,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WhenNoParametersMatch.java",
+  "extension" : "java",
+  "linesOfCode" : 41,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithAutoGeneratedDataPoints.java",
+  "extension" : "java",
+  "linesOfCode" : 51,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithDataPointMethod.java",
+  "extension" : "java",
+  "linesOfCode" : 94,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithExtendedParameterSources.java",
+  "extension" : "java",
+  "linesOfCode" : 147,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithNamedDataPoints.java",
+  "extension" : "java",
+  "linesOfCode" : 55,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithOnlyTestAnnotations.java",
+  "extension" : "java",
+  "linesOfCode" : 69,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithParameterSupplier.java",
+  "extension" : "java",
+  "linesOfCode" : 120,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/runner/WithUnresolvedGenericTypeVariablesOnTheoryParms.java",
+  "extension" : "java",
+  "linesOfCode" : 151,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/TestedOnSupplierTest.java",
+  "extension" : "java",
+  "linesOfCode" : 24,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/experimental/theories/TheoryTestUtils.java",
+  "extension" : "java",
+  "linesOfCode" : 26,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/AllJUnit3CompatibilityTests.java",
+  "extension" : "java",
+  "linesOfCode" : 19,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/AllTestsTest.java",
+  "extension" : "java",
+  "linesOfCode" : 73,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/ClassRequestTest.java",
+  "extension" : "java",
+  "linesOfCode" : 16,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/ForwardCompatibilityPrintingTest.java",
+  "extension" : "java",
+  "linesOfCode" : 78,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/ForwardCompatibilityTest.java",
+  "extension" : "java",
+  "linesOfCode" : 210,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/InitializationErrorForwardCompatibilityTest.java",
+  "extension" : "java",
+  "linesOfCode" : 83,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/JUnit38ClassRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 129,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/JUnit4TestAdapterTest.java",
+  "extension" : "java",
+  "linesOfCode" : 63,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/OldTestClassAdaptingListenerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 25,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/OldTests.java",
+  "extension" : "java",
+  "linesOfCode" : 10,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 110,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/listening/AllListeningTests.java",
+  "extension" : "java",
+  "linesOfCode" : 14,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/listening/ListenerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 33,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/listening/RunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 62,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/listening/TestListenerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 54,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/listening/TextListenerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 60,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/listening/UserStopTest.java",
+  "extension" : "java",
+  "linesOfCode" : 27,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/AllManipulationTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/AlphanumericOrdering.java",
+  "extension" : "java",
+  "linesOfCode" : 9,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/ComparatorBasedOrdering.java",
+  "extension" : "java",
+  "linesOfCode" : 20,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/Comparators.java",
+  "extension" : "java",
+  "linesOfCode" : 11,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/FilterableTest.java",
+  "extension" : "java",
+  "linesOfCode" : 51,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/FilterTest.java",
+  "extension" : "java",
+  "linesOfCode" : 41,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/OrderableTest.java",
+  "extension" : "java",
+  "linesOfCode" : 242,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/OrderWithTest.java",
+  "extension" : "java",
+  "linesOfCode" : 214,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/ReverseAlphanumericOrdering.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/ReverseAlphanumericSorter.java",
+  "extension" : "java",
+  "linesOfCode" : 9,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/SingleMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 156,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/manipulation/SortableTest.java",
+  "extension" : "java",
+  "linesOfCode" : 240,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/ObjectContractTest.java",
+  "extension" : "java",
+  "linesOfCode" : 39,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/package-info.java",
+  "extension" : "java",
+  "linesOfCode" : 1,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/AllRunningTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/AllClassesTests.java",
+  "extension" : "java",
+  "linesOfCode" : 22,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/BlockJUnit4ClassRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 58,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/ClassLevelMethodsWithIgnoredTestsTest.java",
+  "extension" : "java",
+  "linesOfCode" : 133,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/EnclosedTest.java",
+  "extension" : "java",
+  "linesOfCode" : 46,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/IgnoreClassTest.java",
+  "extension" : "java",
+  "linesOfCode" : 26,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/ParameterizedTestTest.java",
+  "extension" : "java",
+  "linesOfCode" : 663,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/parent/ParentRunnerClassLoaderTest.java",
+  "extension" : "java",
+  "linesOfCode" : 74,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/parent/TestWithClassRule.java",
+  "extension" : "java",
+  "linesOfCode" : 32,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/ParentRunnerFilteringTest.java",
+  "extension" : "java",
+  "linesOfCode" : 146,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/ParentRunnerTest.java",
+  "extension" : "java",
+  "linesOfCode" : 261,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/RunWithTest.java",
+  "extension" : "java",
+  "linesOfCode" : 69,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/SuiteTest.java",
+  "extension" : "java",
+  "linesOfCode" : 178,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/ThreadsTest.java",
+  "extension" : "java",
+  "linesOfCode" : 64,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/classes/UseSuiteAsASuperclassTest.java",
+  "extension" : "java",
+  "linesOfCode" : 37,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/core/AllCoreTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/core/CommandLineTest.java",
+  "extension" : "java",
+  "linesOfCode" : 62,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/core/JUnitCoreReturnsCorrectExitCodeTest.java",
+  "extension" : "java",
+  "linesOfCode" : 34,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/core/SystemExitTest.java",
+  "extension" : "java",
+  "linesOfCode" : 23,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/AllMethodsTests.java",
+  "extension" : "java",
+  "linesOfCode" : 15,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/AnnotationTest.java",
+  "extension" : "java",
+  "linesOfCode" : 704,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/ExpectedTest.java",
+  "extension" : "java",
+  "linesOfCode" : 70,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/InheritedTestTest.java",
+  "extension" : "java",
+  "linesOfCode" : 32,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/ParameterizedTestMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 149,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/TestMethodTest.java",
+  "extension" : "java",
+  "linesOfCode" : 205,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/running/methods/TimeoutTest.java",
+  "extension" : "java",
+  "linesOfCode" : 284,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/SampleJUnit4Tests.java",
+  "extension" : "java",
+  "linesOfCode" : 102,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/TestSystem.java",
+  "extension" : "java",
+  "linesOfCode" : 24,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/validation/AllValidationTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/validation/anotherpackage/Sub.java",
+  "extension" : "java",
+  "linesOfCode" : 3,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/validation/anotherpackage/Super.java",
+  "extension" : "java",
+  "linesOfCode" : 7,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/validation/BadlyFormedClassesTest.java",
+  "extension" : "java",
+  "linesOfCode" : 54,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/validation/FailedConstructionTest.java",
+  "extension" : "java",
+  "linesOfCode" : 24,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/tests/validation/ValidationTest.java",
+  "extension" : "java",
+  "linesOfCode" : 35,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/validator/AllValidatorTests.java",
+  "extension" : "java",
+  "linesOfCode" : 12,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/validator/AnnotationsValidatorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 80,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/validator/AnnotationValidatorFactoryTest.java",
+  "extension" : "java",
+  "linesOfCode" : 38,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+}, {
+  "relativePath" : "src/test/java/org/junit/validator/PublicClassValidatorTest.java",
+  "extension" : "java",
+  "linesOfCode" : 31,
+  "unitsCount" : 0,
+  "unitsMcCabeIndexSum" : 0,
+  "linesOfCodeInUnits" : 0
+} ]

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>private static List allParameters()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private static List allParameters()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/runners/Parameterized.java [422:440]</i></p>
+<ul>
+    <li><b>19</b> lines of code</li>
+    <li><b>6</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+        private static List&lt;Object&gt; allParameters(
+                TestClass testClass, FrameworkMethod parametersMethod) throws Throwable {
+            Object parameters = parametersMethod.invokeExplosively(null);
+            if (parameters instanceof List) {
+                return (List&lt;Object&gt;) parameters;
+            } else if (parameters instanceof Collection) {
+                return new ArrayList&lt;Object&gt;((Collection&lt;Object&gt;) parameters);
+            } else if (parameters instanceof Iterable) {
+                List&lt;Object&gt; result = new ArrayList&lt;Object&gt;();
+                for (Object entry : ((Iterable&lt;Object&gt;) parameters)) {
+                    result.add(entry);
+                }
+                return result;
+            } else if (parameters instanceof Object[]) {
+                return Arrays.asList((Object[]) parameters);
+            } else {
+                throw parametersMethodReturnedWrongType(testClass, parametersMethod);
+            }
+        }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

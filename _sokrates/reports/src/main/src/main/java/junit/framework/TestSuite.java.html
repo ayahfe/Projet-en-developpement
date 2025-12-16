@@ -1,0 +1,334 @@
+<html>
+<head>
+    <title>src/main/java/junit/framework/TestSuite.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/junit/framework/TestSuite.java (<b>176</b> lines of code) (<a href="TestSuite.java">raw</a>):</h3>
+<div id="editor">package junit.framework;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Vector;
+
+import org.junit.internal.MethodSorter;
+import org.junit.internal.Throwables;
+
+/**
+ * A &lt;code&gt;TestSuite&lt;/code&gt; is a &lt;code&gt;Composite&lt;/code&gt; of Tests.
+ * It runs a collection of test cases. Here is an example using
+ * the dynamic test definition.
+ * &lt;pre&gt;
+ * TestSuite suite= new TestSuite();
+ * suite.addTest(new MathTest(&quot;testAdd&quot;));
+ * suite.addTest(new MathTest(&quot;testDivideByZero&quot;));
+ * &lt;/pre&gt;
+ * &lt;p&gt;
+ * Alternatively, a TestSuite can extract the tests to be run automatically.
+ * To do so you pass the class of your TestCase class to the
+ * TestSuite constructor.
+ * &lt;pre&gt;
+ * TestSuite suite= new TestSuite(MathTest.class);
+ * &lt;/pre&gt;
+ * &lt;p&gt;
+ * This constructor creates a suite with all the methods
+ * starting with &quot;test&quot; that take no arguments.
+ * &lt;p&gt;
+ * A final option is to do the same for a large array of test classes.
+ * &lt;pre&gt;
+ * Class[] testClasses = { MathTest.class, AnotherTest.class };
+ * TestSuite suite= new TestSuite(testClasses);
+ * &lt;/pre&gt;
+ *
+ * @see Test
+ */
+public class TestSuite implements Test {
+
+    /**
+     * ...as the moon sets over the early morning Merlin, Oregon
+     * mountains, our intrepid adventurers type...
+     */
+    static public Test createTest(Class&lt;?&gt; theClass, String name) {
+        Constructor&lt;?&gt; constructor;
+        try {
+            constructor = getTestConstructor(theClass);
+        } catch (NoSuchMethodException e) {
+            return warning(&quot;Class &quot; + theClass.getName() + &quot; has no public constructor TestCase(String name) or TestCase()&quot;);
+        }
+        Object test;
+        try {
+            if (constructor.getParameterTypes().length == 0) {
+                test = constructor.newInstance(new Object[0]);
+                if (test instanceof TestCase) {
+                    ((TestCase) test).setName(name);
+                }
+            } else {
+                test = constructor.newInstance(new Object[]{name});
+            }
+        } catch (InstantiationException e) {
+            return (warning(&quot;Cannot instantiate test case: &quot; + name + &quot; (&quot; + Throwables.getStacktrace(e) + &quot;)&quot;));
+        } catch (InvocationTargetException e) {
+            return (warning(&quot;Exception in constructor: &quot; + name + &quot; (&quot; + Throwables.getStacktrace(e.getTargetException()) + &quot;)&quot;));
+        } catch (IllegalAccessException e) {
+            return (warning(&quot;Cannot access test case: &quot; + name + &quot; (&quot; + Throwables.getStacktrace(e) + &quot;)&quot;));
+        }
+        return (Test) test;
+    }
+
+    /**
+     * Gets a constructor which takes a single String as
+     * its argument or a no arg constructor.
+     */
+    public static Constructor&lt;?&gt; getTestConstructor(Class&lt;?&gt; theClass) throws NoSuchMethodException {
+        try {
+            return theClass.getConstructor(String.class);
+        } catch (NoSuchMethodException e) {
+            // fall through
+        }
+        return theClass.getConstructor();
+    }
+
+    /**
+     * Returns a test which will fail and log a warning message.
+     */
+    public static Test warning(final String message) {
+        return new TestCase(&quot;warning&quot;) {
+            @Override
+            protected void runTest() {
+                fail(message);
+            }
+        };
+    }
+
+    private String fName;
+
+    private Vector&lt;Test&gt; fTests = new Vector&lt;Test&gt;(10); // Cannot convert this to List because it is used directly by some test runners
+
+    /**
+     * Constructs an empty TestSuite.
+     */
+    public TestSuite() {
+    }
+
+    /**
+     * Constructs a TestSuite from the given class. Adds all the methods
+     * starting with &quot;test&quot; as test cases to the suite.
+     * Parts of this method were written at 2337 meters in the Hueffihuette,
+     * Kanton Uri
+     */
+    public TestSuite(final Class&lt;?&gt; theClass) {
+        addTestsFromTestCase(theClass);
+    }
+
+    private void addTestsFromTestCase(final Class&lt;?&gt; theClass) {
+        fName = theClass.getName();
+        try {
+            getTestConstructor(theClass); // Avoid generating multiple error messages
+        } catch (NoSuchMethodException e) {
+            addTest(warning(&quot;Class &quot; + theClass.getName() + &quot; has no public constructor TestCase(String name) or TestCase()&quot;));
+            return;
+        }
+
+        if (!Modifier.isPublic(theClass.getModifiers())) {
+            addTest(warning(&quot;Class &quot; + theClass.getName() + &quot; is not public&quot;));
+            return;
+        }
+
+        Class&lt;?&gt; superClass = theClass;
+        List&lt;String&gt; names = new ArrayList&lt;String&gt;();
+        while (Test.class.isAssignableFrom(superClass)) {
+            for (Method each : MethodSorter.getDeclaredMethods(superClass)) {
+                addTestMethod(each, names, theClass);
+            }
+            superClass = superClass.getSuperclass();
+        }
+        if (fTests.size() == 0) {
+            addTest(warning(&quot;No tests found in &quot; + theClass.getName()));
+        }
+    }
+
+    /**
+     * Constructs a TestSuite from the given class with the given name.
+     *
+     * @see TestSuite#TestSuite(Class)
+     */
+    public TestSuite(Class&lt;? extends TestCase&gt; theClass, String name) {
+        this(theClass);
+        setName(name);
+    }
+
+    /**
+     * Constructs an empty TestSuite.
+     */
+    public TestSuite(String name) {
+        setName(name);
+    }
+
+    /**
+     * Constructs a TestSuite from the given array of classes.
+     *
+     * @param classes {@link TestCase}s
+     */
+    public TestSuite(Class&lt;?&gt;... classes) {
+        for (Class&lt;?&gt; each : classes) {
+            addTest(testCaseForClass(each));
+        }
+    }
+
+    private Test testCaseForClass(Class&lt;?&gt; each) {
+        if (TestCase.class.isAssignableFrom(each)) {
+            return new TestSuite(each.asSubclass(TestCase.class));
+        } else {
+            return warning(each.getCanonicalName() + &quot; does not extend TestCase&quot;);
+        }
+    }
+
+    /**
+     * Constructs a TestSuite from the given array of classes with the given name.
+     *
+     * @see TestSuite#TestSuite(Class[])
+     */
+    public TestSuite(Class&lt;? extends TestCase&gt;[] classes, String name) {
+        this(classes);
+        setName(name);
+    }
+
+    /**
+     * Adds a test to the suite.
+     */
+    public void addTest(Test test) {
+        fTests.add(test);
+    }
+
+    /**
+     * Adds the tests from the given class to the suite.
+     */
+    public void addTestSuite(Class&lt;? extends TestCase&gt; testClass) {
+        addTest(new TestSuite(testClass));
+    }
+
+    /**
+     * Counts the number of test cases that will be run by this test.
+     */
+    public int countTestCases() {
+        int count = 0;
+        for (Test each : fTests) {
+            count += each.countTestCases();
+        }
+        return count;
+    }
+
+    /**
+     * Returns the name of the suite. Not all
+     * test suites have a name and this method
+     * can return null.
+     */
+    public String getName() {
+        return fName;
+    }
+
+    /**
+     * Runs the tests and collects their result in a TestResult.
+     */
+    public void run(TestResult result) {
+        for (Test each : fTests) {
+            if (result.shouldStop()) {
+                break;
+            }
+            runTest(each, result);
+        }
+    }
+
+    public void runTest(Test test, TestResult result) {
+        test.run(result);
+    }
+
+    /**
+     * Sets the name of the suite.
+     *
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        fName = name;
+    }
+
+    /**
+     * Returns the test at the given index.
+     */
+    public Test testAt(int index) {
+        return fTests.get(index);
+    }
+
+    /**
+     * Returns the number of tests in this suite.
+     */
+    public int testCount() {
+        return fTests.size();
+    }
+
+    /**
+     * Returns the tests as an enumeration.
+     */
+    public Enumeration&lt;Test&gt; tests() {
+        return fTests.elements();
+    }
+
+    /**
+     */
+    @Override
+    public String toString() {
+        if (getName() != null) {
+            return getName();
+        }
+        return super.toString();
+    }
+
+    private void addTestMethod(Method m, List&lt;String&gt; names, Class&lt;?&gt; theClass) {
+        String name = m.getName();
+        if (names.contains(name)) {
+            return;
+        }
+        if (!isPublicTestMethod(m)) {
+            if (isTestMethod(m)) {
+                addTest(warning(&quot;Test method isn't public: &quot; + m.getName() + &quot;(&quot; + theClass.getCanonicalName() + &quot;)&quot;));
+            }
+            return;
+        }
+        names.add(name);
+        addTest(createTest(theClass, name));
+    }
+
+    private boolean isPublicTestMethod(Method m) {
+        return isTestMethod(m) &amp;&amp; Modifier.isPublic(m.getModifiers());
+    }
+
+    private boolean isTestMethod(Method m) {
+        return m.getParameterTypes().length == 0 &amp;&amp;
+                m.getName().startsWith(&quot;test&quot;) &amp;&amp;
+                m.getReturnType().equals(Void.TYPE);
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

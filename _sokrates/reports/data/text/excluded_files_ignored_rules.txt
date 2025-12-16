@@ -1,0 +1,48 @@
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Hidden files and folders
+path like ".*/[.][a-zA-Z0-9_]+.*"
+8 files:
+
+.gitattributes
+.github/ISSUE_TEMPLATE/bug_report.md
+.github/PULL_REQUEST_TEMPLATE.md
+.github/workflows/settings.xml
+.gitignore
+.mvn/wrapper/maven-wrapper.properties
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.jdt.ui.prefs
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Too long lines (1000+ characters)
+2 files:
+
+src/site/resources/css/hopscotch-0.1.2.min.css
+src/site/resources/scripts/hopscotch-0.1.2.min.js
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Maven
+path like ".*/mvnw\.cmd"
+1 files:
+
+mvnw.cmd
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Generated documentation
+path like ".*/[Jj]avadoc/.*"
+1 files:
+
+src/main/javadoc/stylesheet.css
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+

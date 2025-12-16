@@ -1,0 +1,374 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/runners/model/TestClass.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/runners/model/TestClass.java (<b>239</b> lines of code) (<a href="TestClass.java">raw</a>):</h3>
+<div id="editor">package org.junit.runners.model;
+
+import static java.lang.reflect.Modifier.isStatic;
+import static org.junit.internal.MethodSorter.NAME_ASCENDING;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.internal.MethodSorter;
+
+/**
+ * Wraps a class to be run, providing method validation and annotation searching
+ *
+ * @since 4.5
+ */
+public class TestClass implements Annotatable {
+    private static final FieldComparator FIELD_COMPARATOR = new FieldComparator();
+    private static final MethodComparator METHOD_COMPARATOR = new MethodComparator();
+
+    private final Class&lt;?&gt; clazz;
+    private final Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt; methodsForAnnotations;
+    private final Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt; fieldsForAnnotations;
+
+    /**
+     * Creates a {@code TestClass} wrapping {@code clazz}. Each time this
+     * constructor executes, the class is scanned for annotations, which can be
+     * an expensive process (we hope in future JDK's it will not be.) Therefore,
+     * try to share instances of {@code TestClass} where possible.
+     */
+    public TestClass(Class&lt;?&gt; clazz) {
+        this.clazz = clazz;
+        if (clazz != null &amp;&amp; clazz.getConstructors().length &gt; 1) {
+            throw new IllegalArgumentException(
+                    &quot;Test class can only have one constructor&quot;);
+        }
+
+        Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt; methodsForAnnotations =
+                new LinkedHashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt;();
+        Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt; fieldsForAnnotations =
+                new LinkedHashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt;();
+
+        scanAnnotatedMembers(methodsForAnnotations, fieldsForAnnotations);
+
+        this.methodsForAnnotations = makeDeeplyUnmodifiable(methodsForAnnotations);
+        this.fieldsForAnnotations = makeDeeplyUnmodifiable(fieldsForAnnotations);
+    }
+
+    protected void scanAnnotatedMembers(Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkMethod&gt;&gt; methodsForAnnotations, Map&lt;Class&lt;? extends Annotation&gt;, List&lt;FrameworkField&gt;&gt; fieldsForAnnotations) {
+        for (Class&lt;?&gt; eachClass : getSuperClasses(clazz)) {
+            for (Method eachMethod : MethodSorter.getDeclaredMethods(eachClass)) {
+                addToAnnotationLists(new FrameworkMethod(eachMethod), methodsForAnnotations);
+            }
+            // ensuring fields are sorted to make sure that entries are inserted
+            // and read from fieldForAnnotations in a deterministic order
+            for (Field eachField : getSortedDeclaredFields(eachClass)) {
+                addToAnnotationLists(new FrameworkField(eachField), fieldsForAnnotations);
+            }
+        }
+    }
+
+    private static Field[] getSortedDeclaredFields(Class&lt;?&gt; clazz) {
+        Field[] declaredFields = clazz.getDeclaredFields();
+        Arrays.sort(declaredFields, FIELD_COMPARATOR);
+        return declaredFields;
+    }
+
+    protected static &lt;T extends FrameworkMember&lt;T&gt;&gt; void addToAnnotationLists(T member,
+            Map&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt; map) {
+        for (Annotation each : member.getAnnotations()) {
+            Class&lt;? extends Annotation&gt; type = each.annotationType();
+            List&lt;T&gt; members = getAnnotatedMembers(map, type, true);
+            T memberToAdd = member.handlePossibleBridgeMethod(members);
+            if (memberToAdd == null) {
+                return;
+            }
+            if (runsTopToBottom(type)) {
+                members.add(0, memberToAdd);
+            } else {
+                members.add(memberToAdd);
+            }
+        }
+    }
+
+    private static &lt;T extends FrameworkMember&lt;T&gt;&gt; Map&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt;
+            makeDeeplyUnmodifiable(Map&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt; source) {
+        Map&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt; copy =
+                new LinkedHashMap&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt;();
+        for (Map.Entry&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt; entry : source.entrySet()) {
+            copy.put(entry.getKey(), Collections.unmodifiableList(entry.getValue()));
+        }
+        return Collections.unmodifiableMap(copy);
+    }
+
+    /**
+     * Returns, efficiently, all the non-overridden methods in this class and
+     * its superclasses that are annotated}.
+     * 
+     * @since 4.12
+     */
+    public List&lt;FrameworkMethod&gt; getAnnotatedMethods() {
+        List&lt;FrameworkMethod&gt; methods = collectValues(methodsForAnnotations);
+        Collections.sort(methods, METHOD_COMPARATOR);
+        return methods;
+    }
+
+    /**
+     * Returns, efficiently, all the non-overridden methods in this class and
+     * its superclasses that are annotated with {@code annotationClass}.
+     */
+    public List&lt;FrameworkMethod&gt; getAnnotatedMethods(
+            Class&lt;? extends Annotation&gt; annotationClass) {
+        return Collections.unmodifiableList(getAnnotatedMembers(methodsForAnnotations, annotationClass, false));
+    }
+
+    /**
+     * Returns, efficiently, all the non-overridden fields in this class and its
+     * superclasses that are annotated.
+     * 
+     * @since 4.12
+     */
+    public List&lt;FrameworkField&gt; getAnnotatedFields() {
+        return collectValues(fieldsForAnnotations);
+    }
+
+    /**
+     * Returns, efficiently, all the non-overridden fields in this class and its
+     * superclasses that are annotated with {@code annotationClass}.
+     */
+    public List&lt;FrameworkField&gt; getAnnotatedFields(
+            Class&lt;? extends Annotation&gt; annotationClass) {
+        return Collections.unmodifiableList(getAnnotatedMembers(fieldsForAnnotations, annotationClass, false));
+    }
+
+    private &lt;T&gt; List&lt;T&gt; collectValues(Map&lt;?, List&lt;T&gt;&gt; map) {
+        Set&lt;T&gt; values = new LinkedHashSet&lt;T&gt;();
+        for (List&lt;T&gt; additionalValues : map.values()) {
+            values.addAll(additionalValues);
+        }
+        return new ArrayList&lt;T&gt;(values);
+    }
+
+    private static &lt;T&gt; List&lt;T&gt; getAnnotatedMembers(Map&lt;Class&lt;? extends Annotation&gt;, List&lt;T&gt;&gt; map,
+            Class&lt;? extends Annotation&gt; type, boolean fillIfAbsent) {
+        if (!map.containsKey(type) &amp;&amp; fillIfAbsent) {
+            map.put(type, new ArrayList&lt;T&gt;());
+        }
+        List&lt;T&gt; members = map.get(type);
+        return members == null ? Collections.&lt;T&gt;emptyList() : members;
+    }
+
+    private static boolean runsTopToBottom(Class&lt;? extends Annotation&gt; annotation) {
+        return annotation.equals(Before.class)
+                || annotation.equals(BeforeClass.class);
+    }
+
+    private static List&lt;Class&lt;?&gt;&gt; getSuperClasses(Class&lt;?&gt; testClass) {
+        List&lt;Class&lt;?&gt;&gt; results = new ArrayList&lt;Class&lt;?&gt;&gt;();
+        Class&lt;?&gt; current = testClass;
+        while (current != null) {
+            results.add(current);
+            current = current.getSuperclass();
+        }
+        return results;
+    }
+
+    /**
+     * Returns the underlying Java class.
+     */
+    public Class&lt;?&gt; getJavaClass() {
+        return clazz;
+    }
+
+    /**
+     * Returns the class's name.
+     */
+    public String getName() {
+        if (clazz == null) {
+            return &quot;null&quot;;
+        }
+        return clazz.getName();
+    }
+
+    /**
+     * Returns the only public constructor in the class, or throws an {@code
+     * AssertionError} if there are more or less than one.
+     */
+
+    public Constructor&lt;?&gt; getOnlyConstructor() {
+        Constructor&lt;?&gt;[] constructors = clazz.getConstructors();
+        Assert.assertEquals(1, constructors.length);
+        return constructors[0];
+    }
+
+    /**
+     * Returns the annotations on this class
+     */
+    public Annotation[] getAnnotations() {
+        if (clazz == null) {
+            return new Annotation[0];
+        }
+        return clazz.getAnnotations();
+    }
+
+    public &lt;T extends Annotation&gt; T getAnnotation(Class&lt;T&gt; annotationType) {
+        if (clazz == null) {
+            return null;
+        }
+        return clazz.getAnnotation(annotationType);
+    }
+
+    public &lt;T&gt; List&lt;T&gt; getAnnotatedFieldValues(Object test,
+            Class&lt;? extends Annotation&gt; annotationClass, Class&lt;T&gt; valueClass) {
+        final List&lt;T&gt; results = new ArrayList&lt;T&gt;();
+        collectAnnotatedFieldValues(test, annotationClass, valueClass,
+                new MemberValueConsumer&lt;T&gt;() {
+                    public void accept(FrameworkMember&lt;?&gt; member, T value) {
+                        results.add(value);
+                    }
+                });
+        return results;
+    }
+
+    /**
+     * Finds the fields annotated with the specified annotation and having the specified type,
+     * retrieves the values and passes those to the specified consumer.
+     *
+     * @since 4.13
+     */
+    public &lt;T&gt; void collectAnnotatedFieldValues(Object test,
+            Class&lt;? extends Annotation&gt; annotationClass, Class&lt;T&gt; valueClass,
+            MemberValueConsumer&lt;T&gt; consumer) {
+        for (FrameworkField each : getAnnotatedFields(annotationClass)) {
+            try {
+                Object fieldValue = each.get(test);
+                if (valueClass.isInstance(fieldValue)) {
+                    consumer.accept(each, valueClass.cast(fieldValue));
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(
+                        &quot;How did getFields return a field we couldn't access?&quot;, e);
+            }
+        }
+    }
+
+    public &lt;T&gt; List&lt;T&gt; getAnnotatedMethodValues(Object test,
+            Class&lt;? extends Annotation&gt; annotationClass, Class&lt;T&gt; valueClass) {
+        final List&lt;T&gt; results = new ArrayList&lt;T&gt;();
+        collectAnnotatedMethodValues(test, annotationClass, valueClass,
+                new MemberValueConsumer&lt;T&gt;() {
+                    public void accept(FrameworkMember&lt;?&gt; member, T value) {
+                        results.add(value);
+                    }
+                });
+        return results;
+    }
+
+    /**
+     * Finds the methods annotated with the specified annotation and returning the specified type,
+     * invokes it and pass the return value to the specified consumer.
+     *
+     * @since 4.13
+     */
+    public &lt;T&gt; void collectAnnotatedMethodValues(Object test,
+            Class&lt;? extends Annotation&gt; annotationClass, Class&lt;T&gt; valueClass,
+            MemberValueConsumer&lt;T&gt; consumer) {
+        for (FrameworkMethod each : getAnnotatedMethods(annotationClass)) {
+            try {
+                /*
+                 * A method annotated with @Rule may return a @TestRule or a @MethodRule,
+                 * we cannot call the method to check whether the return type matches our
+                 * expectation i.e. subclass of valueClass. If we do that then the method 
+                 * will be invoked twice and we do not want to do that. So we first check
+                 * whether return type matches our expectation and only then call the method
+                 * to fetch the MethodRule
+                 */
+                if (valueClass.isAssignableFrom(each.getReturnType())) {
+                    Object fieldValue = each.invokeExplosively(test);
+                    consumer.accept(each, valueClass.cast(fieldValue));
+                }
+            } catch (Throwable e) {
+                throw new RuntimeException(
+                        &quot;Exception in &quot; + each.getName(), e);
+            }
+        }
+    }
+
+    public boolean isPublic() {
+        return Modifier.isPublic(clazz.getModifiers());
+    }
+
+    public boolean isANonStaticInnerClass() {
+        return clazz.isMemberClass() &amp;&amp; !isStatic(clazz.getModifiers());
+    }
+
+    @Override
+    public int hashCode() {
+        return (clazz == null) ? 0 : clazz.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        TestClass other = (TestClass) obj;
+        return clazz == other.clazz;
+    }
+
+    /**
+     * Compares two fields by its name.
+     */
+    private static class FieldComparator implements Comparator&lt;Field&gt; {
+        public int compare(Field left, Field right) {
+            return left.getName().compareTo(right.getName());
+        }
+    }
+
+    /**
+     * Compares two methods by its name.
+     */
+    private static class MethodComparator implements
+            Comparator&lt;FrameworkMethod&gt; {
+        public int compare(FrameworkMethod left, FrameworkMethod right) {
+            return NAME_ASCENDING.compare(left.getMethod(), right.getMethod());
+        }
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

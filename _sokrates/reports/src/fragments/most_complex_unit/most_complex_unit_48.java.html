@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>private boolean recursiveDelete()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private boolean recursiveDelete()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/rules/TemporaryFolder.java [335:350]</i></p>
+<ul>
+    <li><b>14</b> lines of code</li>
+    <li><b>5</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private boolean recursiveDelete(File file) {
+        // Try deleting file before assuming file is a directory
+        // to prevent following symbolic links.
+        if (file.delete()) {
+            return true;
+        }
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File each : files) {
+                if (!recursiveDelete(each)) {
+                    return false;
+                }
+            }
+        }
+        return file.delete();
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

@@ -1,0 +1,12 @@
+Path	Lines of Code
+doc/ReleaseNotes4.10.html	75
+doc/ReleaseNotes4.11.html	85
+doc/ReleaseNotes4.4.html	212
+doc/ReleaseNotes4.5.html	261
+doc/ReleaseNotes4.6.html	83
+doc/ReleaseNotes4.7.html	170
+doc/ReleaseNotes4.8.1.html	6
+doc/ReleaseNotes4.8.2.html	7
+doc/ReleaseNotes4.8.html	46
+doc/ReleaseNotes4.9.html	72
+doc/cookstour/cookstour.htm	650

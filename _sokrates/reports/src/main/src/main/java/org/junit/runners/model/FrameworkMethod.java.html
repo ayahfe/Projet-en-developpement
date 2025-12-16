@@ -1,0 +1,242 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/runners/model/FrameworkMethod.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/runners/model/FrameworkMethod.java (<b>123</b> lines of code) (<a href="FrameworkMethod.java">raw</a>):</h3>
+<div id="editor">package org.junit.runners.model;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.util.List;
+
+import org.junit.internal.runners.model.ReflectiveCallable;
+
+/**
+ * Represents a method on a test class to be invoked at the appropriate point in
+ * test execution. These methods are usually marked with an annotation (such as
+ * {@code @Test}, {@code @Before}, {@code @After}, {@code @BeforeClass},
+ * {@code @AfterClass}, etc.)
+ *
+ * @since 4.5
+ */
+public class FrameworkMethod extends FrameworkMember&lt;FrameworkMethod&gt; {
+    private final Method method;
+
+    /**
+     * Returns a new {@code FrameworkMethod} for {@code method}
+     */
+    public FrameworkMethod(Method method) {
+        if (method == null) {
+            throw new NullPointerException(
+                    &quot;FrameworkMethod cannot be created without an underlying method.&quot;);
+        }
+        this.method = method;
+
+        if (isPublic()) {
+            // This method could be a public method in a package-scope base class
+            try {
+                method.setAccessible(true);
+            } catch (SecurityException  e) {
+                // We may get an IllegalAccessException when we try to call the method
+            }
+        }
+    }
+
+    /**
+     * Returns the underlying Java method
+     */
+    public Method getMethod() {
+        return method;
+    }
+
+    /**
+     * Returns the result of invoking this method on {@code target} with
+     * parameters {@code params}. {@link InvocationTargetException}s thrown are
+     * unwrapped, and their causes rethrown.
+     */
+    public Object invokeExplosively(final Object target, final Object... params)
+            throws Throwable {
+        return new ReflectiveCallable() {
+            @Override
+            protected Object runReflectiveCall() throws Throwable {
+                return method.invoke(target, params);
+            }
+        }.run();
+    }
+
+    /**
+     * Returns the method's name
+     */
+    @Override
+    public String getName() {
+        return method.getName();
+    }
+
+    /**
+     * Adds to {@code errors} if this method:
+     * &lt;ul&gt;
+     * &lt;li&gt;is not public, or
+     * &lt;li&gt;takes parameters, or
+     * &lt;li&gt;returns something other than void, or
+     * &lt;li&gt;is static (given {@code isStatic is false}), or
+     * &lt;li&gt;is not static (given {@code isStatic is true}).
+     * &lt;/ul&gt;
+     */
+    public void validatePublicVoidNoArg(boolean isStatic, List&lt;Throwable&gt; errors) {
+        validatePublicVoid(isStatic, errors);
+        if (method.getParameterTypes().length != 0) {
+            errors.add(new Exception(&quot;Method &quot; + method.getName() + &quot; should have no parameters&quot;));
+        }
+    }
+
+
+    /**
+     * Adds to {@code errors} if this method:
+     * &lt;ul&gt;
+     * &lt;li&gt;is not public, or
+     * &lt;li&gt;returns something other than void, or
+     * &lt;li&gt;is static (given {@code isStatic is false}), or
+     * &lt;li&gt;is not static (given {@code isStatic is true}).
+     * &lt;/ul&gt;
+     */
+    public void validatePublicVoid(boolean isStatic, List&lt;Throwable&gt; errors) {
+        if (isStatic() != isStatic) {
+            String state = isStatic ? &quot;should&quot; : &quot;should not&quot;;
+            errors.add(new Exception(&quot;Method &quot; + method.getName() + &quot;() &quot; + state + &quot; be static&quot;));
+        }
+        if (!isPublic()) {
+            errors.add(new Exception(&quot;Method &quot; + method.getName() + &quot;() should be public&quot;));
+        }
+        if (method.getReturnType() != Void.TYPE) {
+            errors.add(new Exception(&quot;Method &quot; + method.getName() + &quot;() should be void&quot;));
+        }
+    }
+
+    @Override
+    protected int getModifiers() {
+        return method.getModifiers();
+    }
+
+    /**
+     * Returns the return type of the method
+     */
+    public Class&lt;?&gt; getReturnType() {
+        return method.getReturnType();
+    }
+
+    /**
+     * Returns the return type of the method
+     */
+    @Override
+    public Class&lt;?&gt; getType() {
+        return getReturnType();
+    }
+
+    /**
+     * Returns the class where the method is actually declared
+     */
+    @Override
+    public Class&lt;?&gt; getDeclaringClass() {
+        return method.getDeclaringClass();
+    }
+
+    public void validateNoTypeParametersOnArgs(List&lt;Throwable&gt; errors) {
+        new NoGenericTypeParametersValidator(method).validate(errors);
+    }
+
+    @Override
+    public boolean isShadowedBy(FrameworkMethod other) {
+        if (!other.getName().equals(getName())) {
+            return false;
+        }
+        if (other.getParameterTypes().length != getParameterTypes().length) {
+            return false;
+        }
+        for (int i = 0; i &lt; other.getParameterTypes().length; i++) {
+            if (!other.getParameterTypes()[i].equals(getParameterTypes()[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    boolean isBridgeMethod() {
+        return method.isBridge();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!FrameworkMethod.class.isInstance(obj)) {
+            return false;
+        }
+        return ((FrameworkMethod) obj).method.equals(method);
+    }
+
+    @Override
+    public int hashCode() {
+        return method.hashCode();
+    }
+
+    /**
+     * Returns true if this is a no-arg method that returns a value assignable
+     * to {@code type}
+     *
+     * @deprecated This is used only by the Theories runner, and does not
+     *             use all the generic type info that it ought to. It will be replaced
+     *             with a forthcoming ParameterSignature#canAcceptResultOf(FrameworkMethod)
+     *             once Theories moves to junit-contrib.
+     */
+    @Deprecated
+    public boolean producesType(Type type) {
+        return getParameterTypes().length == 0 &amp;&amp; type instanceof Class&lt;?&gt;
+                &amp;&amp; ((Class&lt;?&gt;) type).isAssignableFrom(method.getReturnType());
+    }
+
+    private Class&lt;?&gt;[] getParameterTypes() {
+        return method.getParameterTypes();
+    }
+
+    /**
+     * Returns the annotations on this method
+     */
+    public Annotation[] getAnnotations() {
+        return method.getAnnotations();
+    }
+
+    /**
+     * Returns the annotation of type {@code annotationType} on this method, if
+     * one exists.
+     */
+    public &lt;T extends Annotation&gt; T getAnnotation(Class&lt;T&gt; annotationType) {
+        return method.getAnnotation(annotationType);
+    }
+
+    @Override
+    public String toString() {
+        return method.toString();
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

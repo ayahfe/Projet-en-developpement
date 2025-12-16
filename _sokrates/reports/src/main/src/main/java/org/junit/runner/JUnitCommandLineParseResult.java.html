@@ -1,0 +1,173 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/runner/JUnitCommandLineParseResult.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/runner/JUnitCommandLineParseResult.java (<b>103</b> lines of code) (<a href="JUnitCommandLineParseResult.java">raw</a>):</h3>
+<div id="editor">package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.junit.internal.Classes;
+import org.junit.runner.FilterFactory.FilterNotCreatedException;
+import org.junit.runner.manipulation.Filter;
+import org.junit.runners.model.InitializationError;
+
+class JUnitCommandLineParseResult {
+    private final List&lt;String&gt; filterSpecs = new ArrayList&lt;String&gt;();
+    private final List&lt;Class&lt;?&gt;&gt; classes = new ArrayList&lt;Class&lt;?&gt;&gt;();
+    private final List&lt;Throwable&gt; parserErrors = new ArrayList&lt;Throwable&gt;();
+
+    /**
+     * Do not use. Testing purposes only.
+     */
+    JUnitCommandLineParseResult() {}
+
+    /**
+     * Returns filter specs parsed from command line.
+     */
+    public List&lt;String&gt; getFilterSpecs() {
+        return Collections.unmodifiableList(filterSpecs);
+    }
+
+    /**
+     * Returns test classes parsed from command line.
+     */
+    public List&lt;Class&lt;?&gt;&gt; getClasses() {
+        return Collections.unmodifiableList(classes);
+    }
+
+    /**
+     * Parses the arguments.
+     *
+     * @param args Arguments
+     */
+    public static JUnitCommandLineParseResult parse(String[] args) {
+        JUnitCommandLineParseResult result = new JUnitCommandLineParseResult();
+
+        result.parseArgs(args);
+
+        return result;
+    }
+
+    private void parseArgs(String[] args) {
+        parseParameters(parseOptions(args));
+    }
+
+    String[] parseOptions(String... args) {
+        for (int i = 0; i != args.length; ++i) {
+            String arg = args[i];
+
+            if (arg.equals(&quot;--&quot;)) {
+                return copyArray(args, i + 1, args.length);
+            } else if (arg.startsWith(&quot;--&quot;)) {
+                if (arg.startsWith(&quot;--filter=&quot;) || arg.equals(&quot;--filter&quot;)) {
+                    String filterSpec;
+                    if (arg.equals(&quot;--filter&quot;)) {
+                        ++i;
+
+                        if (i &lt; args.length) {
+                            filterSpec = args[i];
+                        } else {
+                            parserErrors.add(new CommandLineParserError(arg + &quot; value not specified&quot;));
+                            break;
+                        }
+                    } else {
+                        filterSpec = arg.substring(arg.indexOf('=') + 1);
+                    }
+
+                    filterSpecs.add(filterSpec);
+                } else {
+                    parserErrors.add(new CommandLineParserError(&quot;JUnit knows nothing about the &quot; + arg + &quot; option&quot;));
+                }
+            } else {
+                return copyArray(args, i, args.length);
+            }
+        }
+
+        return new String[]{};
+    }
+
+    private String[] copyArray(String[] args, int from, int to) {
+        String[] result = new String[to - from];
+        for (int j = from; j != to; ++j) {
+            result[j - from] = args[j];
+        }
+        return result;
+    }
+
+    void parseParameters(String[] args) {
+        for (String arg : args) {
+            try {
+                classes.add(Classes.getClass(arg));
+            } catch (ClassNotFoundException e) {
+                parserErrors.add(new IllegalArgumentException(&quot;Could not find class [&quot; + arg + &quot;]&quot;, e));
+            }
+        }
+    }
+
+    private Request errorReport(Throwable cause) {
+        return Request.errorReport(JUnitCommandLineParseResult.class, cause);
+    }
+
+    /**
+     * Creates a {@link Request}.
+     *
+     * @param computer {@link Computer} to be used.
+     */
+    public Request createRequest(Computer computer) {
+        if (parserErrors.isEmpty()) {
+            Request request = Request.classes(
+                    computer, classes.toArray(new Class&lt;?&gt;[classes.size()]));
+            return applyFilterSpecs(request);
+        } else {
+            return errorReport(new InitializationError(parserErrors));
+        }
+    }
+
+    private Request applyFilterSpecs(Request request) {
+        try {
+            for (String filterSpec : filterSpecs) {
+                Filter filter = FilterFactories.createFilterFromFilterSpec(
+                        request, filterSpec);
+                request = request.filterWith(filter);
+            }
+            return request;
+        } catch (FilterNotCreatedException e) {
+            return errorReport(e);
+        }
+    }
+
+    /**
+     * Exception used if there's a problem parsing the command line.
+     */
+    public static class CommandLineParserError extends Exception {
+        private static final long serialVersionUID= 1L;
+
+        public CommandLineParserError(String message) {
+            super(message);
+        }
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>
