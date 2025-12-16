@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>protected void runTest()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">protected void runTest()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/junit/framework/TestCase.java [160:185]</i></p>
+<ul>
+    <li><b>21</b> lines of code</li>
+    <li><b>5</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    protected void runTest() throws Throwable {
+        assertNotNull(&quot;TestCase.fName cannot be null&quot;, fName); // Some VMs crash when calling getMethod(null,null);
+        Method runMethod = null;
+        try {
+            // use getMethod to get all public inherited
+            // methods. getDeclaredMethods returns all
+            // methods of this class but excludes the
+            // inherited ones.
+            runMethod = getClass().getMethod(fName, (Class[]) null);
+        } catch (NoSuchMethodException e) {
+            fail(&quot;Method \&quot;&quot; + fName + &quot;\&quot; not found&quot;);
+        }
+        if (!Modifier.isPublic(runMethod.getModifiers())) {
+            fail(&quot;Method \&quot;&quot; + fName + &quot;\&quot; should be public&quot;);
+        }
+
+        try {
+            runMethod.invoke(this);
+        } catch (InvocationTargetException e) {
+            e.fillInStackTrace();
+            throw e.getTargetException();
+        } catch (IllegalAccessException e) {
+            e.fillInStackTrace();
+            throw e;
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

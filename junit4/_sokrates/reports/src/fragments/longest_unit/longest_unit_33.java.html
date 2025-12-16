@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>private static Runner parallelize()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private static Runner parallelize()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/experimental/ParallelComputer.java [32:52]</i></p>
+<ul>
+    <li><b>19</b> lines of code</li>
+    <li><b>3</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private static Runner parallelize(Runner runner) {
+        if (runner instanceof ParentRunner) {
+            ((ParentRunner&lt;?&gt;) runner).setScheduler(new RunnerScheduler() {
+                private final ExecutorService fService = Executors.newCachedThreadPool();
+
+                public void schedule(Runnable childStatement) {
+                    fService.submit(childStatement);
+                }
+
+                public void finished() {
+                    try {
+                        fService.shutdown();
+                        fService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace(System.err);
+                    }
+                }
+            });
+        }
+        return runner;
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

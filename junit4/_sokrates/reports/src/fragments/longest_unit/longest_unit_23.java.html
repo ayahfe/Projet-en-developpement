@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>protected void runTestMethod()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">protected void runTestMethod()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/internal/runners/MethodRoadie.java [106:126]</i></p>
+<ul>
+    <li><b>21</b> lines of code</li>
+    <li><b>7</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    protected void runTestMethod() {
+        try {
+            testMethod.invoke(test);
+            if (testMethod.expectsException()) {
+                addFailure(new AssertionError(&quot;Expected exception: &quot; + testMethod.getExpectedException().getName()));
+            }
+        } catch (InvocationTargetException e) {
+            Throwable actual = e.getTargetException();
+            if (actual instanceof AssumptionViolatedException) {
+                return;
+            } else if (!testMethod.expectsException()) {
+                addFailure(actual);
+            } else if (testMethod.isUnexpected(actual)) {
+                String message = &quot;Unexpected exception, expected&lt;&quot; + testMethod.getExpectedException().getName() + &quot;&gt; but was&lt;&quot;
+                        + actual.getClass().getName() + &quot;&gt;&quot;;
+                addFailure(new Exception(message, actual));
+            }
+        } catch (Throwable e) {
+            addFailure(e);
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

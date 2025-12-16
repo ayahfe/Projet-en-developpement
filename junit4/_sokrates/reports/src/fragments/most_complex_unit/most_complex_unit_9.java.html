@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>static public Test createTest()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">static public Test createTest()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/junit/framework/TestSuite.java [49:74]</i></p>
+<ul>
+    <li><b>26</b> lines of code</li>
+    <li><b>7</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    static public Test createTest(Class&lt;?&gt; theClass, String name) {
+        Constructor&lt;?&gt; constructor;
+        try {
+            constructor = getTestConstructor(theClass);
+        } catch (NoSuchMethodException e) {
+            return warning(&quot;Class &quot; + theClass.getName() + &quot; has no public constructor TestCase(String name) or TestCase()&quot;);
+        }
+        Object test;
+        try {
+            if (constructor.getParameterTypes().length == 0) {
+                test = constructor.newInstance(new Object[0]);
+                if (test instanceof TestCase) {
+                    ((TestCase) test).setName(name);
+                }
+            } else {
+                test = constructor.newInstance(new Object[]{name});
+            }
+        } catch (InstantiationException e) {
+            return (warning(&quot;Cannot instantiate test case: &quot; + name + &quot; (&quot; + Throwables.getStacktrace(e) + &quot;)&quot;));
+        } catch (InvocationTargetException e) {
+            return (warning(&quot;Exception in constructor: &quot; + name + &quot; (&quot; + Throwables.getStacktrace(e.getTargetException()) + &quot;)&quot;));
+        } catch (IllegalAccessException e) {
+            return (warning(&quot;Cannot access test case: &quot; + name + &quot; (&quot; + Throwables.getStacktrace(e) + &quot;)&quot;));
+        }
+        return (Test) test;
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

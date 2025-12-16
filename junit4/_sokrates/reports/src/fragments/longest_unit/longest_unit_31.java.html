@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>public Statement apply()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public Statement apply()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/rules/TestWatchman.java [46:65]</i></p>
+<ul>
+    <li><b>20</b> lines of code</li>
+    <li><b>3</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public Statement apply(final Statement base, final FrameworkMethod method,
+            Object target) {
+        return new Statement() {
+            @Override
+            public void evaluate() throws Throwable {
+                starting(method);
+                try {
+                    base.evaluate();
+                    succeeded(method);
+                } catch (AssumptionViolatedException e) {
+                    throw e;
+                } catch (Throwable e) {
+                    failed(e, method);
+                    throw e;
+                } finally {
+                    finished(method);
+                }
+            }
+        };
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

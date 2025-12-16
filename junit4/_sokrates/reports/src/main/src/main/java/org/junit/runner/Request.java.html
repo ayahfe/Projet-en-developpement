@@ -1,0 +1,228 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/runner/Request.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/runner/Request.java (<b>59</b> lines of code) (<a href="Request.java">raw</a>):</h3>
+<div id="editor">package org.junit.runner;
+
+import java.util.Comparator;
+
+import org.junit.internal.builders.AllDefaultPossibilitiesBuilder;
+import org.junit.internal.requests.ClassRequest;
+import org.junit.internal.requests.FilterRequest;
+import org.junit.internal.requests.OrderingRequest;
+import org.junit.internal.requests.SortingRequest;
+import org.junit.internal.runners.ErrorReportingRunner;
+import org.junit.runner.manipulation.Filter;
+import org.junit.runner.manipulation.Ordering;
+import org.junit.runners.model.InitializationError;
+
+/**
+ * A &lt;code&gt;Request&lt;/code&gt; is an abstract description of tests to be run. Older versions of
+ * JUnit did not need such a concept--tests to be run were described either by classes containing
+ * tests or a tree of {@link  org.junit.Test}s. However, we want to support filtering and sorting,
+ * so we need a more abstract specification than the tests themselves and a richer
+ * specification than just the classes.
+ *
+ * &lt;p&gt;The flow when JUnit runs tests is that a &lt;code&gt;Request&lt;/code&gt; specifies some tests to be run -&amp;gt;
+ * a {@link org.junit.runner.Runner} is created for each class implied by the &lt;code&gt;Request&lt;/code&gt; -&amp;gt;
+ * the {@link org.junit.runner.Runner} returns a detailed {@link org.junit.runner.Description}
+ * which is a tree structure of the tests to be run.
+ *
+ * @since 4.0
+ */
+public abstract class Request {
+    /**
+     * Create a &lt;code&gt;Request&lt;/code&gt; that, when processed, will run a single test.
+     * This is done by filtering out all other tests. This method is used to support rerunning
+     * single tests.
+     *
+     * @param clazz the class of the test
+     * @param methodName the name of the test
+     * @return a &lt;code&gt;Request&lt;/code&gt; that will cause a single test be run
+     */
+    public static Request method(Class&lt;?&gt; clazz, String methodName) {
+        Description method = Description.createTestDescription(clazz, methodName);
+        return Request.aClass(clazz).filterWith(method);
+    }
+
+    /**
+     * Create a &lt;code&gt;Request&lt;/code&gt; that, when processed, will run all the tests
+     * in a class. The odd name is necessary because &lt;code&gt;class&lt;/code&gt; is a reserved word.
+     *
+     * @param clazz the class containing the tests
+     * @return a &lt;code&gt;Request&lt;/code&gt; that will cause all tests in the class to be run
+     */
+    public static Request aClass(Class&lt;?&gt; clazz) {
+        return new ClassRequest(clazz);
+    }
+
+    /**
+     * Create a &lt;code&gt;Request&lt;/code&gt; that, when processed, will run all the tests
+     * in a class. If the class has a suite() method, it will be ignored.
+     *
+     * @param clazz the class containing the tests
+     * @return a &lt;code&gt;Request&lt;/code&gt; that will cause all tests in the class to be run
+     */
+    public static Request classWithoutSuiteMethod(Class&lt;?&gt; clazz) {
+        return new ClassRequest(clazz, false);
+    }
+
+    /**
+     * Create a &lt;code&gt;Request&lt;/code&gt; that, when processed, will run all the tests
+     * in a set of classes.
+     *
+     * @param computer Helps construct Runners from classes
+     * @param classes the classes containing the tests
+     * @return a &lt;code&gt;Request&lt;/code&gt; that will cause all tests in the classes to be run
+     */
+    public static Request classes(Computer computer, Class&lt;?&gt;... classes) {
+        try {
+            AllDefaultPossibilitiesBuilder builder = new AllDefaultPossibilitiesBuilder();
+            Runner suite = computer.getSuite(builder, classes);
+            return runner(suite);
+        } catch (InitializationError e) {
+            return runner(new ErrorReportingRunner(e, classes));
+        }
+    }
+
+    /**
+     * Create a &lt;code&gt;Request&lt;/code&gt; that, when processed, will run all the tests
+     * in a set of classes with the default &lt;code&gt;Computer&lt;/code&gt;.
+     *
+     * @param classes the classes containing the tests
+     * @return a &lt;code&gt;Request&lt;/code&gt; that will cause all tests in the classes to be run
+     */
+    public static Request classes(Class&lt;?&gt;... classes) {
+        return classes(JUnitCore.defaultComputer(), classes);
+    }
+
+
+    /**
+     * Creates a {@link Request} that, when processed, will report an error for the given
+     * test class with the given cause.
+     */
+    public static Request errorReport(Class&lt;?&gt; klass, Throwable cause) {
+        return runner(new ErrorReportingRunner(klass, cause));
+    }
+
+    /**
+     * @param runner the runner to return
+     * @return a &lt;code&gt;Request&lt;/code&gt; that will run the given runner when invoked
+     */
+    public static Request runner(final Runner runner) {
+        return new Request() {
+            @Override
+            public Runner getRunner() {
+                return runner;
+            }
+        };
+    }
+
+    /**
+     * Returns a {@link Runner} for this Request
+     *
+     * @return corresponding {@link Runner} for this Request
+     */
+    public abstract Runner getRunner();
+
+    /**
+     * Returns a Request that only contains those tests that should run when
+     * &lt;code&gt;filter&lt;/code&gt; is applied
+     *
+     * @param filter The {@link Filter} to apply to this Request
+     * @return the filtered Request
+     */
+    public Request filterWith(Filter filter) {
+        return new FilterRequest(this, filter);
+    }
+
+    /**
+     * Returns a Request that only runs tests whose {@link Description}
+     * matches the given description.
+     *
+     * &lt;p&gt;Returns an empty {@code Request} if {@code desiredDescription} is not a single test and filters all but the single
+     * test if {@code desiredDescription} is a single test.&lt;/p&gt;
+     *
+     * @param desiredDescription {@code Description} of those tests that should be run
+     * @return the filtered Request
+     */
+    public Request filterWith(Description desiredDescription) {
+        return filterWith(Filter.matchMethodDescription(desiredDescription));
+    }
+
+    /**
+     * Returns a Request whose Tests can be run in a certain order, defined by
+     * &lt;code&gt;comparator&lt;/code&gt;
+     * &lt;p&gt;
+     * For example, here is code to run a test suite in alphabetical order:
+     * &lt;pre&gt;
+     * private static Comparator&amp;lt;Description&amp;gt; forward() {
+     *   return new Comparator&amp;lt;Description&amp;gt;() {
+     *     public int compare(Description o1, Description o2) {
+     *       return o1.getDisplayName().compareTo(o2.getDisplayName());
+     *     }
+     *   };
+     * }
+     *
+     * public static main() {
+     *   new JUnitCore().run(Request.aClass(AllTests.class).sortWith(forward()));
+     * }
+     * &lt;/pre&gt;
+     *
+     * @param comparator definition of the order of the tests in this Request
+     * @return a Request with ordered Tests
+     */
+    public Request sortWith(Comparator&lt;Description&gt; comparator) {
+        return new SortingRequest(this, comparator);
+    }
+
+    /**
+     * Returns a Request whose Tests can be run in a certain order, defined by
+     * &lt;code&gt;ordering&lt;/code&gt;
+     * &lt;p&gt;
+     * For example, here is code to run a test suite in reverse order:
+     * &lt;pre&gt;
+     * private static Ordering reverse() {
+     *   return new Ordering() {
+     *     public List&amp;lt;Description&amp;gt; orderItems(Collection&amp;lt;Description&amp;gt; descriptions) {
+     *       List&amp;lt;Description&amp;gt; ordered = new ArrayList&amp;lt;&amp;gt;(descriptions);
+     *       Collections.reverse(ordered);
+     *       return ordered;
+     *     }
+     *   }
+     * }
+     *     
+     * public static main() {
+     *   new JUnitCore().run(Request.aClass(AllTests.class).orderWith(reverse()));
+     * }
+     * &lt;/pre&gt;
+     *
+     * @return a Request with ordered Tests
+     * @since 4.13
+     */
+    public Request orderWith(Ordering ordering) {
+        return new OrderingRequest(this, ordering);
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

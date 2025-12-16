@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>public static  T assertThrows()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public static  T assertThrows()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/Assert.java [998:1029]</i></p>
+<ul>
+    <li><b>28</b> lines of code</li>
+    <li><b>4</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public static &lt;T extends Throwable&gt; T assertThrows(String message, Class&lt;T&gt; expectedThrowable,
+            ThrowingRunnable runnable) {
+        try {
+            runnable.run();
+        } catch (Throwable actualThrown) {
+            if (expectedThrowable.isInstance(actualThrown)) {
+                @SuppressWarnings(&quot;unchecked&quot;) T retVal = (T) actualThrown;
+                return retVal;
+            } else {
+                String expected = formatClass(expectedThrowable);
+                Class&lt;? extends Throwable&gt; actualThrowable = actualThrown.getClass();
+                String actual = formatClass(actualThrowable);
+                if (expected.equals(actual)) {
+                    // There must be multiple class loaders. Add the identity hash code so the message
+                    // doesn't say &quot;expected: java.lang.String&lt;my.package.MyException&gt; ...&quot;
+                    expected += &quot;@&quot; + Integer.toHexString(System.identityHashCode(expectedThrowable));
+                    actual += &quot;@&quot; + Integer.toHexString(System.identityHashCode(actualThrowable));
+                }
+                String mismatchMessage = buildPrefix(message)
+                        + format(&quot;unexpected exception type thrown;&quot;, expected, actual);
+
+                // The AssertionError(String, Throwable) ctor is only available on JDK7.
+                AssertionError assertionError = new AssertionError(mismatchMessage);
+                assertionError.initCause(actualThrown);
+                throw assertionError;
+            }
+        }
+        String notThrownMessage = buildPrefix(message) + String
+                .format(&quot;expected %s to be thrown, but nothing was thrown&quot;,
+                        formatClass(expectedThrowable));
+        throw new AssertionError(notThrownMessage);
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
