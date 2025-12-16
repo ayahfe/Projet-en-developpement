@@ -1,7 +1,5 @@
 import "../addPrescription/AddPrescription.css";
 
-import { prescription } from "react-router-dom";
-
 const ModifyPrescription = () => {
   const modifyPrescriptionSubmitHandler = () => {};
   return (
