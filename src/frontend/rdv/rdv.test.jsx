@@ -268,5 +268,28 @@ it("empêche un utilisateur non connecté de créer un rendez-vous", async () =>
   expect(global.alert).toHaveBeenCalled();
 });
 
+//TROISIEME TEST INTEGRATION 
+it("affiche un rendez-vous existant dans le calendrier", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  mockAppointments = [
+    {
+      id: 1,
+      patient_name: "Integration Test",
+      email: "i@test.com",
+      doctor_name: "Dr. Amal",
+      date: new Date().toISOString().split("T")[0],
+      time: "10:00",
+      status: "upcoming",
+    },
+  ];
+
+  render(<CalendrierRdv />);
+
+  expect(
+    await screen.findByText("Integration Test")
+  ).toBeInTheDocument();
+});
+
   
 });
