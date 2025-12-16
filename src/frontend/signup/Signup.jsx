@@ -1,6 +1,12 @@
 import { useState } from "react";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import {Link, useNavigate} from "react-router-dom";
 
 export default function Signup(){
@@ -75,6 +81,8 @@ export default function Signup(){
             </p>
         </form>
     )
+<<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 import { Link, useNavigate } from "react-router-dom";
@@ -240,3 +248,9 @@ export default function Signup() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+}
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+}
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f

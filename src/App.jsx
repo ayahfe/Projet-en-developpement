@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 =======
 // src/App.jsx
@@ -9,12 +11,20 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
 // src/App.jsx
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 >>>>>>> origin/temp-visualiser-fix
+=======
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import "./App.css";
 import { AuthProvider } from "./frontend/AuthContext";
 import RootLayout from "./frontend/rootLayout/RootLayout";
 import Login from "./frontend/login/Login";
 import Signup from "./frontend/signup/Signup";
 import ProduitList from "./frontend/produitCard/ProduitCard.jsx";
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import RendezVous from "./frontend/rdv/rdv.jsx"; // 
@@ -34,11 +44,24 @@ import Cart from "./frontend/cart/Cart";
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+import AddPrescription from "./frontend/prescription/addPrescription/AddPrescription.jsx";
+import ModifyPrescription from "./frontend/prescription/modifyPrescription/ModifyPrescription.jsx";
+import DeletePrescription from "./frontend/prescription/deletePrescription/DeletePrescription.jsx";
+import ShowPrescriptionList from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
+<<<<<<< HEAD
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     children: [
@@ -82,12 +105,29 @@ const router = createBrowserRouter([
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+    children: [
+      { index: true, element: <ProduitList /> },   // <-- page d’accueil
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
+      { path: "/medecins", element: <ShowPrescriptionList /> },
+      { path: "/medecins/add", element: <AddPrescription /> },
+      { path: "/medecins/modify/:id", element: <ModifyPrescription /> },
+      { path: "/medecins/delete", element: <DeletePrescription /> },
+<<<<<<< HEAD
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     ],
   },
 ]);
 
 export default function App() {
   return (
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <AuthProvider>
@@ -105,5 +145,15 @@ export default function App() {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   );
 }

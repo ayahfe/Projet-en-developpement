@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { createContext, useCallback, useEffect, useState, useContext } from "react";
 =======
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
@@ -9,12 +11,24 @@ import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
 >>>>>>> origin/temp-visualiser-fix
+=======
+import { createContext, useCallback, useEffect, useState, useContext } from "react";
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+import { createContext, useCallback, useEffect, useState, useContext } from "react";
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 const API = "http://localhost:4000/api";
 
 const getToken = () => localStorage.getItem("token");
@@ -82,6 +96,8 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/temp-visualiser-fix
@@ -131,4 +147,8 @@ export function AuthProvider({ children }) {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 }

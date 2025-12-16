@@ -1,5 +1,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .produit-card {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -54,6 +60,8 @@
   padding: 20px;
   background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
   min-height: 100vh;
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 A/* === PAGE ENTIÈRE === */
 =======
@@ -198,4 +206,8 @@ body, html {
 >>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
 =======
 >>>>>>> origin/temp-visualiser-fix
+=======
+>>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 }

@@ -9,19 +9,26 @@ import AddPrescription from "./frontend/prescription/addPrescription/AddPrescrip
 import ModifyPrescription from "./frontend/prescription/modifyPrescription/ModifyPrescription.jsx";
 import DeletePrescription from "./frontend/prescription/deletePrescription/DeletePrescription.jsx";
 import ShowPrescriptionList from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
+import PrescriptionManager from "./frontend/prescription/PrescriptionManager.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <ProduitList /> },   // <-- page d’accueil
+      { index: true, element: <ProduitList /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
-      { path: "/medecins", element: <ShowPrescriptionList /> },
-      { path: "/medecins/add", element: <AddPrescription /> },
-      { path: "/medecins/modify/:id", element: <ModifyPrescription /> },
-      { path: "/medecins/delete", element: <DeletePrescription /> },
+      {
+        path: "/medecins",
+        element: <PrescriptionManager />,
+        children: [
+          { index: true, element: <ShowPrescriptionList /> },
+          { path: "add", element: <AddPrescription /> },
+          { path: "modify/:id", element: <ModifyPrescription /> },
+          { path: "delete", element: <DeletePrescription /> },
+        ],
+      },
     ],
   },
 ]);
