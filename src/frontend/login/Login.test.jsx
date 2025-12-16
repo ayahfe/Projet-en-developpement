@@ -1,9 +1,11 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, test, expect, vi } from "vitest";
+import { describe, test, expect, vi, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import Login from "./Login";
 
-
+// =======================
+// MOCK AuthContext
+// =======================
 const loginMock = vi.fn();
 
 vi.mock("../AuthContext", () => ({
@@ -17,7 +19,9 @@ describe("Login page", () => {
     loginMock.mockClear();
   });
 
-  // Rendu du formulaire
+  // =======================
+  // RENDU DU FORMULAIRE
+  // =======================
   test("affiche le formulaire de connexion", () => {
     render(
       <MemoryRouter>
@@ -31,7 +35,10 @@ describe("Login page", () => {
       screen.getByRole("button", { name: /se connecter/i })
     ).toBeInTheDocument();
   });
-//Test les champs requis
+
+  // =======================
+  // CHAMPS REQUIS
+  // =======================
   test("les champs email et mot de passe sont requis", () => {
     render(
       <MemoryRouter>
@@ -43,7 +50,9 @@ describe("Login page", () => {
     expect(screen.getByLabelText(/mot de passe/i)).toBeRequired();
   });
 
-  // Test le saisi utilisateur
+  // =======================
+  // SAISIE UTILISATEUR
+  // =======================
   test("l'utilisateur peut saisir son email et son mot de passe", () => {
     render(
       <MemoryRouter>
@@ -65,7 +74,9 @@ describe("Login page", () => {
     expect(passwordInput.value).toBe("123456");
   });
 
-  // test pour soumettre un formulaire
+  // =======================
+  // SOUMISSION OK
+  // =======================
   test("appelle la fonction login lors de la soumission", () => {
     render(
       <MemoryRouter>
@@ -87,7 +98,9 @@ describe("Login page", () => {
     expect(loginMock).toHaveBeenCalledTimes(1);
   });
 
-  // Test pour les boutons présents
+  // =======================
+  // BOUTON PRÉSENT
+  // =======================
   test("le bouton de connexion est accessible via le rôle button", () => {
     render(
       <MemoryRouter>
@@ -99,26 +112,97 @@ describe("Login page", () => {
       screen.getByRole("button", { name: /se connecter/i })
     ).toBeInTheDocument();
   });
-  //Test si le email est vide
-  test("affiche une erreur si l'email est vide", () => {
-  render(
-    <MemoryRouter>
-      <Login />
-    </MemoryRouter>
-  );
 
-  fireEvent.change(screen.getByLabelText(/mot de passe/i), {
-    target: { value: "123456" },
+  // =======================
+  // EMAIL MANQUANT
+  // =======================
+  test("affiche une erreur si l'email est vide", () => {
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+
+    fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+      target: { value: "123456" },
+    });
+
+    fireEvent.click(
+      screen.getByRole("button", { name: /se connecter/i })
+    );
+
+    expect(loginMock).not.toHaveBeenCalled();
   });
 
-  fireEvent.click(
-    screen.getByRole("button", { name: /se connecter/i })
-  );
+  // =======================
+  // MOT DE PASSE MANQUANT
+  // =======================
+  test("affiche une erreur si le mot de passe est vide", () => {
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
 
-  expect(loginMock).not.toHaveBeenCalled();
-});
-//Test si le mdp est vide
-test("affiche une erreur si le mot de passe est vide", () => {
+    fireEvent.change(screen.getByLabelText(/email/i), {
+      target: { value: "test@test.com" },
+    });
+
+    fireEvent.click(
+      screen.getByRole("button", { name: /se connecter/i })
+    );
+
+    expect(loginMock).not.toHaveBeenCalled();
+  });
+
+  // =======================
+  // FORMULAIRE INVALIDE
+  // =======================
+  test("empêche la soumission si le formulaire est invalide", () => {
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(
+      screen.getByRole("button", { name: /se connecter/i })
+    );
+
+    expect(loginMock).not.toHaveBeenCalled();
+  });
+
+  // =======================
+  // ERREUR LOGIN
+  // =======================
+  test("affiche un message d'erreur si login échoue", async () => {
+    loginMock.mockRejectedValueOnce(new Error("Erreur login"));
+
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+
+    fireEvent.change(screen.getByLabelText(/email/i), {
+      target: { value: "test@test.com" },
+    });
+
+    fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+      target: { value: "wrong" },
+    });
+
+    fireEvent.click(
+      screen.getByRole("button", { name: /se connecter/i })
+    );
+
+    expect(
+      await screen.findByText(/erreur/i)
+    ).toBeInTheDocument();
+  });
+  test("désactive le bouton pendant la connexion", async () => {
+  loginMock.mockResolvedValueOnce();
+
   render(
     <MemoryRouter>
       <Login />
@@ -129,26 +213,53 @@ test("affiche une erreur si le mot de passe est vide", () => {
     target: { value: "test@test.com" },
   });
 
-  fireEvent.click(
-    screen.getByRole("button", { name: /se connecter/i })
-  );
+  fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+    target: { value: "123456" },
+  });
 
-  expect(loginMock).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button", { name: /se connecter/i }));
+
+  expect(
+    screen.getByRole("button", { name: /connexion/i })
+  ).toBeDisabled();
 });
-//Le formulaire ne s'envoie pas si c'est pas valide
-test("empêche la soumission si le formulaire est invalide", () => {
+vi.mock("../../lib/supabaseClient", () => ({
+  supabase: {
+    auth: {
+      getUser: vi.fn(() => ({
+        data: { user: null },
+      })),
+    },
+    from: vi.fn(() => ({
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      single: vi.fn(),
+    })),
+  },
+}));
+
+test("affiche une erreur si utilisateur introuvable", async () => {
+  loginMock.mockResolvedValueOnce();
+
   render(
     <MemoryRouter>
       <Login />
     </MemoryRouter>
   );
 
-  fireEvent.click(
-    screen.getByRole("button", { name: /se connecter/i })
-  );
+  fireEvent.change(screen.getByLabelText(/email/i), {
+    target: { value: "test@test.com" },
+  });
 
-  expect(loginMock).not.toHaveBeenCalled();
+  fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.click(screen.getByRole("button", { name: /se connecter/i }));
+
+  expect(
+    await screen.findByText(/utilisateur introuvable/i)
+  ).toBeInTheDocument();
 });
-
 
 });
