@@ -230,7 +230,7 @@ it("affiche un rendez-vous annulé avec la bonne classe", async () => {
   mockAppointments = [
     {
       id: 20,
-      patient_name: "Sara",
+      patient_name: "Julie",
       email: "s@test.com",
       doctor_name: "Dr. Karim",
       date: new Date().toISOString().split("T")[0],
@@ -241,11 +241,22 @@ it("affiche un rendez-vous annulé avec la bonne classe", async () => {
 
   render(<CalendrierRdv />);
 
-  const card = await screen.findByText("Sara");
+  const card = await screen.findByText("Julie");
 
   expect(card.closest(".apt-card")).toHaveClass("cancelled");
 });
 
+it("permet à un utilisateur connecté d'ouvrir le formulaire de création", async () => {
+  mockUseAuth.mockReturnValue({ user: { id: 1 } });
+
+  render(<CalendrierRdv />);
+
+  fireEvent.click(screen.getByText(/Nouveau RDV/i));
+
+  expect(
+    await screen.findByText(/Nouveau Rendez-vous/i)
+  ).toBeInTheDocument();
+});
 
   
 });
