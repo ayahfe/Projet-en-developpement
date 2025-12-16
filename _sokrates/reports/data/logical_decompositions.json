@@ -1,0 +1,183 @@
+[ {
+  "key" : "primary",
+  "components" : [ {
+    "name" : "doc",
+    "filesCount" : 11,
+    "linesOfCode" : 1667,
+    "numberOfRegexLineMatches" : 0,
+    "fileCountPerExtension" : [ {
+      "name" : "  *.html",
+      "value" : 10,
+      "description" : [ ]
+    }, {
+      "name" : "  *.htm",
+      "value" : 1,
+      "description" : [ ]
+    } ],
+    "linesOfCodePerExtension" : [ {
+      "name" : "  *.html",
+      "value" : 1017,
+      "description" : [ ]
+    }, {
+      "name" : "  *.htm",
+      "value" : 650,
+      "description" : [ ]
+    } ]
+  }, {
+    "name" : "ROOT",
+    "filesCount" : 1,
+    "linesOfCode" : 216,
+    "numberOfRegexLineMatches" : 0,
+    "fileCountPerExtension" : [ {
+      "name" : "  *.html",
+      "value" : 1,
+      "description" : [ ]
+    } ],
+    "linesOfCodePerExtension" : [ {
+      "name" : "  *.html",
+      "value" : 216,
+      "description" : [ ]
+    } ]
+  }, {
+    "name" : "src",
+    "filesCount" : 230,
+    "linesOfCode" : 11577,
+    "numberOfRegexLineMatches" : 0,
+    "fileCountPerExtension" : [ {
+      "name" : "  *.java",
+      "value" : 219,
+      "description" : [ ]
+    }, {
+      "name" : "  *.xhtml",
+      "value" : 5,
+      "description" : [ ]
+    }, {
+      "name" : "  *.xml",
+      "value" : 2,
+      "description" : [ ]
+    }, {
+      "name" : "  *.css",
+      "value" : 3,
+      "description" : [ ]
+    }, {
+      "name" : "  *.js",
+      "value" : 1,
+      "description" : [ ]
+    } ],
+    "linesOfCodePerExtension" : [ {
+      "name" : "  *.java",
+      "value" : 10834,
+      "description" : [ ]
+    }, {
+      "name" : "  *.xhtml",
+      "value" : 463,
+      "description" : [ ]
+    }, {
+      "name" : "  *.xml",
+      "value" : 187,
+      "description" : [ ]
+    }, {
+      "name" : "  *.css",
+      "value" : 82,
+      "description" : [ ]
+    }, {
+      "name" : "  *.js",
+      "value" : 11,
+      "description" : [ ]
+    } ]
+  } ],
+  "componentDependencies" : [ ],
+  "componentDependenciesErrors" : [ ],
+  "logicalDecomposition" : {
+    "name" : "primary",
+    "scope" : "main",
+    "filters" : [ ],
+    "componentsFolderDepth" : 1,
+    "minComponentsCount" : 0,
+    "components" : [ {
+      "name" : "doc",
+      "sourceFileFilters" : [ {
+        "pathPattern" : "./doc/.*",
+        "contentPattern" : "",
+        "exception" : false,
+        "note" : ""
+      } ],
+      "files" : [ ]
+    }, {
+      "name" : "ROOT",
+      "sourceFileFilters" : [ {
+        "pathPattern" : "./.*",
+        "contentPattern" : "",
+        "exception" : false,
+        "note" : ""
+      }, {
+        "pathPattern" : "./doc/.*",
+        "contentPattern" : "",
+        "exception" : true,
+        "note" : ""
+      }, {
+        "pathPattern" : "./src/.*",
+        "contentPattern" : "",
+        "exception" : true,
+        "note" : ""
+      } ],
+      "files" : [ ]
+    }, {
+      "name" : "src",
+      "sourceFileFilters" : [ {
+        "pathPattern" : "./src/.*",
+        "contentPattern" : "",
+        "exception" : false,
+        "note" : ""
+      } ],
+      "files" : [ ]
+    } ],
+    "metaComponents" : [ ],
+    "groups" : [ ],
+    "includeRemainingFiles" : true,
+    "dependenciesFinder" : {
+      "useBuiltInDependencyFinders" : true,
+      "rules" : [ ],
+      "metaRules" : [ ]
+    },
+    "renderingOptions" : {
+      "orientation" : "TB",
+      "maxNumberOfDependencies" : 100,
+      "renderComponentsWithoutDependencies" : true,
+      "renderIndirectDependencies" : false,
+      "renderInternalIndirectDependencies" : false,
+      "reverseDirection" : false
+    },
+    "includeExternalComponents" : true,
+    "dependencyLinkThreshold" : 1,
+    "duplicationLinkThreshold" : 50,
+    "temporalLinkThreshold" : 1,
+    "maxSearchDepthLines" : 200
+  },
+  "fileCountPerComponent" : [ {
+    "name" : "doc",
+    "value" : 11,
+    "description" : [ ]
+  }, {
+    "name" : "ROOT",
+    "value" : 1,
+    "description" : [ ]
+  }, {
+    "name" : "src",
+    "value" : 230,
+    "description" : [ ]
+  } ],
+  "linesOfCodePerComponent" : [ {
+    "name" : "doc",
+    "value" : 1667,
+    "description" : [ ]
+  }, {
+    "name" : "ROOT",
+    "value" : 216,
+    "description" : [ ]
+  }, {
+    "name" : "src",
+    "value" : 11577,
+    "description" : [ ]
+  } ]
+} ]

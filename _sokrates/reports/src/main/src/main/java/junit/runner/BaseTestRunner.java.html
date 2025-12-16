@@ -1,0 +1,352 @@
+<html>
+<head>
+    <title>src/main/java/junit/runner/BaseTestRunner.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/junit/runner/BaseTestRunner.java (<b>241</b> lines of code) (<a href="BaseTestRunner.java">raw</a>):</h3>
+<div id="editor">package junit.runner;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.text.NumberFormat;
+import java.util.Properties;
+
+import junit.framework.AssertionFailedError;
+import junit.framework.Test;
+import junit.framework.TestListener;
+import junit.framework.TestSuite;
+
+import org.junit.internal.Throwables;
+
+/**
+ * Base class for all test runners.
+ * This class was born live on stage in Sardinia during XP2000.
+ */
+public abstract class BaseTestRunner implements TestListener {
+    public static final String SUITE_METHODNAME = &quot;suite&quot;;
+
+    private static Properties fPreferences;
+    static int fgMaxMessageLength = 500;
+    static boolean fgFilterStack = true;
+    boolean fLoading = true;
+
+    /*
+    * Implementation of TestListener
+    */
+    public synchronized void startTest(Test test) {
+        testStarted(test.toString());
+    }
+
+    protected static void setPreferences(Properties preferences) {
+        fPreferences = preferences;
+    }
+
+    protected static Properties getPreferences() {
+        if (fPreferences == null) {
+            fPreferences = new Properties();
+            fPreferences.put(&quot;loading&quot;, &quot;true&quot;);
+            fPreferences.put(&quot;filterstack&quot;, &quot;true&quot;);
+            readPreferences();
+        }
+        return fPreferences;
+    }
+
+    public static void savePreferences() throws IOException {
+        FileOutputStream fos = new FileOutputStream(getPreferencesFile());
+        try {
+            getPreferences().store(fos, &quot;&quot;);
+        } finally {
+            fos.close();
+        }
+    }
+
+    public static void setPreference(String key, String value) {
+        getPreferences().put(key, value);
+    }
+
+    public synchronized void endTest(Test test) {
+        testEnded(test.toString());
+    }
+
+    public synchronized void addError(final Test test, final Throwable e) {
+        testFailed(TestRunListener.STATUS_ERROR, test, e);
+    }
+
+    public synchronized void addFailure(final Test test, final AssertionFailedError e) {
+        testFailed(TestRunListener.STATUS_FAILURE, test, e);
+    }
+
+    // TestRunListener implementation
+
+    public abstract void testStarted(String testName);
+
+    public abstract void testEnded(String testName);
+
+    public abstract void testFailed(int status, Test test, Throwable e);
+
+    /**
+     * Returns the Test corresponding to the given suite. This is
+     * a template method, subclasses override runFailed(), clearStatus().
+     */
+    public Test getTest(String suiteClassName) {
+        if (suiteClassName.length() &lt;= 0) {
+            clearStatus();
+            return null;
+        }
+        Class&lt;?&gt; testClass = null;
+        try {
+            testClass = loadSuiteClass(suiteClassName);
+        } catch (ClassNotFoundException e) {
+            String clazz = e.getMessage();
+            if (clazz == null) {
+                clazz = suiteClassName;
+            }
+            runFailed(&quot;Class not found \&quot;&quot; + clazz + &quot;\&quot;&quot;);
+            return null;
+        } catch (Exception e) {
+            runFailed(&quot;Error: &quot; + e.toString());
+            return null;
+        }
+        Method suiteMethod = null;
+        try {
+            suiteMethod = testClass.getMethod(SUITE_METHODNAME);
+        } catch (Exception e) {
+            // try to extract a test suite automatically
+            clearStatus();
+            return new TestSuite(testClass);
+        }
+        if (!Modifier.isStatic(suiteMethod.getModifiers())) {
+            runFailed(&quot;Suite() method must be static&quot;);
+            return null;
+        }
+        Test test = null;
+        try {
+            test = (Test) suiteMethod.invoke(null); // static method
+            if (test == null) {
+                return test;
+            }
+        } catch (InvocationTargetException e) {
+            runFailed(&quot;Failed to invoke suite():&quot; + e.getTargetException().toString());
+            return null;
+        } catch (IllegalAccessException e) {
+            runFailed(&quot;Failed to invoke suite():&quot; + e.toString());
+            return null;
+        }
+
+        clearStatus();
+        return test;
+    }
+
+    /**
+     * Returns the formatted string of the elapsed time.
+     */
+    public String elapsedTimeAsString(long runTime) {
+        return NumberFormat.getInstance().format((double) runTime / 1000);
+    }
+
+    /**
+     * Processes the command line arguments and
+     * returns the name of the suite class to run or null
+     */
+    protected String processArguments(String[] args) {
+        String suiteName = null;
+        for (int i = 0; i &lt; args.length; i++) {
+            if (args[i].equals(&quot;-noloading&quot;)) {
+                setLoading(false);
+            } else if (args[i].equals(&quot;-nofilterstack&quot;)) {
+                fgFilterStack = false;
+            } else if (args[i].equals(&quot;-c&quot;)) {
+                if (args.length &gt; i + 1) {
+                    suiteName = extractClassName(args[i + 1]);
+                } else {
+                    System.out.println(&quot;Missing Test class name&quot;);
+                }
+                i++;
+            } else {
+                suiteName = args[i];
+            }
+        }
+        return suiteName;
+    }
+
+    /**
+     * Sets the loading behaviour of the test runner
+     */
+    public void setLoading(boolean enable) {
+        fLoading = enable;
+    }
+
+    /**
+     * Extract the class name from a String in VA/Java style
+     */
+    public String extractClassName(String className) {
+        if (className.startsWith(&quot;Default package for&quot;)) {
+            return className.substring(className.lastIndexOf(&quot;.&quot;) + 1);
+        }
+        return className;
+    }
+
+    /**
+     * Truncates a String to the maximum length.
+     */
+    public static String truncate(String s) {
+        if (fgMaxMessageLength != -1 &amp;&amp; s.length() &gt; fgMaxMessageLength) {
+            s = s.substring(0, fgMaxMessageLength) + &quot;...&quot;;
+        }
+        return s;
+    }
+
+    /**
+     * Override to define how to handle a failed loading of
+     * a test suite.
+     */
+    protected abstract void runFailed(String message);
+
+    /**
+     * Returns the loaded Class for a suite name.
+     */
+    protected Class&lt;?&gt; loadSuiteClass(String suiteClassName) throws ClassNotFoundException {
+        return Class.forName(suiteClassName);
+    }
+
+    /**
+     * Clears the status message.
+     */
+    protected void clearStatus() { // Belongs in the GUI TestRunner class
+    }
+
+    protected boolean useReloadingTestSuiteLoader() {
+        return getPreference(&quot;loading&quot;).equals(&quot;true&quot;) &amp;&amp; fLoading;
+    }
+
+    private static File getPreferencesFile() {
+        String home = System.getProperty(&quot;user.home&quot;);
+        return new File(home, &quot;junit.properties&quot;);
+    }
+
+    private static void readPreferences() {
+        InputStream is = null;
+        try {
+            is = new FileInputStream(getPreferencesFile());
+            setPreferences(new Properties(getPreferences()));
+            getPreferences().load(is);
+        } catch (IOException ignored) {
+        } catch (SecurityException ignored) {
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e1) {
+            }
+        }
+    }
+
+    public static String getPreference(String key) {
+        return getPreferences().getProperty(key);
+    }
+
+    public static int getPreference(String key, int dflt) {
+        String value = getPreference(key);
+        int intValue = dflt;
+        if (value == null) {
+            return intValue;
+        }
+        try {
+            intValue = Integer.parseInt(value);
+        } catch (NumberFormatException ne) {
+        }
+        return intValue;
+    }
+
+    /**
+     * Returns a filtered stack trace
+     */
+    public static String getFilteredTrace(Throwable e) {
+        return BaseTestRunner.getFilteredTrace(Throwables.getStacktrace(e));
+    }
+
+    /**
+     * Filters stack frames from internal JUnit classes
+     */
+    public static String getFilteredTrace(String stack) {
+        if (showStackRaw()) {
+            return stack;
+        }
+
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        StringReader sr = new StringReader(stack);
+        BufferedReader br = new BufferedReader(sr);
+
+        String line;
+        try {
+            while ((line = br.readLine()) != null) {
+                if (!filterLine(line)) {
+                    pw.println(line);
+                }
+            }
+        } catch (Exception IOException) {
+            return stack; // return the stack unfiltered
+        }
+        return sw.toString();
+    }
+
+    protected static boolean showStackRaw() {
+        return !getPreference(&quot;filterstack&quot;).equals(&quot;true&quot;) || fgFilterStack == false;
+    }
+
+    static boolean filterLine(String line) {
+        String[] patterns = new String[]{
+                &quot;junit.framework.TestCase&quot;,
+                &quot;junit.framework.TestResult&quot;,
+                &quot;junit.framework.TestSuite&quot;,
+                &quot;junit.framework.Assert.&quot;, // don't filter AssertionFailure
+                &quot;junit.swingui.TestRunner&quot;,
+                &quot;junit.awtui.TestRunner&quot;,
+                &quot;junit.textui.TestRunner&quot;,
+                &quot;java.lang.reflect.Method.invoke(&quot;
+        };
+        for (int i = 0; i &lt; patterns.length; i++) {
+            if (line.indexOf(patterns[i]) &gt; 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static {
+        fgMaxMessageLength = getPreference(&quot;maxmessage&quot;, fgMaxMessageLength);
+    }
+
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>public void evaluate()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public void evaluate()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/internal/runners/statements/ExpectException.java [16:37]</i></p>
+<ul>
+    <li><b>22</b> lines of code</li>
+    <li><b>6</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public void evaluate() throws Exception {
+        boolean complete = false;
+        try {
+            next.evaluate();
+            complete = true;
+        } catch (AssumptionViolatedException e) {
+            if (!expected.isAssignableFrom(e.getClass())) {
+                throw e;
+            }
+        } catch (Throwable e) {
+            if (!expected.isAssignableFrom(e.getClass())) {
+                String message = &quot;Unexpected exception, expected&lt;&quot;
+                        + expected.getName() + &quot;&gt; but was&lt;&quot;
+                        + e.getClass().getName() + &quot;&gt;&quot;;
+                throw new Exception(message, e);
+            }
+        }
+        if (complete) {
+            throw new AssertionError(&quot;Expected exception: &quot;
+                    + expected.getName());
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>private  T findDeepAnnotation()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private  T findDeepAnnotation()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/experimental/theories/ParameterSignature.java [107:124]</i></p>
+<ul>
+    <li><b>17</b> lines of code</li>
+    <li><b>5</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private &lt;T extends Annotation&gt; T findDeepAnnotation(
+            Annotation[] annotations, Class&lt;T&gt; annotationType, int depth) {
+        if (depth == 0) {
+            return null;
+        }
+        for (Annotation each : annotations) {
+            if (annotationType.isInstance(each)) {
+                return annotationType.cast(each);
+            }
+            Annotation candidate = findDeepAnnotation(each.annotationType()
+                    .getAnnotations(), annotationType, depth - 1);
+            if (candidate != null) {
+                return annotationType.cast(candidate);
+            }
+        }
+
+        return null;
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

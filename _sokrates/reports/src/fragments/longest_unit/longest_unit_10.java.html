@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>public static PotentialAssignment forValue()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public static PotentialAssignment forValue()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/experimental/theories/PotentialAssignment.java [17:47]</i></p>
+<ul>
+    <li><b>27</b> lines of code</li>
+    <li><b>3</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public static PotentialAssignment forValue(final String name, final Object value) {
+        return new PotentialAssignment() {
+            @Override
+            public Object getValue() {
+                return value;
+            }
+
+            @Override
+            public String toString() {
+                return format(&quot;[%s]&quot;, value);
+            }
+
+            @Override
+            public String getDescription() {
+                String valueString;
+
+                if (value == null) {
+                    valueString = &quot;null&quot;;
+                } else {
+                    try {
+                        valueString = format(&quot;\&quot;%s\&quot;&quot;, value);
+                    } catch (Throwable e) {
+                        valueString = format(&quot;[toString() threw %s: %s]&quot;, 
+                                             e.getClass().getSimpleName(), e.getMessage());
+                    }
+                }
+
+                return format(&quot;%s &lt;from %s&gt;&quot;, valueString, name);
+            }
+        };
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

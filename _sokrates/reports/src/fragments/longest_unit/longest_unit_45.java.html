@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>private static void readPreferences()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private static void readPreferences()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/junit/runner/BaseTestRunner.java [231:247]</i></p>
+<ul>
+    <li><b>17</b> lines of code</li>
+    <li><b>5</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private static void readPreferences() {
+        InputStream is = null;
+        try {
+            is = new FileInputStream(getPreferencesFile());
+            setPreferences(new Properties(getPreferences()));
+            getPreferences().load(is);
+        } catch (IOException ignored) {
+        } catch (SecurityException ignored) {
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e1) {
+            }
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

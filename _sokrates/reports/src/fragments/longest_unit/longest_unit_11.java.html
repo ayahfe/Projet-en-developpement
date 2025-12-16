@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>private void runWithTimeout()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private void runWithTimeout()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/internal/runners/MethodRoadie.java [57:84]</i></p>
+<ul>
+    <li><b>27</b> lines of code</li>
+    <li><b>4</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private void runWithTimeout(final long timeout) {
+        runBeforesThenTestThenAfters(new Runnable() {
+
+            public void run() {
+                ExecutorService service = Executors.newSingleThreadExecutor();
+                Callable&lt;Object&gt; callable = new Callable&lt;Object&gt;() {
+                    public Object call() throws Exception {
+                        runTestMethod();
+                        return null;
+                    }
+                };
+                Future&lt;Object&gt; result = service.submit(callable);
+                service.shutdown();
+                try {
+                    boolean terminated = service.awaitTermination(timeout,
+                            TimeUnit.MILLISECONDS);
+                    if (!terminated) {
+                        service.shutdownNow();
+                    }
+                    result.get(0, TimeUnit.MILLISECONDS); // throws the exception if one occurred during the invocation
+                } catch (TimeoutException e) {
+                    addFailure(new TestTimedOutException(timeout, TimeUnit.MILLISECONDS));
+                } catch (Exception e) {
+                    addFailure(e);
+                }
+            }
+        });
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

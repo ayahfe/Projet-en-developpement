@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>private void validateTestMethods()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private void validateTestMethods()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/internal/runners/MethodValidator.java [69:96]</i></p>
+<ul>
+    <li><b>27</b> lines of code</li>
+    <li><b>8</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private void validateTestMethods(Class&lt;? extends Annotation&gt; annotation,
+            boolean isStatic) {
+        List&lt;Method&gt; methods = testClass.getAnnotatedMethods(annotation);
+
+        for (Method each : methods) {
+            if (Modifier.isStatic(each.getModifiers()) != isStatic) {
+                String state = isStatic ? &quot;should&quot; : &quot;should not&quot;;
+                errors.add(new Exception(&quot;Method &quot; + each.getName() + &quot;() &quot;
+						+ state + &quot; be static&quot;));
+            }
+            if (!Modifier.isPublic(each.getDeclaringClass().getModifiers())) {
+                errors.add(new Exception(&quot;Class &quot; + each.getDeclaringClass().getName()
+						+ &quot; should be public&quot;));
+            }
+            if (!Modifier.isPublic(each.getModifiers())) {
+                errors.add(new Exception(&quot;Method &quot; + each.getName()
+						+ &quot; should be public&quot;));
+            }
+            if (each.getReturnType() != Void.TYPE) {
+                errors.add(new Exception(&quot;Method &quot; + each.getName()
+						+ &quot;should have a return type of void&quot;));
+            }
+            if (each.getParameterTypes().length != 0) {
+                errors.add(new Exception(&quot;Method &quot; + each.getName()
+						+ &quot; should have no parameters&quot;));
+            }
+        }
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
