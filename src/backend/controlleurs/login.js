@@ -14,8 +14,7 @@ const ok = await bcrypt.compare(password, user.password);
 
   const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET || "devsecret", { expiresIn: "7d" });
   res.json({ token, user: { id: user.id, email: user.email } });
-<<<<<<< HEAD
+
 });
-=======
+
 });
->>>>>>> origin/temp-visualiser-fix

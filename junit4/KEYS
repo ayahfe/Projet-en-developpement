@@ -7,7 +7,7 @@ Adding a key:
 or `(pgpk -ll <your name> && pgpk -xa <your name>) >> KEYS`,
 or `(gpg --list-sigs <your name> && gpg --armor --export <your name>) >> KEYS`
 
-================================
+====
 
 pub   rsa4096 2018-04-08 [SC]
       FF6E2C001948C5F2F38B0CC385911F425EC61B51

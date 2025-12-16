@@ -42,9 +42,8 @@
     color: #27ae60;
     margin-top: 8px;
 }
-/* Espace pour éviter que les cartes passent sous la navbar */
 .produit-list {
-  margin-top: 100px; /* ajuste selon la hauteur exacte de ta navbar */
+  margin-top: 100px; 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -52,4 +51,26 @@
   padding: 20px;
   background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
   min-height: 100vh;
+}
+
+.produit-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 10px;
+    width: 250px;
+}
+
+.produit-card h3 {
+    color: #1a1a1a; 
+}
+
+.produit-card p {
+    color: #4a4a4a; 
+    line-height: 1.5;
+}
+
+.produit-card strong {
+    color: #000000;
+    font-size: 1.2rem;
 }

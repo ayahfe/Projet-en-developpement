@@ -1,27 +1,9 @@
-<<<<<<< HEAD
-=======
 /* === STRUCTURE PRINCIPALE === */
->>>>>>> origin/temp-visualiser-fix
 .navbar-modern {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-<<<<<<< HEAD
-  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.85) 100%);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  z-index: 100;
-  transition: all 0.3s ease;
-}
-
-.navbar-container {
-  max-width: 1200px;
-  height: 70px;
-  margin: 0 auto;
-  padding: 0 2rem;
-=======
   height: 75px;
   background: linear-gradient(90deg, #0a1a4b 0%, #1b3cae 50%, #0b60d1 100%);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
@@ -44,41 +26,11 @@
   width: 100%;
   max-width: 1300px;
   padding: 0 2.5rem;
->>>>>>> origin/temp-visualiser-fix
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
-/* Logo à gauche */
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.6rem;
-  gap: 5px;
-}
-
-.pill-icon {
-  font-size: 1.4rem;
-}
-
-.brand {
-  color: #1e3c72;
-}
-
-.brand-alt {
-  color: #2a5298;
-}
-main {
-  padding-top: 80px;
-}
-
-
-/* Liens centrés */
-=======
 /* === LOGO === */
 .navbar-logo {
   text-decoration: none;
@@ -104,45 +56,10 @@ main {
 }
 
 /* === LIENS CENTRAUX === */
->>>>>>> origin/temp-visualiser-fix
 .navbar-links {
   flex: 1;
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-  gap: 1.2rem;
-}
-
-.navlink {
-  position: relative;
-  color: #1e3c72;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.navlink:hover {
-  color: #2a5298;
-}
-
-/* LIGNE animée sous le lien actif */
-.navlink::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0%;
-  height: 2px;
-  background: #1e3c72;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-=======
   align-items: center;
   gap: 1.5rem;
 }
@@ -179,24 +96,10 @@ main {
 }
 
 .navlink.active::after,
->>>>>>> origin/temp-visualiser-fix
 .navlink:hover::after {
   width: 60%;
 }
 
-<<<<<<< HEAD
-.navlink.active {
-  color: #1e3c72;
-  font-weight: 700;
-}
-
-.navlink.active::after {
-  width: 60%;
-  background: #1e3c72;
-}
-
-/* Bouton Déconnexion */
-=======
 /* === ACTIONS DROITES === */
 .navbar-actions {
   display: flex;
@@ -267,31 +170,10 @@ main {
   transform: scale(1.05);
 }
 
->>>>>>> origin/temp-visualiser-fix
 .logout-btn {
   background: linear-gradient(90deg, #ff4b5c, #ff6b6b);
   color: white;
   border: none;
-<<<<<<< HEAD
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 75, 92, 0.3);
-}
-
-.logout-btn:hover {
-  background: linear-gradient(90deg, #ff3c50, #ff5454);
-  transform: scale(1.05);
-}
-
-/* Menu burger mobile */
-.burger {
-  display: none;
-  font-size: 1.6rem;
-  color: #1e3c72;
-=======
   box-shadow: 0 3px 10px rgba(255, 75, 92, 0.3);
 }
 .logout-btn:hover {
@@ -304,23 +186,16 @@ main {
   display: none;
   font-size: 1.8rem;
   color: white;
->>>>>>> origin/temp-visualiser-fix
   background: none;
   border: none;
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-@media (max-width: 900px) {
-  .navbar-links,
-  .logout-btn {
-=======
 @media (max-width: 950px) {
   .navbar-links,
   .navbar-actions .logout-btn,
   .navbar-actions .btn-login,
   .navbar-actions .btn-primary-nav {
->>>>>>> origin/temp-visualiser-fix
     display: none;
   }
 
@@ -330,46 +205,15 @@ main {
 
   .mobile-menu {
     position: absolute;
-<<<<<<< HEAD
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-=======
     top: 75px;
     left: 0;
     width: 100%;
     background: rgba(15, 30, 99, 0.96);
->>>>>>> origin/temp-visualiser-fix
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
     animation: slideDown 0.3s ease;
-<<<<<<< HEAD
-  }
-
-  .mobile-item {
-    color: #1e3c72;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 12px 0;
-    width: 100%;
-    text-align: center;
-    transition: background 0.3s ease;
-  }
-
-  .mobile-item:hover {
-    background: rgba(30, 60, 114, 0.1);
-  }
-
-  .mobile-item.active {
-    background: #1e3c72;
-    color: #fff;
-    font-weight: 600;
-=======
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -391,7 +235,6 @@ main {
   .mobile-item.active {
     color: #4adeff;
     font-weight: 700;
->>>>>>> origin/temp-visualiser-fix
   }
 
   .logout-btn.mobile {
