@@ -1,3 +1,0 @@
-Path	Lines of Code
-doc/markdown.sh	1
-pom.xml	609
