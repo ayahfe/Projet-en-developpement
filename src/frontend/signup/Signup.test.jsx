@@ -3,7 +3,6 @@ import { describe, test, expect, vi, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import Signup from "./Signup";
 
-// 🔹 Mock navigate
 const mockNavigate = vi.fn();
 
 vi.mock("react-router-dom", async () => {
@@ -14,10 +13,8 @@ vi.mock("react-router-dom", async () => {
   };
 });
 
-// 🔹 Mock fetch (API signup)
 global.fetch = vi.fn();
 
-// 🔹 Mock alert
 global.alert = vi.fn();
 
 describe("Signup page", () => {
@@ -59,7 +56,6 @@ describe("Signup page", () => {
       target: { value: "abcdef" },
     });
 
-    // ✅ OBLIGATOIRE : accepter les conditions
     fireEvent.click(screen.getByLabelText(/conditions/i));
 
     fireEvent.click(
@@ -143,4 +139,120 @@ describe("Signup page", () => {
 
     expect(button).toBeDisabled();
   });
+  
+  //Test format du email incorrect
+  test("affiche une erreur si l'email est invalide", async () => {
+  render(
+    <MemoryRouter>
+      <Signup />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/email/i), {
+    target: { value: "email-invalide" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/^mot de passe$/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/confirmez/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.click(screen.getByLabelText(/conditions/i));
+  fireEvent.click(screen.getByRole("button", { name: /créer/i }));
+
+  expect(
+    await screen.findByText(/email/i)
+  ).toBeInTheDocument();
+});
+
+test("affiche une erreur si le mot de passe est trop court", async () => {
+  render(
+    <MemoryRouter>
+      <Signup />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/email/i), {
+    target: { value: "test@test.com" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/^mot de passe$/i), {
+    target: { value: "123" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/confirmez/i), {
+    target: { value: "123" },
+  });
+
+  fireEvent.click(screen.getByLabelText(/conditions/i));
+  fireEvent.click(screen.getByRole("button", { name: /créer/i }));
+
+  expect(
+    await screen.findByText(/trop court|minim|6 caractères/i)
+  ).toBeInTheDocument();
+});
+
+// empeche inscription si l'utilisateur ne coche pas 
+test("empêche l'inscription si les conditions ne sont pas acceptées", async () => {
+  render(
+    <MemoryRouter>
+      <Signup />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/email/i), {
+    target: { value: "test@test.com" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/^mot de passe$/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/confirmez/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.click(screen.getByRole("button", { name: /créer/i }));
+
+  expect(fetch).not.toHaveBeenCalled();
+});
+
+//Test si l'API est appelé une seule fois meme en appuyant bcp sur le bouton
+test("n'appelle l'API qu'une seule fois même si on clique plusieurs fois", async () => {
+  fetch.mockResolvedValueOnce({
+    ok: true,
+    json: async () => ({}),
+  });
+
+  render(
+    <MemoryRouter>
+      <Signup />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/email/i), {
+    target: { value: "test@test.com" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/^mot de passe$/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.change(screen.getByLabelText(/confirmez/i), {
+    target: { value: "123456" },
+  });
+
+  fireEvent.click(screen.getByLabelText(/conditions/i));
+
+  const button = screen.getByRole("button", { name: /créer/i });
+
+  fireEvent.click(button);
+  fireEvent.click(button);
+
+  expect(fetch).toHaveBeenCalledTimes(1);
+});
+
 });

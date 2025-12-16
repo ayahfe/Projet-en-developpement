@@ -1,40 +1,4 @@
-
-
-
-
-import React from 'react';
-import { useCart } from '../cartContext/CartContext';
-import './ProduitCard.css';
-
-export default function ProduitCard({ produit }) {
-    const { addToCart } = useCart();
-
-
-
-
-import React from 'react';
-import { PRODUIT } from '../../data/produitList';  
-import './ProduitCard.css';
-
-function ProduitCard({ produit }) {
-
-
-
-
-    return (
-        <div className="produit-card">
-            <img src={produit.image} alt={produit.name} />
-            <h3>{produit.name}</h3>
-            <p>{produit.description}</p>
-            <strong>{produit.price} $</strong>
-
-
-            <br />
-            <button onClick={() => addToCart(produit)}>Ajouter au panier</button>
-        </div>
-    );
-
-
+// src/frontend/produitCard/ProduitCard.jsx
 import { useEffect, useState } from "react";
 import { PRODUIT } from "../../data/produitList";
 import { useCart } from "../cart/CartContext";
@@ -63,27 +27,4 @@ export default function ProduitList() {
       ))}
     </div>
   );
-
-
 }
-
-
-
-        </div>
-    );
-}
-
-export default function ProduitList() {
-    return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {PRODUIT.map(produit => (
-                <ProduitCard key={produit.id} produit={produit} />
-            ))}
-        </div>
-    );
-
-}
-
-
-}
-

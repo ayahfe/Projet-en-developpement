@@ -19,14 +19,21 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Clean npm cache
+        run: npm cache clean --force
+
       - name: Install dependencies
         run: npm install
+        working-directory: ./Projet-en-developpement-aya
+
+      - name: Verify vitest installation
+        run: npm list vitest
         working-directory: ./Projet-en-developpement-aya
 
       - name: Run tests
         run: npm run test
         working-directory: ./Projet-en-developpement-aya
 
-      - name: Run coverage 
+      - name: Run coverage
         run: npm run test:coverage
         working-directory: ./Projet-en-developpement-aya

@@ -1,42 +1,44 @@
-
-
-
-
-
-
-
+/* Plein écran + reset */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
 
 /* Fond général */
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298, #4f77c6);
-  min-height: 100vh;
+.auth-screen {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #007bff 0%, #004aad 100%);
+  overflow: hidden;
 }
 
-/* Carte du formulaire (effet glassmorphism) */
-form {
-  width: 100%;
-  max-width: 380px;
-  padding: 2.5rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Carte glassmorphism */
+.auth-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 3rem 3.5rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 520px;
   color: #fff;
-  animation: fadeIn 0.8s ease;
+  text-align: center;
 }
 
-/* Animations */
-@keyframes fadeIn {
+/* Animation apparition */
+.auth-card.appear {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -45,160 +47,24 @@ form {
 }
 
 /* Titres */
-form h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.auth-card h2 {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
   font-weight: 700;
-  color: #fff;
 }
 
-form h3 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 400;
-  font-size: 1rem;
-  color: #dbe4ff;
+.auth-card p {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  margin-bottom: 1.6rem;
 }
 
 /* Champs */
 .control {
   margin-bottom: 1.2rem;
+  text-align: left;
 }
 
-.control label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-  color: #e0eaff;
-}
-
-.control input,
-.control select {
-  width: 100%;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  outline: none;
-  transition: 0.3s ease;
-}
-
-.control input::placeholder {
-  color: #cdd6f6;
-}
-
-.control input:focus,
-.control select:focus {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 0 2px #00c6ff, 0 0 8px rgba(0, 198, 255, 0.6);
-}
-
-/* Boutons */
-.form-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.8rem;
-  gap: 12px;
-}
-
-.button {
-  flex: 1;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: #fff;
-  border: none;
-  padding: 0.9rem 1.3rem;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0, 114, 255, 0.4);
-}
-
-.button-flat {
-  flex: 1;
-  background: transparent;
-  border: 2px solid #00c6ff;
-  color: #00c6ff;
-  padding: 0.9rem 1.3rem;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.button-flat:hover {
-  background: rgba(0, 198, 255, 0.1);
-  color: #fff;
-  border-color: #fff;
-}
-
-/* Erreur */
-.control-error {
-  margin-top: 0.4rem;
-  color: #ff6b6b;
-  font-size: 0.9rem;
-  font-weight: 500;
-
-
-
-
-/* Plein écran + reset hauteur */
-html, body { height: 100%; margin: 0; padding: 0; }
-
-/* Fond bleu dynamique */
-.auth-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #007bff 0%, #004aad 100%);
-  background-attachment: fixed;
-  overflow: hidden;
-  animation: fadeIn 1s ease-in-out;
-}
-
-/* Carte “glass” */
-.auth-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  padding: 3rem 3.5rem;
-  border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  width: 90%;
-  max-width: 550px;
-  color: #fff;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-.auth-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-}
-
-/* Titres et texte */
-.auth-card h2 {
-  font-size: 1.9rem;
-  margin-bottom: 0.3rem;
-  font-weight: 700;
-  color: #fff;
-}
-.auth-card p {
-  font-size: 0.95rem;
-  color: #e2e8f0;
-  margin-bottom: 1.5rem;
-}
-
-/* Champs */
-.control { margin-bottom: 1rem; text-align: left; }
 .control label {
   display: block;
   font-weight: 600;
@@ -206,121 +72,59 @@ html, body { height: 100%; margin: 0; padding: 0; }
   margin-bottom: 0.3rem;
   color: #e0e0e0;
 }
+
 .control input {
   width: 100%;
-  padding: 0.65rem 0.75rem;
-  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
   border: none;
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
   font-size: 0.95rem;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
-.control input::placeholder { color: #cfd9ff; opacity: 0.8; }
+
+.control input::placeholder {
+  color: #cfd9ff;
+}
+
 .control input:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.02);
+  box-shadow: 0 0 0 2px #00c6ff;
 }
 
 /* Actions */
 .form-actions {
-  margin-top: 1.6rem;
+  margin-top: 1.8rem;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
+
 .button {
+  flex: 1;
   background: linear-gradient(90deg, #00c6ff, #0072ff);
-  color: white;
+  color: #fff;
   border: none;
-  padding: 0.7rem 1.4rem;
-  border-radius: 12px;
+  padding: 0.75rem 1.4rem;
+  border-radius: 14px;
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 600;
   transition: all 0.3s ease;
 }
-.button:hover { background: linear-gradient(90deg, #29abe2, #005eff); transform: translateY(-2px); }
-.button-flat { background: transparent; border: 2px solid #fff; }
-.button-flat:hover { background: rgba(255, 255, 255, 0.15); }
 
-/* Séparateur */
-hr {
-  border: none;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 1.5rem 0;
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 114, 255, 0.45);
 }
 
-/* Anim apparition */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+.button-flat {
+  background: transparent;
+  border: 2px solid #fff;
 }
-/* --- MENU DÉROULANT MODERNE ET DYNAMIQUE --- */
-.control select {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+
+.button-flat:hover {
   background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.35s ease;
-  backdrop-filter: blur(12px);
-  appearance: none;
-  outline: none;
-  background-image: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.15);
-}
-
-/* Icône flèche stylisée à droite */
-.control select {
-  background-image:
-    linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)),
-    url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 18px;
-}
-
-/* --- Interaction --- */
-.control select:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(0, 153, 255, 0.3);
-}
-
-.control select:focus {
-  border-color: #00c6ff;
-  box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* --- Options internes --- */
-option {
-  background: linear-gradient(135deg, #0062ff 0%, #003a99 100%);
-  color: #fff;
-  font-weight: 500;
-  border: none;
-  padding: 0.7rem;
-}
-
-/* --- Animation d’apparition (effet flottant) --- */
-@keyframes floatUp {
-  from { transform: translateY(10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.auth-card.appear {
-  animation: floatUp 0.6s ease-out;
-
-
-
-
-
-
 }

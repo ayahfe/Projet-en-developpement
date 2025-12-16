@@ -64,18 +64,16 @@
   margin-top: 1rem;
   padding: 0.75rem 1.25rem;
 
-
   background: #fff;
-
   background: #ffffff;
 
   background: #ffffff;
+
   border-radius: 0.75rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .btn-nav, .btn-today {
-
 
   background: #f1f5f9;
   border: none;
@@ -102,7 +100,6 @@
   color: white;
   transform: translateY(-1px);
 
-
 }
 
 .nav-date {
@@ -117,11 +114,6 @@
   padding: 0.5rem 0.75rem;
   margin-left: 0.25rem;
   cursor: pointer;
-
-
-}
-
-
   color: #1e293b;
   font-weight: 600;
   transition: all 0.25s ease;
@@ -132,7 +124,6 @@
   color: white;
   transform: translateY(-1px);
 }
-
 
 
 .btn-view.active {
@@ -1125,9 +1116,6 @@ h2 {
   transform: scale(0.98);
 }
 
-
-
-
 /* === MODAL DE DÉTAIL === */
 .modal-content {
   width: 100%;
@@ -1191,5 +1179,4 @@ h2 {
 main, .calendar-container {
   padding-top: 300px; /* décale tout le contenu vers le bas */
 }
-
 

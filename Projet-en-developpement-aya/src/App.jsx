@@ -1,50 +1,69 @@
+// src/App.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Suspense, lazy } from 'react';
 import "./App.css";
+
 import { AuthProvider } from "./frontend/AuthContext";
+import { CartProvider } from "./frontend/cart/CartContext";
+
 import RootLayout from "./frontend/rootLayout/RootLayout";
+import Login from "./frontend/login/Login";
+import Signup from "./frontend/signup/Signup";
 
-// Standard import for the home page (LCP optimization)
 import ProduitList from "./frontend/produitCard/ProduitCard.jsx";
+import Cart from "./frontend/cart/Cart";
 
-// Lazy load everything else
-const Login = lazy(() => import("./frontend/login/Login"));
-const Signup = lazy(() => import("./frontend/signup/Signup"));
-const PrescriptionManager = lazy(() => import("./frontend/prescription/PrescriptionManager.jsx"));
-const ShowPrescriptionList = lazy(() => import("./frontend/prescription/showPrescription/ShowPrescription.jsx"));
-const AddPrescription = lazy(() => import("./frontend/prescription/addPrescription/AddPrescription.jsx"));
-const ModifyPrescription = lazy(() => import("./frontend/prescription/modifyPrescription/ModifyPrescription.jsx"));
-const DeletePrescription = lazy(() => import("./frontend/prescription/deletePrescription/DeletePrescription.jsx"));
+import ShowPrescription from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
+import AddPrescription from "./frontend/prescription/addPrescription/AddPrescription.jsx";
+import ModifyPrescription from "./frontend/prescription/modifyPrescription/ModifyPrescription.jsx";
+import DeletePrescription from "./frontend/prescription/deletePrescription/DeletePrescription.jsx";
+
+import PharmacienHome from "./frontend/roles/PharmacienHome.jsx";
+import MedecinHome from "./frontend/roles/MedecinHome.jsx";
+import CalendrierRdv from "./frontend/rdv/rdv.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: (
+      <div style={{ padding: 40, textAlign: "center" }}>
+        <h2>❌ Page introuvable</h2>
+        <p>La page demandée n'existe pas.</p>
+      </div>
+    ),
     children: [
+      // 🏠 Accueil (boutique)
       { index: true, element: <ProduitList /> },
+
+      // 🧺 Panier
+      { path: "cart", element: <Cart /> },
+
+      // 🔐 Auth
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
-      {
-        path: "/medecins",
-        element: <PrescriptionManager />,
-        children: [
-          { index: true, element: <ShowPrescriptionList /> },
-          { path: "add", element: <AddPrescription /> },
-          { path: "modify/:id", element: <ModifyPrescription /> },
-          { path: "delete", element: <DeletePrescription /> },
-        ],
-      },
+
+      // 👨‍⚕️ Rôles
+      { path: "pharmacien", element: <PharmacienHome /> },
+      { path: "medecin", element: <MedecinHome /> },
+
+      // 📅 Rendez-vous
+      { path: "rendezvous", element: <CalendrierRdv /> },
+
+      // 💊 Prescriptions
+      { path: "medecins", element: <ShowPrescription /> },
+      { path: "medecins/add", element: <AddPrescription /> },
+      { path: "medecins/modify", element: <ModifyPrescription /> },
+      { path: "medecins/delete", element: <DeletePrescription /> },
     ],
   },
 ]);
 
 export default function App() {
   return (
-    <AuthProvider>
-      {/* Suspense handles the loading state for lazy routes */}
-      <Suspense fallback={<div className="loading-spinner">Chargement...</div>}>
+    <CartProvider>
+      <AuthProvider>
         <RouterProvider router={router} />
-      </Suspense>
-    </AuthProvider>
+      </AuthProvider>
+    </CartProvider>
   );
 }
