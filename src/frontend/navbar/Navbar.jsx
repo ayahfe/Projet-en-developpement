@@ -1,11 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
@@ -13,11 +13,10 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
+
+
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
@@ -44,51 +43,48 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
 
   const links = [
     { name: "Accueil", path: "/" },
     { name: "Médecins", path: "/medecins" },
     { name: "Rendez-Vous", path: "/rendezvous" },
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
     { name: "Ordonnances", path: "/ordonnances" },
     { name: "Pharmacie", path: "/pharmacie" },
     { name: "Mes Commandes", path: "/commandes" },
     { name: "Mon Compte", path: "/profil" },
   ];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
   return (
     <header className="navbar-modern">
       <div className="navbar-container">
         {/* Logo à gauche */}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
+
+
+
+
     
   ];
 
->>>>>>> origin/temp-visualiser-fix
   async function handleLogout() {
     try {
       await logout();
@@ -102,27 +98,25 @@ export default function Navbar() {
     <header className="navbar-modern">
       <div className="navbar-container">
         {/* Logo */}
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
         <Link to="/" className="navbar-logo">
           <span className="brand">Med</span>
           <span className="brand-alt">Pharma</span>
         </Link>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
+
         {/* Liens au centre */}
         <nav className="navbar-links">
           {links.map((link) => (
@@ -134,11 +128,10 @@ export default function Navbar() {
               }`}
             >
               {link.name}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
+
+
         {/* Liens centraux */}
         <nav className="navbar-links">
           {links.map((l) => (
@@ -150,26 +143,24 @@ export default function Navbar() {
               }`}
             >
               {l.name}
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
             </Link>
           ))}
         </nav>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
+
         {/* Bouton à droite */}
         <button className="logout-btn">Déconnexion</button>
 
@@ -204,11 +195,10 @@ export default function Navbar() {
 };
 
 export default Navbar;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
+
+
         {/* Actions à droite */}
         <div className="navbar-actions">
           {/* 🛒 Bouton Panier */}
@@ -238,11 +228,9 @@ export default Navbar;
     </header>
   );
 }
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+

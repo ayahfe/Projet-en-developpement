@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 app.post("/api/auth/signup", async (req, res) => {
   const { email, password } = req.body || {};
   if (!email || !password) return res.status(400).json({ error: "Email et mot de passe requis" });
@@ -16,7 +16,7 @@ app.post("/api/auth/signup", async (req, res) => {
   const token = jwt.sign({ id: data.id, email }, process.env.JWT_SECRET || "devsecret", { expiresIn: "7d" });
   res.status(201).json({ token, user: { id: data.id, email } });
 });
-=======
+
 import express from "express";
 import cors from "cors";
 import jwt from "jsonwebtoken";
@@ -99,4 +99,3 @@ app.use((err, _req, res, _next) => {
 });
 
 app.listen(PORT, () => console.log(`API : http://localhost:${PORT}`));
->>>>>>> origin/temp-visualiser-fix

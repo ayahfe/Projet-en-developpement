@@ -1,25 +1,24 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
+
 /* === STRUCTURE PRINCIPALE === */
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
 .navbar-modern {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
   background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.85) 100%);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -33,9 +32,9 @@
   height: 70px;
   margin: 0 auto;
   padding: 0 2rem;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
   height: 75px;
   background: linear-gradient(90deg, #0a1a4b 0%, #1b3cae 50%, #0b60d1 100%);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
@@ -58,23 +57,22 @@
   width: 100%;
   max-width: 1300px;
   padding: 0 2.5rem;
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
 /* Logo à gauche */
 .navbar-logo {
   display: flex;
@@ -102,9 +100,9 @@ main {
 
 
 /* Liens centrés */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
 /* === LOGO === */
 .navbar-logo {
   text-decoration: none;
@@ -130,22 +128,21 @@ main {
 }
 
 /* === LIENS CENTRAUX === */
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
 .navbar-links {
   flex: 1;
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
   gap: 1.2rem;
 }
 
@@ -178,9 +175,9 @@ main {
   transform: translateX(-50%);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
   align-items: center;
   gap: 1.5rem;
 }
@@ -217,22 +214,21 @@ main {
 }
 
 .navlink.active::after,
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
 .navlink:hover::after {
   width: 60%;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
 .navlink.active {
   color: #1e3c72;
   font-weight: 700;
@@ -244,9 +240,9 @@ main {
 }
 
 /* Bouton Déconnexion */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
 /* === ACTIONS DROITES === */
 .navbar-actions {
   display: flex;
@@ -317,22 +313,21 @@ main {
   transform: scale(1.05);
 }
 
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
 .logout-btn {
   background: linear-gradient(90deg, #ff4b5c, #ff6b6b);
   color: white;
   border: none;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
   font-weight: 600;
   padding: 8px 18px;
   border-radius: 25px;
@@ -351,9 +346,9 @@ main {
   display: none;
   font-size: 1.6rem;
   color: #1e3c72;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
   box-shadow: 0 3px 10px rgba(255, 75, 92, 0.3);
 }
 .logout-btn:hover {
@@ -366,39 +361,37 @@ main {
   display: none;
   font-size: 1.8rem;
   color: white;
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
   background: none;
   border: none;
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
+
 @media (max-width: 900px) {
   .navbar-links,
   .logout-btn {
-=======
+
 @media (max-width: 950px) {
   .navbar-links,
   .navbar-actions .logout-btn,
   .navbar-actions .btn-login,
   .navbar-actions .btn-primary-nav {
->>>>>>> origin/temp-visualiser-fix
-=======
+
 @media (max-width: 900px) {
   .navbar-links,
   .logout-btn {
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
+
+
 @media (max-width: 900px) {
   .navbar-links,
   .logout-btn {
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
     display: none;
   }
 
@@ -408,43 +401,42 @@ main {
 
   .mobile-menu {
     position: absolute;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
     top: 70px;
     left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
     top: 75px;
     left: 0;
     width: 100%;
     background: rgba(15, 30, 99, 0.96);
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
     animation: slideDown 0.3s ease;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
   }
 
   .mobile-item {
@@ -465,9 +457,9 @@ main {
     background: #1e3c72;
     color: #fff;
     font-weight: 600;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -489,11 +481,10 @@ main {
   .mobile-item.active {
     color: #4adeff;
     font-weight: 700;
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
   }
 
   .logout-btn.mobile {

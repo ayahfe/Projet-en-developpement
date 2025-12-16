@@ -1,11 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
+
 import express from "express";
 import cors from "cors";
 import jwt from "jsonwebtoken";
@@ -88,11 +88,10 @@ app.use((err, _req, res, _next) => {
 });
 
 app.listen(PORT, () => console.log(`API : http://localhost:${PORT}`));
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
+
+
 require("dotenv").config();
 const express = require("express");
 const Stripe = require("stripe");
@@ -152,11 +151,9 @@ app.post("/create-checkout-session", async (req, res) => {
 
 const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`💳 Stripe server running on port ${PORT}`));
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+

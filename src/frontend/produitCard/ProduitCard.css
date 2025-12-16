@@ -1,11 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
+
 .produit-card {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -60,13 +60,12 @@
   padding: 20px;
   background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
   min-height: 100vh;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
+
+
 A/* === PAGE ENTIÈRE === */
-=======
+
 /* === PAGE GLOBALE === */
->>>>>>> origin/temp-visualiser-fix
 body, html {
   margin: 0;
   padding: 0;
@@ -76,7 +75,7 @@ body, html {
   font-family: "Inter", sans-serif;
 }
 
-<<<<<<< HEAD
+
 /* === SECTION PRODUITS === */
 .produit-list {
   margin-top: 80px;
@@ -88,7 +87,7 @@ body, html {
   background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
 }
 
-=======
+
 .produit-list {
   margin-top: 1200px; /* ✅ espace sous la navbar augmenté */
   min-height: calc(100vh - 200px);
@@ -100,7 +99,6 @@ body, html {
 }
 
 
->>>>>>> origin/temp-visualiser-fix
 /* === CARTE PRODUIT === */
 .produit-card {
   background: rgba(255, 255, 255, 0.12);
@@ -164,11 +162,10 @@ body, html {
   background: linear-gradient(90deg, #00aaff, #007bff);
   border: none;
   color: white;
-<<<<<<< HEAD
+
   padding: 10px 20px;
-=======
+
   padding: 10px 22px;
->>>>>>> origin/temp-visualiser-fix
   border-radius: 30px;
   font-weight: 600;
   font-size: 0.95rem;
@@ -202,12 +199,10 @@ body, html {
 .not-logged p {
   color: #d6e3ff;
   font-size: 1rem;
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
 }

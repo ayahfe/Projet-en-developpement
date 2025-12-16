@@ -1,0 +1,6 @@
+# Allow all crawlers to access everything
+User-agent: *
+Allow: /
+
+# Point to your sitemap (optional but recommended)
+Sitemap: http://localhost:5173/sitemap.xml

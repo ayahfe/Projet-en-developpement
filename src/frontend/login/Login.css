@@ -1,11 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
+
+
 /* Fond général */
 body {
   margin: 0;
@@ -147,11 +147,10 @@ form h3 {
   color: #ff6b6b;
   font-size: 0.9rem;
   font-weight: 500;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
+
+
 /* Plein écran + reset hauteur */
 html, body { height: 100%; margin: 0; padding: 0; }
 
@@ -318,12 +317,10 @@ option {
 
 .auth-card.appear {
   animation: floatUp 0.6s ease-out;
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
-=======
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
+
+
 }

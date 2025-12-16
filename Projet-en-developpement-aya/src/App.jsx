@@ -1,15 +1,20 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Suspense, lazy } from 'react';
 import "./App.css";
 import { AuthProvider } from "./frontend/AuthContext";
 import RootLayout from "./frontend/rootLayout/RootLayout";
-import Login from "./frontend/login/Login";
-import Signup from "./frontend/signup/Signup";
+
+// Standard import for the home page (LCP optimization)
 import ProduitList from "./frontend/produitCard/ProduitCard.jsx";
-import AddPrescription from "./frontend/prescription/addPrescription/AddPrescription.jsx";
-import ModifyPrescription from "./frontend/prescription/modifyPrescription/ModifyPrescription.jsx";
-import DeletePrescription from "./frontend/prescription/deletePrescription/DeletePrescription.jsx";
-import ShowPrescriptionList from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
-import PrescriptionManager from "./frontend/prescription/PrescriptionManager.jsx";
+
+// Lazy load everything else
+const Login = lazy(() => import("./frontend/login/Login"));
+const Signup = lazy(() => import("./frontend/signup/Signup"));
+const PrescriptionManager = lazy(() => import("./frontend/prescription/PrescriptionManager.jsx"));
+const ShowPrescriptionList = lazy(() => import("./frontend/prescription/showPrescription/ShowPrescription.jsx"));
+const AddPrescription = lazy(() => import("./frontend/prescription/addPrescription/AddPrescription.jsx"));
+const ModifyPrescription = lazy(() => import("./frontend/prescription/modifyPrescription/ModifyPrescription.jsx"));
+const DeletePrescription = lazy(() => import("./frontend/prescription/deletePrescription/DeletePrescription.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -36,7 +41,10 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      {/* Suspense handles the loading state for lazy routes */}
+      <Suspense fallback={<div className="loading-spinner">Chargement...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
     </AuthProvider>
   );
 }

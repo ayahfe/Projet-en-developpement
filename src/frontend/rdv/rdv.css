@@ -63,22 +63,20 @@
   align-items: center;
   margin-top: 1rem;
   padding: 0.75rem 1.25rem;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
   background: #fff;
-=======
+
   background: #ffffff;
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
+
   background: #ffffff;
->>>>>>> origin/temp-visualiser-fix
   border-radius: 0.75rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .btn-nav, .btn-today {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
   background: #f1f5f9;
   border: none;
   border-radius: 0.5rem;
@@ -87,9 +85,8 @@
 }
 .btn-today:hover, .btn-nav:hover {
   background: #e2e8f0;
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
   background: #e8eaf6; /* violet pâle pour contraster sur blanc */
   border: none;
   border-radius: 0.5rem;
@@ -104,10 +101,8 @@
   background: linear-gradient(to right, #6366f1, #8b5cf6);
   color: white;
   transform: translateY(-1px);
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
 }
 
 .nav-date {
@@ -122,12 +117,11 @@
   padding: 0.5rem 0.75rem;
   margin-left: 0.25rem;
   cursor: pointer;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 }
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
   color: #1e293b;
   font-weight: 600;
   transition: all 0.25s ease;
@@ -139,10 +133,8 @@
   transform: translateY(-1px);
 }
 
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
 .btn-view.active {
   background: linear-gradient(to right, #3b82f6, #8b5cf6);
   color: white;
@@ -1132,11 +1124,10 @@ h2 {
 .btn-submit:active {
   transform: scale(0.98);
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/temp-visualiser-fix
+
+
+
+
 /* === MODAL DE DÉTAIL === */
 .modal-content {
   width: 100%;
@@ -1200,7 +1191,5 @@ h2 {
 main, .calendar-container {
   padding-top: 300px; /* décale tout le contenu vers le bas */
 }
-<<<<<<< HEAD
->>>>>>> af96563 ([Add] Addition des fichiers Cart.jsx, CartContext et Cart.css et stripe.js)
-=======
->>>>>>> origin/temp-visualiser-fix
+
+

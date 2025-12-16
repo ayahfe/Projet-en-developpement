@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
+
+
 // src/frontend/prescription/showPrescription/ShowPrescription.jsx
 import React from "react";
 
@@ -10,27 +10,26 @@ export default function ShowPrescription() {
     <div className="show-prescription">
       <h2>Liste des prescriptions</h2>
       {/* Ton contenu ici */}
-=======
+
 // ShowPrescription.jsx
 import { PRESCRIPTIONS } from "../../../data/prescriptions";
 import "./ShowPrescription.css";
-=======
+
 import { PRESCRIPTIONS } from "../../../data/prescriptions";
-=======
->>>>>>> 8918954 (tests logout)
+
 import "./ShowPrescription.css";
 import "../addPrescription/AddPrescription.css";
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
+
+
 import "./ShowPrescription.css";
 import "../addPrescription/AddPrescription.css";
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
 import { Link } from "react-router-dom";
 
 function ShowPrescription({ prescription }) {
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
     <div className="card-rx">
       <h3 className="rx-title">Ordonnance #{prescription.id}</h3>
 
@@ -62,9 +61,9 @@ function ShowPrescription({ prescription }) {
           <button className="button-rx-delete">Supprimer</button>
         </Link>
       </div>
-=======
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
     <div>
       <div className="form-rx">
         <p>id : {prescription.id}</p>
@@ -125,16 +124,16 @@ function ShowPrescription({ prescription }) {
           <button type="submit" className="button-rx-delete">Supprimer</button>
         </Link>
       </p>
-<<<<<<< HEAD
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
     </div>
   );
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 export default function ShowPrescriptionList() {
   return (
     <div className="prescription-page">
@@ -149,10 +148,9 @@ export default function ShowPrescriptionList() {
           <ShowPrescription key={p.id} prescription={p} />
         ))}
       </div>
->>>>>>> origin/temp-visualiser-fix
-=======
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
 */
 export default function ShowPrescriptionList() {
   return (
@@ -168,10 +166,10 @@ export default function ShowPrescriptionList() {
           <ShowPrescription key={prescription.id} prescription={prescription} />
         ))}
       </div>
-<<<<<<< HEAD
->>>>>>> 9965a5d (feat(auth): rajout test cypress)
-=======
->>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
+
+
+
+
     </div>
   );
 }
