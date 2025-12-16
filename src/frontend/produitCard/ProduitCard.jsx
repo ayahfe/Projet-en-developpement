@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useCart } from '../cartContext/CartContext';
 import './ProduitCard.css';
@@ -9,18 +10,24 @@ export default function ProduitCard({ produit }) {
     const { addToCart } = useCart();
 
 =======
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import React from 'react';
 import { PRODUIT } from '../../data/produitList';  
 import './ProduitCard.css';
 
 function ProduitCard({ produit }) {
+<<<<<<< HEAD
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     return (
         <div className="produit-card">
             <img src={produit.image} alt={produit.name} />
             <h3>{produit.name}</h3>
             <p>{produit.description}</p>
             <strong>{produit.price} $</strong>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <br />
             <button onClick={() => addToCart(produit)}>Ajouter au panier</button>
@@ -63,6 +70,8 @@ export default function ProduitList() {
 >>>>>>> origin/temp-visualiser-fix
 }
 =======
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
         </div>
     );
 }
@@ -75,5 +84,9 @@ export default function ProduitList() {
             ))}
         </div>
     );
+<<<<<<< HEAD
 }
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+}
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f

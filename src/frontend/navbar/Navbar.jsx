@@ -1,8 +1,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
@@ -10,6 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -46,6 +50,8 @@ export default function Navbar() {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 
   const links = [
     { name: "Accueil", path: "/" },
@@ -53,8 +59,11 @@ export default function Navbar() {
     { name: "Rendez-Vous", path: "/rendezvous" },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     { name: "Ordonnances", path: "/ordonnances" },
     { name: "Pharmacie", path: "/pharmacie" },
     { name: "Mes Commandes", path: "/commandes" },
@@ -63,12 +72,16 @@ export default function Navbar() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   return (
     <header className="navbar-modern">
       <div className="navbar-container">
         {/* Logo à gauche */}
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -95,6 +108,8 @@ export default function Navbar() {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
         <Link to="/" className="navbar-logo">
           <span className="brand">Med</span>
           <span className="brand-alt">Pharma</span>
@@ -103,8 +118,11 @@ export default function Navbar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
         {/* Liens au centre */}
         <nav className="navbar-links">
           {links.map((link) => (
@@ -116,6 +134,7 @@ export default function Navbar() {
               }`}
             >
               {link.name}
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -137,6 +156,8 @@ export default function Navbar() {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
             </Link>
           ))}
         </nav>
@@ -144,8 +165,11 @@ export default function Navbar() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
         {/* Bouton à droite */}
         <button className="logout-btn">Déconnexion</button>
 
@@ -180,6 +204,7 @@ export default function Navbar() {
 };
 
 export default Navbar;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -219,3 +244,5 @@ export default Navbar;
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f

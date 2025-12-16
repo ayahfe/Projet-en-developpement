@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .env
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+.env
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f

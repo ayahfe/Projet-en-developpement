@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* ===== PAGE ===== */
 .prescription-page {
   padding: 3rem 2rem;
@@ -275,6 +276,8 @@
     max-width: 100%;
   }
 =======
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .form-rx {
   width: 100%;
   max-width: 100%;
@@ -370,5 +373,8 @@
   gap: 2rem; /* space between cards */
   justify-items: center;
   margin-top: 2rem;
+<<<<<<< HEAD
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 }

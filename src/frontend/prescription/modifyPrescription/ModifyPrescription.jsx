@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const ModifyPrescription = () => {
   const modifyPrescriptionSubmitHandler = () => {};
@@ -19,6 +20,8 @@ const ModifyPrescription = () => {
     <form className="form-rx" onSubmit={modifyPrescriptionSubmitHandler}>
       <h2>Modifier une Prescription</h2>
 =======
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import "../addPrescription/AddPrescription.css";
 
 
@@ -27,7 +30,10 @@ const ModifyPrescription = () => {
   return (
     <form className="form-rx" onSubmit={modifyPrescriptionSubmitHandler}>
       <h2>Modifier la Prescription #{prescription.id}</h2>
+<<<<<<< HEAD
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
       <div className="control champs">
         <div className="row-rx">
           <div className="column-rx ">
@@ -62,6 +68,7 @@ const ModifyPrescription = () => {
         <div className="column-rx-signature">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <h3>Signature</h3>
         <div className="row-rx">
           <div className="row-rx-signature">
@@ -81,6 +88,8 @@ const ModifyPrescription = () => {
 =======
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
           <h3>Signature</h3>
           <div className="row-rx">
             <div className="row-rx-signature">
@@ -94,9 +103,12 @@ const ModifyPrescription = () => {
           </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
       </div>
       <div className="row">
         <p className="form">
@@ -110,6 +122,7 @@ const ModifyPrescription = () => {
 };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default ModifyPrescription;
 =======
 export default ModifyPrescription;
@@ -117,3 +130,6 @@ export default ModifyPrescription;
 =======
 export default ModifyPrescription;
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+export default ModifyPrescription;
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f

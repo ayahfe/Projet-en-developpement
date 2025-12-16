@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
@@ -21,11 +22,17 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import "./Login.css";
 
 export default function Login() {
   const [values, setValues] = useState({ email: "", password: "" });
   const [pending, setPending] = useState(false);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -39,6 +46,9 @@ export default function Login() {
 =======
   const { login } = useContext(AuthContext);
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+  const { login } = useContext(AuthContext);
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   const navigate = useNavigate();
 
   const onChange = (k, v) => setValues(p => ({ ...p, [k]: v }));
@@ -49,6 +59,7 @@ export default function Login() {
     try {
       setPending(true);
       await login(values.email, values.password);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -80,6 +91,11 @@ export default function Login() {
     } catch (err) {
       alert("Connexion échouée");
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+      navigate("/"); // redirection après succès
+    } catch (err) {
+      alert("Connexion échouée");
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     } finally {
       setPending(false);
     }
@@ -89,8 +105,11 @@ export default function Login() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     <form onSubmit={onSubmit}>
       <h2>Bienvenue</h2>
       <h3>Connectez-vous pour continuer</h3>
@@ -115,6 +134,7 @@ export default function Login() {
         </button>
       </p>
     </form>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -160,5 +180,7 @@ export default function Login() {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   );
 }

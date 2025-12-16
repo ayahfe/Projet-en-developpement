@@ -1,10 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* === STRUCTURE PRINCIPALE === */
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .navbar-modern {
   position: fixed;
   top: 0;
@@ -12,8 +15,11 @@
   width: 100%;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.85) 100%);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -27,6 +33,7 @@
   height: 70px;
   margin: 0 auto;
   padding: 0 2rem;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   height: 75px;
@@ -54,6 +61,8 @@
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,8 +70,11 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 /* Logo à gauche */
 .navbar-logo {
   display: flex;
@@ -90,6 +102,7 @@ main {
 
 
 /* Liens centrés */
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /* === LOGO === */
@@ -120,14 +133,19 @@ main {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .navbar-links {
   flex: 1;
   display: flex;
   justify-content: center;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   gap: 1.2rem;
 }
 
@@ -160,6 +178,7 @@ main {
   transform: translateX(-50%);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   align-items: center;
@@ -201,14 +220,19 @@ main {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .navlink:hover::after {
   width: 60%;
 }
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .navlink.active {
   color: #1e3c72;
   font-weight: 700;
@@ -220,6 +244,7 @@ main {
 }
 
 /* Bouton Déconnexion */
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /* === ACTIONS DROITES === */
@@ -295,14 +320,19 @@ main {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 .logout-btn {
   background: linear-gradient(90deg, #ff4b5c, #ff6b6b);
   color: white;
   border: none;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   font-weight: 600;
   padding: 8px 18px;
   border-radius: 25px;
@@ -322,6 +352,7 @@ main {
   font-size: 1.6rem;
   color: #1e3c72;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   box-shadow: 0 3px 10px rgba(255, 75, 92, 0.3);
 }
@@ -338,11 +369,14 @@ main {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   background: none;
   border: none;
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 @media (max-width: 900px) {
@@ -360,6 +394,11 @@ main {
   .navbar-links,
   .logout-btn {
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+@media (max-width: 900px) {
+  .navbar-links,
+  .logout-btn {
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     display: none;
   }
 
@@ -371,14 +410,18 @@ main {
     position: absolute;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     top: 70px;
     left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     top: 75px;
@@ -388,6 +431,8 @@ main {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -395,8 +440,11 @@ main {
     animation: slideDown 0.3s ease;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   }
 
   .mobile-item {
@@ -417,6 +465,7 @@ main {
     background: #1e3c72;
     color: #fff;
     font-weight: 600;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -443,6 +492,8 @@ main {
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
   }
 
   .logout-btn.mobile {

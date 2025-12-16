@@ -2,8 +2,11 @@ import { useState } from "react";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import {Link, useNavigate} from "react-router-dom";
 
 export default function Signup(){
@@ -78,6 +81,7 @@ export default function Signup(){
             </p>
         </form>
     )
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 =======
@@ -247,3 +251,6 @@ export default function Signup() {
 =======
 }
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+}
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f

@@ -1,10 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
 import "./AddPrescription.css";
 
 const AddPrescription = () => {
@@ -16,6 +19,7 @@ const AddPrescription = () => {
         <div className="row-rx">
           <div className="column-rx ">
             <h3>Informations Patient</h3>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             <label htmlFor="title">Nom de l'institut</label>
@@ -65,6 +69,8 @@ const AddPrescription = () => {
 =======
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
             <label htmlFor="nomInstitut">Nom de l'institut</label>
             <input id="nomInstitut" type="text" name="nomInstitut" required />
             <label htmlFor="date">Date</label>
@@ -111,9 +117,12 @@ const AddPrescription = () => {
           </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/temp-visualiser-fix
 =======
 >>>>>>> 9965a5d (feat(auth): rajout test cypress)
+=======
+>>>>>>> 94976f165e7ffc3f1789fda29bf6a3f98722ee4f
       </div>
       <div className="row">
         <p className="form">
