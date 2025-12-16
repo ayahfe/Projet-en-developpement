@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
 
+
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+
 
     "dev": "vite",
     "build": "vite build",
@@ -16,6 +18,9 @@
     "dev:api": "node src/backend/server.js",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+
+
+
 
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
@@ -41,7 +46,10 @@
     "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^5.0.2",
 
+
     "cypress": "^15.7.1",
+
+
 
 
     "eslint": "^9.35.0",
