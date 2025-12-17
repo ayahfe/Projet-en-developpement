@@ -1,54 +1,86 @@
-/* Plein écran réel (même si <main> a une largeur max) */
-.auth-screen{
-  position: fixed;   /* <- force hors contraintes du <main> */
-  inset: 0;          /* top:0 right:0 bottom:0 left:0 */
+/* Signup.css ou dans votre fichier d'authentification commun */
+
+.role-selection {
   display: flex;
-  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.role-option {
+  flex: 1;
+  display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #007bff 0%, #004aad 100%);
-  background-attachment: fixed;
-  overflow: auto;    /* au cas où la carte dépasse en hauteur */
-  padding: 40px 16px;
-  z-index: 0;
+  justify-content: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* La carte peut rester telle que tu l'avais, sinon : */
-.auth-card{
-  backdrop-filter: blur(20px);
-  padding: 3rem 3.5rem;
-  border-radius: 24px;
-  width: min(550px, 92vw);
-  box-shadow: 0 8px 30px rgba(0,0,0,.25);
-  color: #fff;
-  text-align: center;
+.role-option:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* === Segmented Control (rôle) === */
-.segmented{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 8px 18px rgba(0,0,0,.15) inset, 0 6px 16px rgba(0,0,0,.08);
+.role-option input[type="radio"] {
+  display: none;
 }
-.segmented input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
-.segmented label{
-  text-align:center; padding:.7rem .6rem; font-weight:700; color:#eaf4ff;
-  cursor:pointer; transition:all .25s ease;
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+
+.role-option input[type="radio"]:checked + span {
+  color: #00c6ff;
+  font-weight: 600;
 }
-.segmented label + input + label { border-left:1px solid rgba(255,255,255,.18); }
-.segmented label:hover{ background: rgba(255,255,255,.18); transform: translateY(-1px); }
-.segmented input#role-client:checked ~ label[for="role-client"],
-.segmented input#role-pharmacien:checked ~ label[for="role-pharmacien"],
-.segmented input#role-medecin:checked ~ label[for="role-medecin"]{
-  color:#0b1426;
-  background: linear-gradient(135deg, #5ee3ff 0%, #00b2ff 60%, #0078ff 100%);
-  box-shadow: 0 10px 22px rgba(0,120,255,.35);
+
+.role-option span {
+  color: #e0eaff;
+  font-size: 0.9rem;
 }
-@media (max-width: 420px){
-  .segmented{ grid-template-columns: 1fr; }
-  .segmented label + input + label { border-left:none; border-top:1px solid rgba(255,255,255,.18); }
+
+.checkbox-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-control input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #00c6ff;
+}
+
+.checkbox-control label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #e0eaff;
+  font-size: 0.9rem;
+}
+
+.control-error {
+  margin-top: 8px;
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.8rem;
+}
+
+.form-actions .button {
+  flex: 1;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

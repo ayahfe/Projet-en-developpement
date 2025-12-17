@@ -1,148 +1,58 @@
-// src/frontend/login/Login.jsx
-
-
-
-
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
-
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-import { supabase } from "../../lib/supabaseClient";
-
-
-
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
-
-
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
-
 import "./Login.css";
 
 export default function Login() {
   const [values, setValues] = useState({ email: "", password: "" });
   const [pending, setPending] = useState(false);
-
-
-
-
-  const { login } = useContext(AuthContext);
-
+  const [error, setError] = useState("");
   const { login } = useAuth();
-
-  const { login } = useAuth();
-
-  const { login } = useContext(AuthContext);
-
-
-  const { login } = useContext(AuthContext);
-
   const navigate = useNavigate();
 
-  const onChange = (k, v) => setValues(p => ({ ...p, [k]: v }));
-
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!values.email || !values.password) return alert("Veuillez entrer vos identifiants");
+    setError("");
+    
+    if (!values.email || !values.password) {
+      setError("Veuillez entrer vos identifiants");
+      return;
+    }
+    
     try {
       setPending(true);
       await login(values.email, values.password);
-
-
-
-
-      navigate("/"); // redirection après succès
+      navigate("/");
     } catch (err) {
-      alert("Connexion échouée");
-
-
-
-      // récupère le rôle et redirige
-      const { data: { user } } = await supabase.auth.getUser();
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", user.id)
-        .single();
-
-      const role = profile?.role || "client";
-      navigate(`/${role}`);
-    } catch (err) {
-      alert(err.message || "Connexion échouée");
-
-
-
-      navigate("/"); // redirection après succès
-    } catch (err) {
-      alert("Connexion échouée");
-
-
-      navigate("/"); // redirection après succès
-    } catch (err) {
-      alert("Connexion échouée");
-
+      setError(err.message || "Connexion échouée. Vérifiez vos identifiants.");
     } finally {
       setPending(false);
     }
   };
 
   return (
-
-
-
-
-
-
-
-
-    <form onSubmit={onSubmit}>
-      <h2>Bienvenue</h2>
-      <h3>Connectez-vous pour continuer</h3>
-
-      <div className="control-row">
-        <div className="control no-margin">
-          <label htmlFor="email">Email</label>
-          <input id="email" type="email" value={values.email}
-                 onChange={e=>onChange("email", e.target.value)} required />
-        </div>
-        <div className="control no-margin">
-          <label htmlFor="password">Mot de passe</label>
-          <input id="password" type="password" value={values.password}
-                 onChange={e=>onChange("password", e.target.value)} required />
-        </div>
-      </div>
-
-      <p className="form-actions">
-        <Link to="/signup"><button className="button button-flat" type="button">Créer un compte</button></Link>
-        <button className="button" type="submit" disabled={pending}>
-          {pending ? "Connexion..." : "Se connecter"}
-        </button>
-      </p>
-    </form>
-
-
-
-
     <div className="auth-screen">
-      <form onSubmit={onSubmit} className="auth-card appear">
+      <form onSubmit={handleSubmit} className="auth-card">
         <h2>Connexion</h2>
         <p>Identifiez-vous pour accéder à votre espace</p>
+
+        {error && (
+          <div className="control-error">
+            ⚠️ {error}
+          </div>
+        )}
 
         <div className="control">
           <label htmlFor="email">Email</label>
           <input
             id="email"
+            name="email"
             type="email"
             value={values.email}
-            onChange={e=>onChange("email", e.target.value)}
+            onChange={(e) => setValues({...values, email: e.target.value})}
+            placeholder="votre@email.com"
             required
+            disabled={pending}
           />
         </div>
 
@@ -150,26 +60,27 @@ export default function Login() {
           <label htmlFor="password">Mot de passe</label>
           <input
             id="password"
+            name="password"
             type="password"
             value={values.password}
-            onChange={e=>onChange("password", e.target.value)}
+            onChange={(e) => setValues({...values, password: e.target.value})}
+            placeholder="••••••••"
             required
+            disabled={pending}
           />
         </div>
 
-        <p className="form-actions">
-          <Link to="/signup"><button className="button button-flat" type="button">Créer un compte</button></Link>
+        <div className="form-actions">
+          <Link to="/signup">
+            <button className="button button-flat" type="button" disabled={pending}>
+              Créer un compte
+            </button>
+          </Link>
           <button className="button" type="submit" disabled={pending}>
             {pending ? "Connexion..." : "Se connecter"}
           </button>
-        </p>
+        </div>
       </form>
     </div>
-
-
-
-
-
-
   );
 }

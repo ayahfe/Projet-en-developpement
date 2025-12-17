@@ -1,149 +1,88 @@
-
-
-
-
-import { createContext, useCallback, useEffect, useState, useContext } from "react";
-
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
-
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { supabase } from "../lib/supabaseClient"; // adapte le chemin si besoin
-
-import { createContext, useCallback, useEffect, useState, useContext } from "react";
-
-
-import { createContext, useCallback, useEffect, useState, useContext } from "react";
-
+// src/frontend/AuthContext.jsx (Version Supabase)
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
+import { supabase } from "../lib/supabaseClient";
 
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
-
-
-
-
-
-
-
-
-
-const API = "http://localhost:4000/api";
-
-const getToken = () => localStorage.getItem("token");
-const authHeader = () => {
-  const t = getToken();
-  return t ? { Authorization: `Bearer ${t}` } : {};
-};
-
-async function getJSON(path) {
-  const r = await fetch(API + path, { headers: { ...authHeader() } });
-  const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(data.error || `Erreur ${r.status}`);
-  return data;
-}
-
-async function postJSON(path, body, { withAuth = true } = {}) {
-  const headers = { "Content-Type": "application/json", ...(withAuth ? authHeader() : {}) };
-  const r = await fetch(API + path, { method: "POST", headers, body: JSON.stringify(body ?? {}) });
-  const data = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(data.error || `Erreur ${r.status}`);
-  return data;
-}
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // me si token présent
   useEffect(() => {
-    (async () => {
-      try {
-        if (getToken()) setUser(await getJSON("/auth/me"));
-      } finally {
-        setLoading(false);
-      }
-    })();
+    // Vérifier la session existante
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    // Écouter les changements d'authentification
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  const signup = useCallback(async (email, password) => {
-    const { token, user } = await postJSON("/auth/signup", { email, password }, { withAuth: false });
-    localStorage.setItem("token", token);
-    setUser(user);
-  }, []);
+  // Fonction de connexion
+  const login = async (email, password) => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    
+    if (error) throw error;
+    return data.user;
+  };
 
-  const login = useCallback(async (email, password) => {
-    const { token, user } = await postJSON("/auth/login", { email, password }, { withAuth: false });
-    localStorage.setItem("token", token);
-    setUser(user);
-  }, []);
+  // Fonction d'inscription
+  const signup = async (email, password) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    
+    if (error) throw error;
+    return data.user;
+  };
 
-  const logout = useCallback(async () => {
-    try { await postJSON("/auth/logout", {}); } catch {}
-    localStorage.removeItem("token");
-    setUser(null);
-  }, []);
+  // Fonction de déconnexion
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+  };
+
+  // Valeur du contexte
+  const value = useMemo(() => ({
+    user,
+    isLoggedIn: !!user,
+    email: user?.email ?? null,
+    loading,
+    login,
+    signup,
+    logout
+  }), [user, loading]);
+
+  // Écran de chargement
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        background: 'linear-gradient(135deg, #1e3c72, #2a5298)',
+        color: 'white'
+      }}>
+        <div>Chargement...</div>
+      </div>
+    );
+  }
 
   return (
-    <AuthContext.Provider value={{
-      user,
-      isLoggedIn: !!user,
-      email: user?.email ?? null,
-      loading,
-      signup, login, logout
-    }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
-
-
-
-
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [initializing, setInitializing] = useState(true);
-
-  useEffect(() => {
-    let ignore = false;
-    (async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!ignore) {
-        setUser(data?.session?.user ?? null);
-        setInitializing(false);
-      }
-    })();
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => {
-      ignore = true;
-      sub?.subscription?.unsubscribe();
-    };
-  }, []);
-
-  async function login(email, password) {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-  }
-
-  async function signup(email, password) {
-    const { error } = await supabase.auth.signUp({ email, password });
-    if (error) throw error;
-  }
-
-  async function logout() {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
-  }
-
-  const value = useMemo(() => ({
-    user, initializing, login, signup, logout
-  }), [user, initializing]);
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-
-
-
-
-
-
 }

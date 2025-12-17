@@ -1,175 +1,75 @@
-
-
-
-
 // src/frontend/prescription/showPrescription/ShowPrescription.jsx
 import React from "react";
-
-export default function ShowPrescription() {
-  return (
-    <div className="show-prescription">
-      <h2>Liste des prescriptions</h2>
-      {/* Ton contenu ici */}
-
-// ShowPrescription.jsx
-import { PRESCRIPTIONS } from "../../../data/prescriptions";
-import "./ShowPrescription.css";
-
-import { PRESCRIPTIONS } from "../../../data/prescriptions";
-
-import "./ShowPrescription.css";
-import "../addPrescription/AddPrescription.css";
-
-
-import "./ShowPrescription.css";
-import "../addPrescription/AddPrescription.css";
-
 import { Link } from "react-router-dom";
+import { PRESCRIPTIONS } from "../../../data/prescriptions";
+import "./ShowPrescription.css";
 
-function ShowPrescription({ prescription }) {
+// Composant pour afficher une seule prescription
+function PrescriptionCard({ prescription }) {
   return (
-
-
     <div className="card-rx">
       <h3 className="rx-title">Ordonnance #{prescription.id}</h3>
-
+      
       <div className="rx-info">
         <p><strong>Institut :</strong> {prescription.nomInstitut}</p>
         <p><strong>Date :</strong> {prescription.date}</p>
         <p><strong>RAMQ :</strong> {prescription.ramq}</p>
-
+        
         <p><strong>Patient :</strong> {prescription.prenom} {prescription.nom}</p>
         <p><strong>Téléphone :</strong> {prescription.telephone}</p>
-
+        
         <p><strong>Médicament :</strong> {prescription.nomMolecule}</p>
         <p><strong>Force :</strong> {prescription.force}</p>
         <p><strong>Quantité :</strong> {prescription.quantite}</p>
-
+        
         <p><strong>Renouvellement :</strong> {prescription.renouvellement}</p>
         <p><strong>Posologie :</strong> {prescription.posologie}</p>
-
-        <p><strong>Médecin :</strong> {prescription.nom}</p>
+        
+        <p><strong>Médecin :</strong> {prescription.nomMedecin || prescription.nom}</p>
         <p><strong>License :</strong> {prescription.license}</p>
       </div>
-
+      
       <div className="row-rx-button">
         <Link to={`/medecins/modify/${prescription.id}`}>
           <button className="button-rx-modify">Modifier</button>
         </Link>
-
-        <Link to="/medecins/delete">
+        
+        <Link to={`/medecins/delete/${prescription.id}`}>
           <button className="button-rx-delete">Supprimer</button>
         </Link>
       </div>
-
-
-
-    <div>
-      <div className="form-rx">
-        <p>id : {prescription.id}</p>
-        <p>Nom Institut : {prescription.nomInstitut}</p>
-        <p>Date : {prescription.date}</p>
-        <p>RAMQ : {prescription.ramq}</p>
-        <p>Nom : {prescription.nom}</p>
-        <p>Prénom : {prescription.prenom}</p>
-        <p>Téléphone : {prescription.telephone}</p>
-        <p>Nom de la molécule : {prescription.nomMolecule}</p>
-        <p>Force : {prescription.force}</p>
-        <p>Quantité : {prescription.quantite}</p>
-        <p>Renouvellement : {prescription.renouvellement}</p>
-        <p>Posologie : {prescription.posologie}</p>
-        <p>Nom médecin : {prescription.nom}</p>
-        <p>License médecin : {prescription.license}</p>
-      </div>
-      <p className="row-rx-button">
-        <Link to={`/medecins/modify/${prescription.id}`}>
-          <button type="submit" className="button-rx-modify">
-            Modifier
-          </button>
-        </Link>
-        <Link to="/medecins/delete">
-          <button type="submit" className="button-rx-delete">
-            Supprimer
-          </button>
-        </Link>
-      </p>
-    </div>
-  );
-}
-/*
-function ShowPrescription({ prescription }) {
-  return (
-    <div className="card-rx">
-      <div className="form-rx">
-        <p>id : {prescription.id}</p>
-        <p>Nom Institut : {prescription.nomInstitut}</p>
-        <p>Date : {prescription.date}</p>
-        <p>RAMQ : {prescription.ramq}</p>
-        <p>Nom : {prescription.nom}</p>
-        <p>Prénom : {prescription.prenom}</p>
-        <p>Téléphone : {prescription.telephone}</p>
-        <p>Nom de la molécule : {prescription.nomMolecule}</p>
-        <p>Force : {prescription.force}</p>
-        <p>Quantité : {prescription.quantite}</p>
-        <p>Renouvellement : {prescription.renouvellement}</p>
-        <p>Posologie : {prescription.posologie}</p>
-        <p>Nom médecin : {prescription.medecin.nom}</p>
-        <p>License médecin : {prescription.medecin.license}</p>
-      </div>
-      <p className="row-rx-button">
-        <Link to={`/medecins/modify/${prescription.id}`}>
-          <button type="submit" className="button-rx-modify">Modifier</button>
-        </Link>
-        <Link to="/medecins/delete">
-          <button type="submit" className="button-rx-delete">Supprimer</button>
-        </Link>
-      </p>
-
-
-
-
     </div>
   );
 }
 
-
-
+// Composant principal qui affiche la liste des prescriptions
 export default function ShowPrescriptionList() {
   return (
-    <div className="prescription-page">
-      <h2 className="page-title">Prescriptions</h2>
-
-      <Link to="/medecins/add">
-        <button className="rx-button">Ajouter une prescription</button>
-      </Link>
-
-      <div className="prescription-grid">
-        {PRESCRIPTIONS.map((p) => (
-          <ShowPrescription key={p.id} prescription={p} />
-        ))}
+    <div className="prescription-page" style={{ paddingTop: "80px" }}>
+      <div className="form-rx">
+        <h2 className="page-title">Prescriptions</h2>
+        
+        <div style={{ marginBottom: "30px" }}>
+          <Link to="/medecins/add">
+            <button type="submit" className="rx-button">
+              Ajouter une prescription
+            </button>
+          </Link>
+        </div>
+        
+        <div className="prescription-grid">
+          {PRESCRIPTIONS && PRESCRIPTIONS.length > 0 ? (
+            PRESCRIPTIONS.map((prescription) => (
+              <PrescriptionCard 
+                key={prescription.id} 
+                prescription={prescription} 
+              />
+            ))
+          ) : (
+            <p>Aucune prescription disponible.</p>
+          )}
+        </div>
       </div>
-
-
-
-*/
-export default function ShowPrescriptionList() {
-  return (
-    <div className="form-rx">
-      <h2>Prescriptions</h2>
-      <Link to="/medecins/add">
-        <button type="submit" className="rx-button">
-          Ajouter une prescription
-        </button>
-      </Link>
-      <div className="prescription-grid">
-        {PRESCRIPTIONS.map((prescription) => (
-          <ShowPrescription key={prescription.id} prescription={prescription} />
-        ))}
-      </div>
-
-
-
-
     </div>
   );
 }

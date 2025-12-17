@@ -1,208 +1,63 @@
-
-
-
-
-
-
-
-
+/* src/frontend/produitCard/ProduitCard.css */
 .produit-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 18px;
-    margin: 16px;
-    width: 240px;
-    background: #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.2s;
-}
-
-.produit-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-
-.produit-card img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    margin-bottom: 12px;
-}
-
-.produit-card h3 {
-    font-size: 1.2rem;
-    margin: 8px 0 6px 0;
-    color: #2c3e50;
-    text-align: center;
-}
-
-.produit-card p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.produit-card strong {
-    font-size: 1.1rem;
-    color: #27ae60;
-    margin-top: 8px;
-}
-/* Espace pour éviter que les cartes passent sous la navbar */
-.produit-list {
-  margin-top: 100px; /* ajuste selon la hauteur exacte de ta navbar */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
-  min-height: 100vh;
-
-
-
-A/* === PAGE ENTIÈRE === */
-
-/* === PAGE GLOBALE === */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-  background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
-  font-family: "Inter", sans-serif;
-}
-
-
-/* === SECTION PRODUITS === */
-.produit-list {
-  margin-top: 80px;
-  min-height: calc(100vh - 80px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  padding: 60px 100px;
-  background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
-}
-
-
-.produit-list {
-  margin-top: 1200px; /* ✅ espace sous la navbar augmenté */
-  min-height: calc(100vh - 200px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
-  padding: 60px 100px 100px;
-  background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
-}
-
-
-/* === CARTE PRODUIT === */
-.produit-card {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 28px 20px;
+  width: 250px;
+  border-radius: 12px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
   text-align: center;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.35s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .produit-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* === IMAGE === */
-.produit-card img {
-  width: 140px;
-  height: 140px;
-  object-fit: contain;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-  transition: transform 0.3s ease;
-}
-
-.produit-card:hover img {
-  transform: scale(1.1);
-}
-
-/* === NOM PRODUIT === */
-.produit-card h3 {
-  font-size: 1.25rem;
-  color: #ffffff;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-/* === DESCRIPTION === */
-.produit-card p {
-  color: #d6e3ff;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  min-height: 60px;
+.produit-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 15px;
 }
 
-/* === PRIX === */
-.produit-card strong {
-  color: #4adeff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 16px;
+.produit-name {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: white;
 }
 
-/* === BOUTON === */
+.produit-description {
+  font-size: 0.9rem;
+  color: #e0eaff;
+  margin-bottom: 15px;
+  min-height: 40px;
+}
+
+.produit-price {
+  display: block;
+  font-size: 1.1rem;
+  color: #4adeff;
+  margin-bottom: 15px;
+}
+
 .btn-add {
-  background: linear-gradient(90deg, #00aaff, #007bff);
-  border: none;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
   color: white;
-
+  border: none;
   padding: 10px 20px;
-
-  padding: 10px 22px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.95rem;
+  border-radius: 25px;
   cursor: pointer;
+  font-weight: 600;
+  width: 100%;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 123, 255, 0.3);
 }
 
 .btn-add:hover {
-  transform: scale(1.08);
-  background: linear-gradient(90deg, #007bff, #00aaff);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.45);
-}
-
-/* === MESSAGE NON CONNECTÉ === */
-.not-logged {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(180deg, #0f1e63 0%, #1b3cae 35%, #0b60d1 100%);
-  color: white;
-}
-
-.not-logged h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.not-logged p {
-  color: #d6e3ff;
-  font-size: 1rem;
-
-
-
-
-
-
+  background: linear-gradient(90deg, #0072ff, #00aaff);
+  transform: scale(1.05);
 }
