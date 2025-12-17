@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>private boolean isShadowed()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">private boolean isShadowed()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/org/junit/internal/runners/TestClass.java [72:85]</i></p>
+<ul>
+    <li><b>14</b> lines of code</li>
+    <li><b>5</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    private boolean isShadowed(Method current, Method previous) {
+        if (!previous.getName().equals(current.getName())) {
+            return false;
+        }
+        if (previous.getParameterTypes().length != current.getParameterTypes().length) {
+            return false;
+        }
+        for (int i = 0; i &lt; previous.getParameterTypes().length; i++) {
+            if (!previous.getParameterTypes()[i].equals(current.getParameterTypes()[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

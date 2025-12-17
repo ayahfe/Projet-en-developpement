@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1765914523735" clover="3.2.0">
+  <project timestamp="1765914523736" name="All files">
+    <metrics statements="153" coveredstatements="124" conditionals="77" coveredconditionals="58" methods="59" coveredmethods="46" elements="289" coveredelements="228" complexity="0" loc="153" ncloc="153" packages="7" files="22" classes="22"/>
+    <package name="assets">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="advil.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/advil.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="aptamil.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/aptamil.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="aspirin.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/aspirin.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="betadine.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/betadine.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="centrumMen.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/centrumMen.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="centrumWomen.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/centrumWomen.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="dulcolax.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/dulcolax.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="gaviscon.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/gaviscon.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="hydraSense.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/hydraSense.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="smecta.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/smecta.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="tylenol.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/tylenol.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="vicks.png" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/assets/vicks.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="data">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="produitList.js" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/data/produitList.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="frontend.cartContext">
+      <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="10" coveredmethods="10"/>
+      <file name="CartContext.jsx" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/cartContext/CartContext.jsx">
+        <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="10" coveredmethods="10"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="19" type="stmt"/>
+        <line num="7" count="19" type="stmt"/>
+        <line num="9" count="19" type="stmt"/>
+        <line num="10" count="9" type="stmt"/>
+        <line num="11" count="9" type="stmt"/>
+        <line num="12" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="20" count="19" type="stmt"/>
+        <line num="21" count="19" type="stmt"/>
+        <line num="23" count="19" type="stmt"/>
+      </file>
+    </package>
+    <package name="frontend.login">
+      <metrics statements="29" coveredstatements="23" conditionals="16" coveredconditionals="9" methods="6" coveredmethods="6"/>
+      <file name="Login.css" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/login/Login.css">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Login.jsx" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/login/Login.jsx">
+        <metrics statements="29" coveredstatements="23" conditionals="16" coveredconditionals="9" methods="6" coveredmethods="6"/>
+        <line num="9" count="29" type="stmt"/>
+        <line num="10" count="29" type="stmt"/>
+        <line num="11" count="29" type="stmt"/>
+        <line num="13" count="29" type="stmt"/>
+        <line num="14" count="29" type="stmt"/>
+        <line num="16" count="29" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="19" count="29" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="37" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="47" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="52" count="4" type="stmt"/>
+        <line num="54" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="56" count="4" type="stmt"/>
+        <line num="60" count="29" type="stmt"/>
+        <line num="78" count="6" type="stmt"/>
+        <line num="89" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="frontend.produitCard">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="ProduitCard.css" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/produitCard/ProduitCard.css">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="ProduitCard.jsx" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/produitCard/ProduitCard.jsx">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="18" count="36" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="frontend.rdv">
+      <metrics statements="67" coveredstatements="50" conditionals="35" coveredconditionals="28" methods="32" coveredmethods="22"/>
+      <file name="rdv.css" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/rdv/rdv.css">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="rdv.jsx" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/rdv/rdv.jsx">
+        <metrics statements="67" coveredstatements="50" conditionals="35" coveredconditionals="28" methods="32" coveredmethods="22"/>
+        <line num="15" count="30" type="stmt"/>
+        <line num="17" count="30" type="stmt"/>
+        <line num="18" count="30" type="stmt"/>
+        <line num="19" count="30" type="stmt"/>
+        <line num="20" count="30" type="stmt"/>
+        <line num="22" count="30" type="stmt"/>
+        <line num="31" count="30" type="stmt"/>
+        <line num="39" count="30" type="stmt"/>
+        <line num="40" count="12" type="stmt"/>
+        <line num="44" count="12" type="stmt"/>
+        <line num="49" count="12" type="cond" truecount="2" falsecount="2"/>
+        <line num="53" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="54" count="12" type="stmt"/>
+        <line num="55" count="12" type="cond" truecount="4" falsecount="0"/>
+        <line num="56" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="57" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="58" count="9" type="stmt"/>
+        <line num="62" count="12" type="cond" truecount="3" falsecount="1"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="9" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="79" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="93" count="30" type="stmt"/>
+        <line num="94" count="2" type="stmt"/>
+        <line num="95" count="2" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="99" count="30" type="stmt"/>
+        <line num="100" count="420" type="stmt"/>
+        <line num="101" count="420" type="stmt"/>
+        <line num="102" count="420" type="stmt"/>
+        <line num="103" count="2940" type="stmt"/>
+        <line num="104" count="2940" type="stmt"/>
+        <line num="105" count="2940" type="stmt"/>
+        <line num="109" count="30" type="stmt"/>
+        <line num="110" count="2730" type="stmt"/>
+        <line num="111" count="2730" type="stmt"/>
+        <line num="114" count="390" type="stmt"/>
+        <line num="115" count="30" type="stmt"/>
+        <line num="117" count="30" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="135" count="3" type="stmt"/>
+        <line num="142" count="1" type="stmt"/>
+        <line num="154" count="210" type="stmt"/>
+        <line num="161" count="390" type="stmt"/>
+        <line num="164" count="2730" type="stmt"/>
+        <line num="166" count="156" type="cond" truecount="2" falsecount="0"/>
+        <line num="168" count="12" type="stmt"/>
+        <line num="169" count="12" type="stmt"/>
+        <line num="174" count="2" type="stmt"/>
+        <line num="189" count="0" type="stmt"/>
+        <line num="190" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="199" count="0" type="stmt"/>
+        <line num="203" count="0" type="stmt"/>
+        <line num="206" count="20" type="stmt"/>
+        <line num="210" count="0" type="stmt"/>
+        <line num="214" count="0" type="stmt"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="224" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="frontend.signup">
+      <metrics statements="36" coveredstatements="30" conditionals="22" coveredconditionals="18" methods="7" coveredmethods="4"/>
+      <file name="Signup.css" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/signup/Signup.css">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Signup.jsx" path="/Users/ayahafiane/Desktop/Projet-en-developpement-main (7)/Projet-en-developpement-main/Projet-en-developpement-aya/src/frontend/signup/Signup.jsx">
+        <metrics statements="36" coveredstatements="30" conditionals="22" coveredconditionals="18" methods="7" coveredmethods="4"/>
+        <line num="6" count="41" type="stmt"/>
+        <line num="8" count="41" type="stmt"/>
+        <line num="9" count="41" type="stmt"/>
+        <line num="10" count="41" type="stmt"/>
+        <line num="11" count="41" type="stmt"/>
+        <line num="12" count="41" type="stmt"/>
+        <line num="15" count="30" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="36" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="42" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="57" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="67" count="3" type="stmt"/>
+        <line num="71" count="41" type="stmt"/>
+        <line num="76" count="27" type="stmt"/>
+        <line num="77" count="27" type="stmt"/>
+        <line num="78" count="27" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="144" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

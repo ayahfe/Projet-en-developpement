@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>public Test getTest()</title>
+    <link rel="stylesheet" charset="UTF-8" href="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/styles/docco.min.css">
+    <script charset="UTF-8" type="application/javascript" src="https://d2bb1mtyn3kglb.cloudfront.net/lib/highlight/highlight.min.js"></script>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">public Test getTest()</h3>
+<p style="margin-top: 4px">in <i>src/main/java/junit/runner/BaseTestRunner.java [95:142]</i></p>
+<ul>
+    <li><b>46</b> lines of code</li>
+    <li><b>10</b> McCabe index (conditional complexity)</li>
+</ul>
+<pre>
+<code class="java">
+    public Test getTest(String suiteClassName) {
+        if (suiteClassName.length() &lt;= 0) {
+            clearStatus();
+            return null;
+        }
+        Class&lt;?&gt; testClass = null;
+        try {
+            testClass = loadSuiteClass(suiteClassName);
+        } catch (ClassNotFoundException e) {
+            String clazz = e.getMessage();
+            if (clazz == null) {
+                clazz = suiteClassName;
+            }
+            runFailed(&quot;Class not found \&quot;&quot; + clazz + &quot;\&quot;&quot;);
+            return null;
+        } catch (Exception e) {
+            runFailed(&quot;Error: &quot; + e.toString());
+            return null;
+        }
+        Method suiteMethod = null;
+        try {
+            suiteMethod = testClass.getMethod(SUITE_METHODNAME);
+        } catch (Exception e) {
+            // try to extract a test suite automatically
+            clearStatus();
+            return new TestSuite(testClass);
+        }
+        if (!Modifier.isStatic(suiteMethod.getModifiers())) {
+            runFailed(&quot;Suite() method must be static&quot;);
+            return null;
+        }
+        Test test = null;
+        try {
+            test = (Test) suiteMethod.invoke(null); // static method
+            if (test == null) {
+                return test;
+            }
+        } catch (InvocationTargetException e) {
+            runFailed(&quot;Failed to invoke suite():&quot; + e.getTargetException().toString());
+            return null;
+        } catch (IllegalAccessException e) {
+            runFailed(&quot;Failed to invoke suite():&quot; + e.toString());
+            return null;
+        }
+
+        clearStatus();
+        return test;
+    }
+
+</code>
+</pre>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>

@@ -1,0 +1,146 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/validator/AnnotationsValidator.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/validator/AnnotationsValidator.java (<b>90</b> lines of code) (<a href="AnnotationsValidator.java">raw</a>):</h3>
+<div id="editor">package org.junit.validator;
+
+import static java.util.Collections.singletonList;
+
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.runners.model.Annotatable;
+import org.junit.runners.model.FrameworkField;
+import org.junit.runners.model.FrameworkMethod;
+import org.junit.runners.model.TestClass;
+
+/**
+ * An {@code AnnotationsValidator} validates all annotations of a test class,
+ * including its annotated fields and methods.
+ * 
+ * @since 4.12
+ */
+public final class AnnotationsValidator implements TestClassValidator {
+    private static final List&lt;AnnotatableValidator&lt;?&gt;&gt; VALIDATORS = Arrays.&lt;AnnotatableValidator&lt;?&gt;&gt;asList(
+            new ClassValidator(), new MethodValidator(), new FieldValidator());
+
+    /**
+     * Validate all annotations of the specified test class that are be
+     * annotated with {@link ValidateWith}.
+     * 
+     * @param testClass
+     *            the {@link TestClass} that is validated.
+     * @return the errors found by the validator.
+     */
+    public List&lt;Exception&gt; validateTestClass(TestClass testClass) {
+        List&lt;Exception&gt; validationErrors= new ArrayList&lt;Exception&gt;();
+        for (AnnotatableValidator&lt;?&gt; validator : VALIDATORS) {
+            List&lt;Exception&gt; additionalErrors= validator
+                    .validateTestClass(testClass);
+            validationErrors.addAll(additionalErrors);
+        }
+        return validationErrors;
+    }
+
+    private abstract static class AnnotatableValidator&lt;T extends Annotatable&gt; {
+        private static final AnnotationValidatorFactory ANNOTATION_VALIDATOR_FACTORY = new AnnotationValidatorFactory();
+
+        abstract Iterable&lt;T&gt; getAnnotatablesForTestClass(TestClass testClass);
+
+        abstract List&lt;Exception&gt; validateAnnotatable(
+                AnnotationValidator validator, T annotatable);
+
+        public List&lt;Exception&gt; validateTestClass(TestClass testClass) {
+            List&lt;Exception&gt; validationErrors= new ArrayList&lt;Exception&gt;();
+            for (T annotatable : getAnnotatablesForTestClass(testClass)) {
+                List&lt;Exception&gt; additionalErrors= validateAnnotatable(annotatable);
+                validationErrors.addAll(additionalErrors);
+            }
+            return validationErrors;
+        }
+
+        private List&lt;Exception&gt; validateAnnotatable(T annotatable) {
+            List&lt;Exception&gt; validationErrors= new ArrayList&lt;Exception&gt;();
+            for (Annotation annotation : annotatable.getAnnotations()) {
+                Class&lt;? extends Annotation&gt; annotationType = annotation
+                        .annotationType();
+                ValidateWith validateWith = annotationType
+                        .getAnnotation(ValidateWith.class);
+                if (validateWith != null) {
+                    AnnotationValidator annotationValidator = ANNOTATION_VALIDATOR_FACTORY
+                            .createAnnotationValidator(validateWith);
+                    List&lt;Exception&gt; errors= validateAnnotatable(
+                            annotationValidator, annotatable);
+                    validationErrors.addAll(errors);
+                }
+            }
+            return validationErrors;
+        }
+    }
+
+    private static class ClassValidator extends AnnotatableValidator&lt;TestClass&gt; {
+        @Override
+        Iterable&lt;TestClass&gt; getAnnotatablesForTestClass(TestClass testClass) {
+            return singletonList(testClass);
+        }
+
+        @Override
+        List&lt;Exception&gt; validateAnnotatable(
+                AnnotationValidator validator, TestClass testClass) {
+            return validator.validateAnnotatedClass(testClass);
+        }
+    }
+
+    private static class MethodValidator extends
+            AnnotatableValidator&lt;FrameworkMethod&gt; {
+        @Override
+        Iterable&lt;FrameworkMethod&gt; getAnnotatablesForTestClass(
+                TestClass testClass) {
+            return testClass.getAnnotatedMethods();
+        }
+
+        @Override
+        List&lt;Exception&gt; validateAnnotatable(
+                AnnotationValidator validator, FrameworkMethod method) {
+            return validator.validateAnnotatedMethod(method);
+        }
+    }
+
+    private static class FieldValidator extends
+            AnnotatableValidator&lt;FrameworkField&gt; {
+        @Override
+        Iterable&lt;FrameworkField&gt; getAnnotatablesForTestClass(TestClass testClass) {
+            return testClass.getAnnotatedFields();
+        }
+
+        @Override
+        List&lt;Exception&gt; validateAnnotatable(
+                AnnotationValidator validator, FrameworkField field) {
+            return validator.validateAnnotatedField(field);
+        }
+    }
+}
+</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>

@@ -1,0 +1,178 @@
+<html>
+<head>
+    <title>src/main/java/org/junit/experimental/theories/internal/Assignments.java</title>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body style="font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif">
+<h3 style="margin-bottom: 0">src/main/java/org/junit/experimental/theories/internal/Assignments.java (<b>117</b> lines of code) (<a href="Assignments.java">raw</a>):</h3>
+<div id="editor">package org.junit.experimental.theories.internal;
+
+import static java.util.Collections.emptyList;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.experimental.theories.ParameterSignature;
+import org.junit.experimental.theories.ParameterSupplier;
+import org.junit.experimental.theories.ParametersSuppliedBy;
+import org.junit.experimental.theories.PotentialAssignment;
+import org.junit.experimental.theories.PotentialAssignment.CouldNotGenerateValueException;
+import org.junit.runners.model.TestClass;
+
+/**
+ * A potentially incomplete list of value assignments for a method's formal
+ * parameters
+ */
+public class Assignments {
+    private final List&lt;PotentialAssignment&gt; assigned;
+
+    private final List&lt;ParameterSignature&gt; unassigned;
+
+    private final TestClass clazz;
+
+    private Assignments(List&lt;PotentialAssignment&gt; assigned,
+            List&lt;ParameterSignature&gt; unassigned, TestClass clazz) {
+        this.unassigned = unassigned;
+        this.assigned = assigned;
+        this.clazz = clazz;
+    }
+
+    /**
+     * Returns a new assignment list for {@code testMethod}, with no params
+     * assigned.
+     */
+    public static Assignments allUnassigned(Method testMethod,
+            TestClass testClass) {
+        List&lt;ParameterSignature&gt; signatures;
+        signatures = ParameterSignature.signatures(testClass
+                .getOnlyConstructor());
+        signatures.addAll(ParameterSignature.signatures(testMethod));
+        return new Assignments(new ArrayList&lt;PotentialAssignment&gt;(),
+                signatures, testClass);
+    }
+
+    public boolean isComplete() {
+        return unassigned.isEmpty();
+    }
+
+    public ParameterSignature nextUnassigned() {
+        return unassigned.get(0);
+    }
+
+    public Assignments assignNext(PotentialAssignment source) {
+        List&lt;PotentialAssignment&gt; potentialAssignments = new ArrayList&lt;PotentialAssignment&gt;(assigned);
+        potentialAssignments.add(source);
+
+        return new Assignments(potentialAssignments, unassigned.subList(1,
+                unassigned.size()), clazz);
+    }
+
+    public Object[] getActualValues(int start, int stop) 
+            throws CouldNotGenerateValueException {
+        Object[] values = new Object[stop - start];
+        for (int i = start; i &lt; stop; i++) {
+            values[i - start] = assigned.get(i).getValue();
+        }
+        return values;
+    }
+
+    public List&lt;PotentialAssignment&gt; potentialsForNextUnassigned()
+            throws Throwable {
+        ParameterSignature unassigned = nextUnassigned();
+        List&lt;PotentialAssignment&gt; assignments = getSupplier(unassigned).getValueSources(unassigned);
+        
+        if (assignments.isEmpty()) {
+            assignments = generateAssignmentsFromTypeAlone(unassigned);
+        }
+        
+        return assignments;
+    }
+
+    private List&lt;PotentialAssignment&gt; generateAssignmentsFromTypeAlone(ParameterSignature unassigned) {
+        Class&lt;?&gt; paramType = unassigned.getType();
+        
+        if (paramType.isEnum()) {
+            return new EnumSupplier(paramType).getValueSources(unassigned);  
+        } else if (paramType.equals(Boolean.class) || paramType.equals(boolean.class)) {
+            return new BooleanSupplier().getValueSources(unassigned);
+        } else {
+            return emptyList();
+        }
+    }
+
+    private ParameterSupplier getSupplier(ParameterSignature unassigned)
+            throws Exception {
+        ParametersSuppliedBy annotation = unassigned
+                .findDeepAnnotation(ParametersSuppliedBy.class);
+        
+        if (annotation != null) {
+            return buildParameterSupplierFromClass(annotation.value());
+        } else {
+            return new AllMembersSupplier(clazz);
+        }
+    }
+
+    private ParameterSupplier buildParameterSupplierFromClass(
+            Class&lt;? extends ParameterSupplier&gt; cls) throws Exception {
+        Constructor&lt;?&gt;[] supplierConstructors = cls.getConstructors();
+
+        for (Constructor&lt;?&gt; constructor : supplierConstructors) {
+            Class&lt;?&gt;[] parameterTypes = constructor.getParameterTypes();
+            if (parameterTypes.length == 1
+                    &amp;&amp; parameterTypes[0].equals(TestClass.class)) {
+                return (ParameterSupplier) constructor.newInstance(clazz);
+            }
+        }
+
+        return cls.newInstance();
+    }
+
+    public Object[] getConstructorArguments()
+            throws CouldNotGenerateValueException {
+        return getActualValues(0, getConstructorParameterCount());
+    }
+
+    public Object[] getMethodArguments() throws CouldNotGenerateValueException {
+        return getActualValues(getConstructorParameterCount(), assigned.size());
+    }
+
+    public Object[] getAllArguments() throws CouldNotGenerateValueException {
+        return getActualValues(0, assigned.size());
+    }
+
+    private int getConstructorParameterCount() {
+        List&lt;ParameterSignature&gt; signatures = ParameterSignature
+                .signatures(clazz.getOnlyConstructor());
+        int constructorParameterCount = signatures.size();
+        return constructorParameterCount;
+    }
+
+    public Object[] getArgumentStrings(boolean nullsOk)
+            throws CouldNotGenerateValueException {
+        Object[] values = new Object[assigned.size()];
+        for (int i = 0; i &lt; values.length; i++) {
+            values[i] = assigned.get(i).getDescription();
+        }
+        return values;
+    }
+}</div>
+<script src="https://www.zeljkoobrenovic.com/tools/common/lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/java");
+    editor.setTheme("ace/theme/xcode");
+    editor.setReadOnly(true);
+    editor.setOption("wrap", true);
+    editor.setPrintMarginColumn(120);
+</script>
+</body>
