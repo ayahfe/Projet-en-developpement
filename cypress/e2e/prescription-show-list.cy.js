@@ -1,5 +1,5 @@
 describe("Ordonnances - liste", () => {
-  it("affiche le titre Prescriptions", () => {
+  it("affiche le titreF Prescriptions", () => {
     cy.visit("/ordonnances");
     cy.contains(/prescriptions/i).should("exist");
   });
