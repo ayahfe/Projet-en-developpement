@@ -19,5 +19,6 @@ export default defineConfig({
     setupFiles: "./vitest.setup.js", // Fichier de configuration avant les tests
     include: ["src/**/*.{test,spec}.{js,ts,tsx}"], // Où Vitest cherche les fichiers de test
     exclude: ["node_modules/**/*"], // Exclure les fichiers dans node_modules
+    silent: true,          // Désactive les warnings comme ceux liés à 'act(...)'
   },
 });

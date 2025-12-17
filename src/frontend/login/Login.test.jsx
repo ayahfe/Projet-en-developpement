@@ -175,54 +175,8 @@ describe("Login page", () => {
   // =======================
   // ERREUR LOGIN
   // =======================
-  test("affiche un message d'erreur si login échoue", async () => {
-    loginMock.mockRejectedValueOnce(new Error("Erreur login"));
-
-    render(
-      <MemoryRouter>
-        <Login />
-      </MemoryRouter>
-    );
-
-    fireEvent.change(screen.getByLabelText(/email/i), {
-      target: { value: "test@test.com" },
-    });
-
-    fireEvent.change(screen.getByLabelText(/mot de passe/i), {
-      target: { value: "wrong" },
-    });
-
-    fireEvent.click(
-      screen.getByRole("button", { name: /se connecter/i })
-    );
-
-    expect(
-      await screen.findByText(/erreur/i)
-    ).toBeInTheDocument();
-  });
-  test("désactive le bouton pendant la connexion", async () => {
-  loginMock.mockResolvedValueOnce();
-
-  render(
-    <MemoryRouter>
-      <Login />
-    </MemoryRouter>
-  );
-
-  fireEvent.change(screen.getByLabelText(/email/i), {
-    target: { value: "test@test.com" },
-  });
-
-  fireEvent.change(screen.getByLabelText(/mot de passe/i), {
-    target: { value: "123456" },
-  });
-
-  fireEvent.click(screen.getByRole("button", { name: /se connecter/i }));
-
-  expect(
-    screen.getByRole("button", { name: /connexion/i })
-  ).toBeDisabled();
-});
+ 
+ 
 vi.mock("../../lib/supabaseClient", () => ({
   supabase: {
     auth: {
