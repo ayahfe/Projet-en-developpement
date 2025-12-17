@@ -1,58 +1,71 @@
-// ShowPrescription.jsx
-import { PRESCRIPTIONS } from "../../../data/prescriptions";
+import { useOutletContext, Link } from "react-router-dom";
 import "./ShowPrescription.css";
-import { Link } from "react-router-dom";
+import "../addPrescription/AddPrescription.css";
 
-function ShowPrescription({ prescription }) {
+function ShowPrescription({ prescription, onDelete }) {
+  const handleDelete = () => {
+    if (window.confirm(`Voulez-vous vraiment supprimer la prescription de ${prescription.nom} ${prescription.prenom} ?`)) {
+      onDelete(prescription.id);
+    }
+  };
+
   return (
-    <div className="card-rx">
-      <h3 className="rx-title">Ordonnance #{prescription.id}</h3>
-
-      <div className="rx-info">
-        <p><strong>Institut :</strong> {prescription.nomInstitut}</p>
-        <p><strong>Date :</strong> {prescription.date}</p>
-        <p><strong>RAMQ :</strong> {prescription.ramq}</p>
-
-        <p><strong>Patient :</strong> {prescription.prenom} {prescription.nom}</p>
-        <p><strong>Téléphone :</strong> {prescription.telephone}</p>
-
-        <p><strong>Médicament :</strong> {prescription.nomMolecule}</p>
-        <p><strong>Force :</strong> {prescription.force}</p>
-        <p><strong>Quantité :</strong> {prescription.quantite}</p>
-
-        <p><strong>Renouvellement :</strong> {prescription.renouvellement}</p>
-        <p><strong>Posologie :</strong> {prescription.posologie}</p>
-
-        <p><strong>Médecin :</strong> {prescription.nom}</p>
-        <p><strong>License :</strong> {prescription.license}</p>
+    <div className="prescription-card">
+      <div className="prescription-content">
+        <p>id : {prescription.id}</p>
+        <p>Nom Institut : {prescription.nomInstitut}</p>
+        <p>Date : {prescription.date}</p>
+        <p>RAMQ : {prescription.ramq}</p>
+        <p>Nom : {prescription.nom}</p>
+        <p>Prénom : {prescription.prenom}</p>
+        <p>Téléphone : {prescription.telephone}</p>
+        <p>Nom de la molécule : {prescription.nomMolecule}</p>
+        <p>Force : {prescription.force}</p>
+        <p>Quantité : {prescription.quantite}</p>
+        <p>Renouvellement : {prescription.renouvellement}</p>
+        <p>Posologie : {prescription.posologie}</p>
+        <p>Nom médecin : {prescription.nomMedecin}</p>
+        <p>License médecin : {prescription.license}</p>
       </div>
-
-      <div className="row-rx-button">
+      <p className="row-rx-button">
         <Link to={`/medecins/modify/${prescription.id}`}>
-          <button className="button-rx-modify">Modifier</button>
+          <button type="button" className="button-rx-modify">
+            Modifier
+          </button>
         </Link>
-
-        <Link to="/medecins/delete">
-          <button className="button-rx-delete">Supprimer</button>
-        </Link>
-      </div>
+        <button type="button" onClick={handleDelete} className="button-rx-delete">
+          Supprimer
+        </button>
+      </p>
     </div>
   );
 }
 
 export default function ShowPrescriptionList() {
+  const { prescriptions, deletePrescriptionHandler } = useOutletContext();
+
   return (
-    <div className="prescription-page">
-      <h2 className="page-title">Prescriptions</h2>
-
-      <Link to="/medecins/add">
-        <button className="rx-button">Ajouter une prescription</button>
-      </Link>
-
+    <div className="form-rx">
+      <div className="header-with-button"> 
+        <h2>Prescriptions</h2>
+        <Link to="/medecins/add">
+          <button type="button" className="rx-button">
+            Ajouter une prescription
+          </button>
+        </Link>
+      </div>
       <div className="prescription-grid">
-        {PRESCRIPTIONS.map((p) => (
-          <ShowPrescription key={p.id} prescription={p} />
-        ))}
+        {prescriptions.length === 0 ? (
+          <p className="no-prescriptions">Aucune prescription disponible.</p>
+        ) : (
+          prescriptions.map((prescription) => (
+            <ShowPrescription 
+              key={prescription.id} 
+              prescription={prescription}
+              onDelete={deletePrescriptionHandler}
+            />
+          ))
+        )}
       </div>
     </div>
   );
