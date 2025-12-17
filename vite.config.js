@@ -1,15 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import viteImagemin from 'vite-plugin-imagemin';
 
 // Configuration de Vite
 export default defineConfig({
   plugins: [
     react(),
-    viteImagemin({
-      webp: { quality: 75 },
-      avif: { quality: 50 },
-    }),
   ],
 
   // Configuration de Vitest pour les tests

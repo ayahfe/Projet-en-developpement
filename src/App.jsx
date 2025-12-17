@@ -1,5 +1,7 @@
 // src/App.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy } from 'react';
+
 import "./App.css";
 
 import { AuthProvider } from "./frontend/AuthContext";
@@ -12,7 +14,8 @@ import Signup from "./frontend/signup/Signup";
 import ProduitList from "./frontend/produitCard/ProduitCard.jsx";
 import Cart from "./frontend/cart/Cart";
 
-import ShowPrescription from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
+import PrescriptionManager from "./frontend/prescription/PrescriptionManager.jsx";
+import ShowPrescriptionList from "./frontend/prescription/showPrescription/ShowPrescription.jsx";
 import AddPrescription from "./frontend/prescription/addPrescription/AddPrescription.jsx";
 import ModifyPrescription from "./frontend/prescription/modifyPrescription/ModifyPrescription.jsx";
 import DeletePrescription from "./frontend/prescription/deletePrescription/DeletePrescription.jsx";
@@ -50,10 +53,16 @@ const router = createBrowserRouter([
       { path: "rendezvous", element: <CalendrierRdv /> },
 
       // 💊 Prescriptions
-      { path: "medecins", element: <ShowPrescription /> },
-      { path: "medecins/add", element: <AddPrescription /> },
-      { path: "medecins/modify", element: <ModifyPrescription /> },
-      { path: "medecins/delete", element: <DeletePrescription /> },
+      {
+        path: "/medecins",
+        element: <PrescriptionManager />,
+        children: [
+          { index: true, element: <ShowPrescriptionList /> },
+          { path: "add", element: <AddPrescription /> },
+          { path: "modify/:id", element: <ModifyPrescription /> },
+          { path: "delete", element: <DeletePrescription /> },
+        ],
+      },
     ],
   },
 ]);
